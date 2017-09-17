@@ -1,0 +1,28 @@
+{
+	"manifest_version": 2,
+	"name": "minerBlock",
+	"description": "Blocks cryptocurrency miners all over the web.",
+	"version": "0.1",
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": true
+	},
+	"icons": {
+		"19": "icons/icon.png",
+		"48": "icons/icon_48.png",
+		"128": "icons/icon_128.png"
+	},
+	"browser_action": {
+		"default_icon": "icons/icon.png",
+		"icons": [ "icons/icon.png" ],
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"activeTab",
+		"storage",
+		"tabs",
+		"webRequest",
+		"webRequestBlocking",
+		"<all_urls>"
+	]
+}

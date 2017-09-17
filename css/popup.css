@@ -1,0 +1,86 @@
+body {
+	font-family: helvetica, arial, 'Lucida Grande', 'Segoe UI', Tahoma, 'DejaVu Sans', sans-serif;
+	background-color: #f5f5f5;
+	min-width: 200px;
+}
+
+.wrap {
+    padding-bottom: 8px;
+    /*border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
+}
+
+.logo {
+    float: left;
+    vertical-align: top;
+    padding-right: 10px;
+}
+
+.content {
+    color: #505050;
+    vertical-align: top;
+    padding: 5px;
+}
+
+.content #title {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+h2 {
+    border: 0;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0.2em;
+    text-align: center;
+    background-color: #eee;
+    color: #666;
+}
+
+#blockedNum {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    /*border-top: 1px solid #dadada;*/
+}
+
+textarea {
+	width: 100%;
+    padding: 12px 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.x-btn {
+    width: 100%;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+
+#startButton {
+	background-color: #4CAF50;
+}
+
+#pauseButton {
+	background-color: #e23838;
+}
+
+label {
+	color: grey;
+}
