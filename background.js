@@ -46,18 +46,6 @@ function blockReq(details) {
 	return {cancel: true};
 }
 
-function updateFilters(urls) {
-	if(chrome.webRequest.onBeforeRequest.hasListener(blockReq)) {
-		chrome.webRequest.onBeforeRequest.removeListener(blockReq);
-	}
-
-	chrome.webRequest.onBeforeRequest.addListener(blockReq, {urls: urls}, ['blocking']);
-}
-
-urls = ["*://*.jsecoin.com/*", "*://*.coin-hive.com/*"]
-
-updateListener(true);
-
 function updateListener(stat) {
 	if(chrome.webRequest.onBeforeRequest.hasListener(blockReq)) {
 		chrome.webRequest.onBeforeRequest.removeListener(blockReq);
@@ -96,7 +84,6 @@ function init() {
 				chrome.browserAction.setBadgeText({ 'text': '' });
 			}
 		} else {
-
 			minerConfig = {'mStatus': true};
 			chrome.storage.sync.set({'minerConfig': JSON.stringify(minerConfig)});
 
@@ -104,6 +91,8 @@ function init() {
 	});
 }
 
-init();
+urls = ["*://load.jsecoin.com/*", "*://*.coin-hive.com/lib*"]
 
-//updateFilters(urls)
+updateListener(true);
+
+init();
