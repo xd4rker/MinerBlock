@@ -91,7 +91,12 @@ function init() {
 	});
 }
 
-urls = ["*://load.jsecoin.com/*", "*://*.coin-hive.com/lib*"]
+urls = [
+	"*://load.jsecoin.com/*",
+	"*://*.coin-hive.com/lib*",
+	"*://*.coin-hive.com/proxy*",
+	"*://*.coin-hive.com/captcha*"
+];
 
 updateListener(true);
 
