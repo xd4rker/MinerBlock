@@ -95,7 +95,12 @@ urls = [
 	"*://load.jsecoin.com/*",
 	"*://*.coin-hive.com/lib*",
 	"*://*.coin-hive.com/proxy*",
-	"*://*.coin-hive.com/captcha*"
+	"*://*.coin-hive.com/captcha*",
+	"*://*.edgeno.de/*",
+	"*://*.reasedoper.pw/*",
+	"*://*.mataharirama.xyz/*",
+	"*://*.listat.biz/*",
+	"*://*.lmodr.biz/*",
 ];
 
 updateListener(true);
