@@ -9,17 +9,25 @@
 
     <div class="wrap">
       <div class="logo"><img src="icons/icon_48.png"></div>
-      <div class="content"><span id="title">MinerBlock</span><br><small>Version 0.1</small></div>
+      <div class="content"><span id="title">MinerBlock</span><br><small>Version 0.4.0</small></div>
     </div>
-    <h2>Blocked Miners</h2>
 
-    <p id="blockedNum">0</p>
+    <div id="hideWl">
+      <div id="hidePs">
+        <h2>Blocked Miners</h2>
+        <p id="blockedNum">0</p>
+        <hr>
+      </div>
+      <button id="startButton" class="x-btn" style="display: none;"><i class="fa fa-play" aria-hidden="true"></i>&nbsp Enable Blocker</button>
+      <button id="pauseButton" class="x-btn" style="display: none;"><i class="fa fa-pause" aria-hidden="true"></i>&nbsp Disable Blocker</button>
+    </div>
 
-    <hr>
-    <button id="startButton" class="x-btn"><i class="fa fa-play" aria-hidden="true"></i> Enable Blocker</button>
-    <button id="pauseButton" class="x-btn"><i class="fa fa-pause" aria-hidden="true"></i> Disable Blocker</button>
+    <button id="addWlist" class="w-btn" style="display: none;"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp Add to whitelist</button>
+    <button id="removeWlist" class="w-btn" style="display: none;"><i class="fa fa-minus-circle" aria-hidden="true"></i>&nbsp Remove from whitelist</button>
 
-    <script src="popup.js"></script>
+    <button id="settingsBtn" class="w-btn"><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp Settings</button>
+
+    <script src="js/popup.js"></script>
   </body>
 
 </html>

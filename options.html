@@ -1,0 +1,89 @@
+<html>
+<head>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link type="text/css" href="css/options.css" rel="stylesheet">
+	<title>MinerBlock - Settings</title>
+</head>
+
+<body id="body">
+
+	<div class="header">
+      <div class="logo"><img src="icons/icon_48.png"></div>
+      <div class="content"><span id="title">MinerBlock Options</div>
+	</div>
+
+	<div class="tabcontainer">
+
+		  <a class="tablinks setting-btn">Settings</a>
+		  <a class="tablinks filters-btn">My Filters</a>
+		  <a class="tablinks Whitelist-btn">Whitelist</a>
+		  <a class="tablinks about-btn">About</a>
+
+	</div>
+
+	<div class="optcontainer">
+
+		<div class="tab-cnt">
+			<input type="checkbox" id="mbShowCount" class="opt" value="1">
+			<label for="mbShowCount">Show count of blocked miners</label><br>
+
+			<!-- <input type="checkbox" id="mbShowAlert" class="opt" value="1">
+			<label for="mbShowAlert">Show alerts</label><br> -->
+		</div>
+
+		<div class="tab-cnt">
+			<input type="checkbox" id="mbFilters" class="opt" value="1">
+			<label for="mbFilters"><a href="assets/filters.txt" target="_blank">MinerBlock filters</a></label><br>
+
+			<p>One filter per line. Make sure it matches one of the following patterns : <pre>*://*.domain.com/*, *://*.domain.com/path*</pre></p>
+			<textarea rows="10" id="mbUserFilters" class="opt"></textarea>
+
+			<button class="btn" id="mbUserFiltersSave"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp Save</button>
+
+		</div>
+
+		<div class="tab-cnt">
+
+			MinerBlock is disabled for domains listed bellow.
+			<br>
+			<br>
+			<input type="text" id="mbWhiteListDomain" placeholder="e.g. www.domain.com, domain.com">
+			<button class="btn" id="mbWhiteListAdd"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp Add Domain</button>
+			
+			<br><br>
+
+			<div class="cnt">
+				<select size="15" id="mbWhiteList" class="opt">
+				</select>
+				<button class="btn" id="mbWhiteListRemove"><i class="fa fa-minus" aria-hidden="true"></i>&nbsp Remove Domain</button>
+			</div>
+
+		</div>
+
+		<div class="tab-cnt">
+
+			<p>
+				<h3>MinerBlock v0.4.0</h3>
+				Please email your feedback to cryptominedev@gmail.com.
+			</p>
+			<hr>
+			<h4>Credit</h4>
+			<ul>
+				<li><a href="http://fontawesome.io" target="_blank">Font Awesome</a> by <a href="https://github.com/davegandy" target="_blank">Dave Gandy</a></li>
+				<li><a href="https://www.shareicon.net/author/tools-and-utensils" target="_blank">Icon</a></li>
+			</ul>
+			<hr>
+			<h4>Donations</h4>
+			<p>If you liked MinerBlock, please feel free to donate :</p>
+			<ul>
+				<li><b>BTC:</b> 1PYj4Bd6YwGzqjb46Ww6buGpTUEt3EZLx4</li>
+				<li><b>ETH:</b> 0x3057b2648d905912ef511674aa3ffe9fcf5140db</li>
+				<li><b>Paypal:</b> <a href="https://www.paypal.me/xd4rker/10" target="_blank">paypal.me/xd4rker</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/options.js"></script>
+
+</body>
+</html>
