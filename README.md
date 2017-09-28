@@ -5,4 +5,4 @@ Available on [Chrome Store](https://chrome.google.com/webstore/detail/minerblock
 
 Firefox version should be available soon!
 
-![Alt text](https://i.imgur.com/L7AMgn8.png)
+![Alt text](https://i.imgur.com/XFJ6Ps8.png)
