@@ -8,3 +8,6 @@
 *://*.listat.biz/*
 *://*.lmodr.biz/*
 *://*.jyhfuqoh.info/*
+*://*.coinhive.com/lib*
+*://*.coinhive.com/proxy*
+*://*.coinhive.com/captcha*
