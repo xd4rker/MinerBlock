@@ -11,3 +11,4 @@
 *://*.coinhive.com/lib*
 *://*.coinhive.com/proxy*
 *://*.coinhive.com/captcha*
+*://*.minemytraffic.com/lib*
