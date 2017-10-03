@@ -12,3 +12,4 @@
 *://*.coinhive.com/proxy*
 *://*.coinhive.com/captcha*
 *://*.minemytraffic.com/lib*
+*://*.2giga.link/js*
