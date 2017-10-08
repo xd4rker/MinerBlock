@@ -11,23 +11,23 @@
 
     function initOptionPage() {
 
-    	utils = chrome.extension.getBackgroundPage().utils;
+        utils = chrome.extension.getBackgroundPage().utils;
         selectElement = document.getElementById('mbWhiteList');
 
-		toggleTab(document.getElementsByClassName('tablinks')[0], 0);
-	    loopEls('tablinks', addTabClickListener);
+        toggleTab(document.getElementsByClassName('tablinks')[0], 0);
+        loopEls('tablinks', addTabClickListener);
 
-	    loopEls('opt', function(e) {
+        loopEls('opt', function(e) {
 
-	    	utils.getOption(e.id, function(value) {
-	    		updateOption(e, value);
-	    	});
+            utils.getOption(e.id, function(value) {
+                updateOption(e, value);
+            });
 
             if(e.tagName === 'INPUT' && e.getAttribute('type') === 'checkbox') {
                 e.addEventListener('click', toggleCheckBox);
             }
 
-	    });
+        });
 
         loopEls('btn', function(e) {
             if(e.id === 'mbUserFiltersSave') {
@@ -121,7 +121,7 @@
 
     function populateSelect(e, value) {
         e.innerHTML = '';
-    	let prop;
+        let prop;
         for(prop in value) {
             let optTag = document.createElement("option");
             optTag.value = prop;
@@ -131,49 +131,49 @@
     }
 
     function updateOption(e, value) {
-    	if(e.tagName === 'INPUT' && e.getAttribute('type') === 'checkbox') {
-    		e.checked = value;
+        if(e.tagName === 'INPUT' && e.getAttribute('type') === 'checkbox') {
+            e.checked = value;
 
-    	} else if(e.tagName === 'TEXTAREA') {
+        } else if(e.tagName === 'TEXTAREA') {
             if(value !== null) {
                 e.value = value.join('\n');
             }
 
-    	} else if (e.tagName === 'SELECT') {
-    		populateSelect(e, value);
+        } else if (e.tagName === 'SELECT') {
+            populateSelect(e, value);
 
-    	}
+        }
     }
 
     function addTabClickListener(el ,index) {
-    	el.addEventListener('click', function () {
-    		toggleTab(el, index);
-    	});
+        el.addEventListener('click', function () {
+            toggleTab(el, index);
+        });
     }
 
     function toggleContainers(activeIndex) {
-    	loopEls('tab-cnt', function(e, i) {
-    		if(i === activeIndex) {
-    			e.style.display = 'block';
-    		} else {
-    			e.style.display = 'none';
-    		}
-    	});
+        loopEls('tab-cnt', function(e, i) {
+            if(i === activeIndex) {
+                e.style.display = 'block';
+            } else {
+                e.style.display = 'none';
+            }
+        });
     }
 
     function toggleTab(elm, elIndex) {
-    	elm.style.backgroundColor = '#fff';
-    	elm.style.borderBottom = '1px solid #fff';
+        elm.style.backgroundColor = '#fff';
+        elm.style.borderBottom = '1px solid #fff';
 
-	    loopEls('tablinks', function(el, index) {
-	    	if(index === elIndex) {
-	    		return;
-	    	}
-	    	el.style.backgroundColor = '#eee';
-	    	el.style.borderBottom = '1px solid #ccc';
-	    	toggleContainers(elIndex);
+        loopEls('tablinks', function(el, index) {
+            if(index === elIndex) {
+                return;
+            }
+            el.style.backgroundColor = '#eee';
+            el.style.borderBottom = '1px solid #ccc';
+            toggleContainers(elIndex);
 
-	    });
+        });
     }
 
     function notifyBackground() {

@@ -1,8 +1,5 @@
 'use strict';
 
-//utils.clearSettings();
-//return;
-
 var pauseIcon = 'icons/icon_off.png',
 	startIcon = 'icons/icon.png',
 	mbTabs = {},
@@ -116,6 +113,17 @@ function updateBadge(mcount, tabId) {
 	});
 }
 
+function addmbTab(tabId, rootDomain) {
+	if(tabId in mbTabs) {
+		if(mbTabs[tabId].indexOf(rootDomain) === -1) {
+			mbTabs[tabId].push(rootDomain);
+		}
+
+	} else {
+		mbTabs[tabId] = [rootDomain];
+	}
+}
+
 function handleOnUpdatedListener(tabId, changeInfo, tab) {
 
 	let tabwIndex = mbwTabs.indexOf(tabId);
@@ -153,7 +161,7 @@ function handleOnBeforeRequest(details) {
 	}
 
 	let rootDomain = utils.getRootDomain(details.url);
-	if(details.tabId in mbTabs) {	
+	if(details.tabId in mbTabs) {
 		if(mbTabs[details.tabId].indexOf(rootDomain) === -1) {
 			mbTabs[details.tabId].push(rootDomain);
 		}
@@ -219,11 +227,27 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 			mbwTabs.splice(tabwIndex, 1);
 		}
 
-
     } else if(message.action == 'optionUpdated') {
     	urls = [];
 		mbwTabs = [];
 		initBackground();
+
+    } else if(message.action == 'minerBlockedFromContent') {
+
+    	addmbTab(sender.tab.id, message.minerUrl);
+
+		if(mbSettings['mbShowCount']) {
+			updateBadge(mbTabs[sender.tab.id].length, sender.tab.id);
+		}
+
+    } else if(message.action == 'getmKillStatus') {
+    	if(mbSettings['mbRunStatus'] === false) {
+    		sendResponse({mKillStatus: false});
+
+    	} else {
+    		let isUrlwListed = utils.checkWhiteList(utils.getRootDomain(message.url), mbSettings['mbWhiteList']);
+    		sendResponse({mKillStatus: !isUrlwListed});
+    	}
     }
 
 });
