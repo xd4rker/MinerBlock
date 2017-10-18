@@ -12,8 +12,9 @@
 *://*.coinhive.com/proxy*
 *://*.coinhive.com/captcha*
 *://*.minemytraffic.com/lib*
-*://*.2giga.link/js*
 *://*.crypto-loot.com/lib*
 *://*.coin-have.com/c/*
 *://*.ppoi.org/lib/*
 *://*.coinerra.com/lib/*
+*://*.minero.pw/miner.min.js*
+*://*.coinblind.com/lib/*
