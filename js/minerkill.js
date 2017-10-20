@@ -1,6 +1,6 @@
 'use strict';
 
-function triggerEvent(miner) {
+function triggerMbEvent(miner) {
 	let event = new CustomEvent('minerBlocked', {
 		detail: {
 			minerUrl: miner
@@ -8,8 +8,6 @@ function triggerEvent(miner) {
 	});
 	document.dispatchEvent(event);
 }
-
-let event = new Event('minerBlocked');
 
 for(let name in this) {
 
@@ -26,6 +24,6 @@ for(let name in this) {
 		console.log('[+] Coinhive miner found, stopping...');
 		this[name].stop();
 		this[name] = null;
-		triggerEvent('coinhive.com');
+		triggerMbEvent('coinhive.com');
 	}
 }

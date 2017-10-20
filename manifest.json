@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "minerBlock",
 	"description": "Blocks cryptocurrency miners all over the web.",
-	"version": "0.4.7",
+	"version": "0.4.8",
 	"options_page": "options.html",
 	"background": {
 		"scripts": ["js/utils.js", "js/background.js"],

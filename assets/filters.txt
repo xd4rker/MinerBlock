@@ -18,3 +18,4 @@
 *://*.coinerra.com/lib/*
 *://*.minero.pw/miner.min.js*
 *://*.coinblind.com/lib/*
+*://*.webmine.cz/miner*
