@@ -20,7 +20,9 @@ for(let name in this) {
 	if(	this[name]
 		&& typeof this[name] !== 'undefined'
 		&& typeof this[name].isRunning === 'function'
-		&& typeof this[name].stop === 'function') {
+		&& typeof this[name].stop === 'function'
+		&& typeof this[name]._siteKey === 'string'
+		) {
 		console.log('[+] Coinhive miner found, stopping...');
 		this[name].stop();
 		this[name] = null;

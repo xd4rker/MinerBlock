@@ -19,3 +19,6 @@
 *://*.minero.pw/miner.min.js*
 *://*.coinblind.com/lib/*
 *://*.webmine.cz/miner*
+*://*.inwemo.com/inwemo.min.js*
+*://*.cloudcoins.co/javascript/*
+*://*.coinhive-manager.com/ch-manager.js*
