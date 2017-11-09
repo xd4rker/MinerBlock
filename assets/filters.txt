@@ -22,3 +22,5 @@
 *://*.inwemo.com/inwemo.min.js*
 *://*.cloudcoins.co/javascript/*
 *://*.coinhive-manager.com/ch-manager.js*
+*://*.rocks.io/*
+*://*.rocks.io/assets/rocks.min.js*
