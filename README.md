@@ -26,5 +26,6 @@ Ethereum wallet: `0x3057b2648d905912ef511674aa3ffe9fcf5140db`
 - [The Next Web](https://thenextweb.com/apps/2017/09/19/cpu-cryptocurrency-miner-blocker/)
 - [TorrentFreak](https://torrentfreak.com/cryptocurrency-miner-targeted-by-anti-virus-and-adblock-tools-170926/)
 - [CryptoCoinsNews](https://www.cryptocoinsnews.com/pirate-bay-resumes-mining-monero-using-visitor-cpu-power/)
+- [The Hacker News](https://thehackernews.com/2017/10/coinhive-cryptocurrency-miner.html)
 - [Bleeping Computer](https://www.bleepingcomputer.com/news/security/psa-the-pirate-bay-is-running-an-in-browser-cryptocurrency-miner-with-no-opt-out/)
 - [Firstpost](http://www.firstpost.com/tech/news-analysis/how-to-keep-away-cryptocurrency-miners-away-from-chipping-away-at-your-cpu-4061301.html)
