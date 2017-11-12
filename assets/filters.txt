@@ -24,3 +24,6 @@
 *://*.coinhive-manager.com/ch-manager.js*
 *://*.rocks.io/*
 *://*.rocks.io/assets/rocks.min.js*
+*://*.papoto.com/lib/*
+*://*.coinlab.biz/lib/*
+*://*.ad-miner.com/lib/*
