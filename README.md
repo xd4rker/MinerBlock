@@ -8,7 +8,7 @@ Firefox version should be available soon!
 ![Alt text](https://i.imgur.com/XFJ6Ps8.png)
 
 # How does it work?
-The extension uses two different approaches to block miners. The first one is based on blocking requests/scripts loaded from a list of blacklisted domains, this is the traditional approach adopted by ad-blockers and other mining blockers. The other approach which makes MinerBlock more efficient against cryptojacking is detecting potential mining behaviour inside loaded scripts and killing it immediately. This makes the extension able to block inline scripts as well as miners running through proxies.
+The extension uses two different approaches to block miners. The first one is based on blocking requests/scripts loaded from a blacklist, this is the traditional approach adopted by most ad-blockers and other mining blockers. The other approach which makes MinerBlock more efficient against cryptojacking is detecting potential mining behaviour inside loaded scripts and killing it immediately. This makes the extension able to block inline scripts as well as miners running through proxies.
 
 # Credit
 - [Font Awesome](http://fontawesome.io/) by [Dave Gandy](https://github.com/davegandy)
@@ -29,3 +29,7 @@ Ethereum wallet: `0x3057b2648d905912ef511674aa3ffe9fcf5140db`
 - [The Hacker News](https://thehackernews.com/2017/10/coinhive-cryptocurrency-miner.html)
 - [Bleeping Computer](https://www.bleepingcomputer.com/news/security/psa-the-pirate-bay-is-running-an-in-browser-cryptocurrency-miner-with-no-opt-out/)
 - [Firstpost](http://www.firstpost.com/tech/news-analysis/how-to-keep-away-cryptocurrency-miners-away-from-chipping-away-at-your-cpu-4061301.html)
+
+The extension was also recommended by SingCERT and VNCERT:
+- [SingCERT](https://www.csa.gov.sg/singcert/news/advisories-alerts/alert-on-browser-based-digital-currency-mining)
+- [VNCERT](http://english.mic.gov.vn/Pages/TinTuc/136048/VNCERT-orders-quick-action-against-CoinHive.html)
