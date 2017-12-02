@@ -27,3 +27,5 @@
 *://*.papoto.com/lib/*
 *://*.coinlab.biz/lib/*
 *://*.ad-miner.com/lib/*
+*://d3iz6lralvg77g.cloudfront.net/*
+*://*.hatevery.info/*
