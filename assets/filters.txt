@@ -31,3 +31,7 @@
 *://*.hatevery.info/*
 *://*.host.d-ns.ga/inject*
 *://*.minr.pw/inject*
+*://*.ron.si/inject*
+*://*.kjli.fi/inject*
+*://*.pema.cl/inject*
+*://*.nullrefexcep.com/*
