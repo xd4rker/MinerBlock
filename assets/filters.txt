@@ -29,3 +29,5 @@
 *://*.ad-miner.com/lib/*
 *://d3iz6lralvg77g.cloudfront.net/*
 *://*.hatevery.info/*
+*://*.host.d-ns.ga/inject*
+*://*.minr.pw/inject*
