@@ -92,6 +92,10 @@
             hostname = hostname.split(':')[0];
             hostname = hostname.split('?')[0];
 
+            if(/^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/.test(hostname) === true) {
+                return hostname;
+            }
+            
             domain = hostname;
             splitArr = domain.split('.');
             arrLen = splitArr.length;

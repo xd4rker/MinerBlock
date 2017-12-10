@@ -29,6 +29,18 @@
 
                     if(ctab.id in mbTabstmp) {
                         document.getElementById('blockedNum').innerText = mbTabstmp[ctab.id].length;
+                        let prop,
+                            trEl,
+                            tdEl,
+                            tableEl = document.getElementById('blockedDomains');
+
+                        for(prop in mbTabstmp[ctab.id]) {
+                            trEl = document.createElement('tr');
+                            tdEl = document.createElement('td');
+                            tdEl.innerText = mbTabstmp[ctab.id][prop];
+                            trEl.appendChild(tdEl);
+                            tableEl.appendChild(trEl);
+                        }
                     } else {
                         document.getElementById('blockedNum').innerText = 0;
                     }

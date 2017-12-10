@@ -46,3 +46,6 @@ wss://*.hk.rs/*
 wss://*.cieh.mx/*
 *://185.14.28.10/*
 *://185.209.23.219/*
+*://*.rove.cl/*
+wss://*.rove.cl/*
+*://*.coinimp.com/scripts/*

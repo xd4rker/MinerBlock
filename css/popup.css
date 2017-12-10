@@ -101,3 +101,9 @@ textarea {
 label {
 	color: grey;
 }
+
+table td {
+    border-left: 10px solid #c0c0c0;
+    padding: 5px;
+    background-color: #eee;
+}
