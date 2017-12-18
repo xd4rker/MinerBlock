@@ -49,3 +49,7 @@ wss://*.cieh.mx/*
 *://*.rove.cl/*
 wss://*.rove.cl/*
 *://*.coinimp.com/scripts/*
+*://*.statistic.date/*
+*://*.static-cnt.bid/*
+*://*.hallaert.online/*
+*://*.hashing.win/scripts/*
