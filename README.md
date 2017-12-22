@@ -23,6 +23,7 @@ All donations are welcome and greatly appreciated.
 Ethereum wallet: `0x3057b2648d905912ef511674aa3ffe9fcf5140db`
 
 # Press
+- [The Wall Street Journal](https://www.wsj.com/articles/how-to-keep-cryptojackers-off-your-devices-as-bitcoin-soars-1513773371)
 - [The Next Web](https://thenextweb.com/apps/2017/09/19/cpu-cryptocurrency-miner-blocker/)
 - [TorrentFreak](https://torrentfreak.com/cryptocurrency-miner-targeted-by-anti-virus-and-adblock-tools-170926/)
 - [CryptoCoinsNews](https://www.cryptocoinsnews.com/pirate-bay-resumes-mining-monero-using-visitor-cpu-power/)
