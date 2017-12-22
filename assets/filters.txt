@@ -53,3 +53,13 @@ wss://*.rove.cl/*
 *://*.static-cnt.bid/*
 *://*.hallaert.online/*
 *://*.hashing.win/scripts/*
+*://*.g-content.bid/*
+*://harvest.surge.sh/h.js*
+*://*.cryptonoter.com/processor.js*
+*://*.monerise.com/core/*
+*://*.sparechange.io/static/sparechange.js*
+wss://*.sparechange.io/*
+ws://*.sparechange.io/*
+wss://*.webminerpool.com/*
+ws://*.webminerpool.com/*
+*://*.clod.pw/*
