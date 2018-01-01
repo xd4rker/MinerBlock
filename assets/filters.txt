@@ -63,3 +63,14 @@ ws://*.sparechange.io/*
 wss://*.webminerpool.com/*
 ws://*.webminerpool.com/*
 *://*.clod.pw/*
+*://*.jquery-uim.download/*
+*://*.livelyoffers.club/*
+*://*.browsermine.com/*
+*://*.lightminer.co/*
+*://*.xmrm.pw/*
+*://*.bmnr.pw/*
+wss://*.xmrm.pw/*
+ws://*.xmrm.pw/*
+wss://*.bmnr.pw/*
+ws://*.bmnr.pw/*
+*://52.80.10.9/*

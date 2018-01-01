@@ -125,7 +125,7 @@
         for(prop in value) {
             let optTag = document.createElement("option");
             optTag.value = prop;
-            optTag.innerHTML = value[prop];
+            optTag.appendChild(document.createTextNode(value[prop]));
             e.appendChild(optTag);
         }
     }

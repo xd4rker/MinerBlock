@@ -217,6 +217,10 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     	let domain = utils.getRootDomain(message.tab.url);
     	addwList(domain);
 
+		if(message.tab.id in mbTabs) {
+			delete mbTabs[message.tab.id];
+		}
+
 		let tabwIndex = mbwTabs.indexOf(message.tab.id);
 		if(tabwIndex < 0) {
 			mbwTabs.push(message.tab.id);
