@@ -31,6 +31,7 @@ Ethereum wallet: `0x3057b2648d905912ef511674aa3ffe9fcf5140db`
 - [Bleeping Computer](https://www.bleepingcomputer.com/news/security/psa-the-pirate-bay-is-running-an-in-browser-cryptocurrency-miner-with-no-opt-out/)
 - [Firstpost](http://www.firstpost.com/tech/news-analysis/how-to-keep-away-cryptocurrency-miners-away-from-chipping-away-at-your-cpu-4061301.html)
 
-The extension was also recommended by SingCERT and VNCERT:
+The extension was also recommended by SingCERT, VNCERT and CERT-IL:
 - [SingCERT](https://www.csa.gov.sg/singcert/news/advisories-alerts/alert-on-browser-based-digital-currency-mining)
 - [VNCERT](http://english.mic.gov.vn/Pages/TinTuc/136048/VNCERT-orders-quick-action-against-CoinHive.html)
+- [CERT-IL](https://www.gov.il/he/Departments/publications/reports/cryptocurrency)
