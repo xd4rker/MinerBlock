@@ -26,6 +26,6 @@ for(let name in this) {
 		console.log('[+] Coinhive miner found, stopping...');
 		this[name].stop();
 		this[name] = null;
-		triggerMbEvent('coinhive.com');
+		triggerMbEvent('coinhive.com (inline)');
 	}
 }

@@ -75,7 +75,7 @@
         },
 
         isValidFilter: function(filter) {
-            return /^\*:\/\/\*\..*\/.*?\*$/.test(filter);
+            return /^.*:\/\/.*\/.*?\*$/.test(filter);
         },
 
         getRootDomain: function(url) {

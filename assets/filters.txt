@@ -74,3 +74,10 @@ ws://*.xmrm.pw/*
 wss://*.bmnr.pw/*
 ws://*.bmnr.pw/*
 *://52.80.10.9/*
+*://*.webassembly.stream/*
+wss://chainblock.science/*
+wss://hodling.faith/*
+*://*.cryptoloot.pro/lib*
+wss://*.cryptoloot.pro/*
+wss://*.torrent.pw/*
+*://*.kickass.cd/power2/*

@@ -12,30 +12,30 @@
 }
 
 .logo {
-	float: left;
-	vertical-align: top;
-	padding-right: 10px;
+    float: left;
+    vertical-align: top;
+    padding-right: 10px;
 }
 
 .content {
-	color: #505050;
-	vertical-align: top;
-	padding: 5px;
+    color: #505050;
+    vertical-align: top;
+    padding: 5px;
 }
 
 .optcontainer {
-	padding: 20px;
-	border: 1px solid #ccc;
-	font-size: 1.2em;
-	color: #2b2b2b;
+    padding: 20px;
+    border: 1px solid #ccc;
+    font-size: 1.2em;
+    color: #2b2b2b;
 }
 
 label {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 textarea {
-	width: 100%;
+    width: 100%;
     padding: 12px 12px;
     margin: 8px 0;
     display: inline-block;
@@ -45,7 +45,7 @@ textarea {
 }
 
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 .btn {
@@ -59,7 +59,7 @@ a {
 }
 
 input[type=text] {
-	width: 50%;
+    width: 50%;
     padding: 12px 12px;
     margin: 8px 0;
     display: inline-block;
@@ -69,11 +69,11 @@ input[type=text] {
 }
 
 .cnt .btn {
-	vertical-align: top;
+    vertical-align: top;
 }
 
 select {
-	width: 50%;
+    width: 50%;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -85,4 +85,15 @@ hr {
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 3px;
+}
+
+li {
+    margin-top: 5px;
 }
