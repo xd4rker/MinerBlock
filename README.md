@@ -1,7 +1,7 @@
 # MinerBlock
 MinerBlock is an efficient browser extension that focuses on blocking web-based cryptocurrency miners all over the web.
 
-[<img src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png">](https://chrome.google.com/webstore/detail/minerblock/emikbbbebcdfohonlaifafnoanocnebl) [<img src="https://dev.opera.com/extensions/branding-guidelines/addons_206x58_en@2x.png" width="206">](https://addons.opera.com/en/extensions/details/minerblock/)
+[<img src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png">](https://chrome.google.com/webstore/detail/minerblock/emikbbbebcdfohonlaifafnoanocnebl) [<img src="https://dev.opera.com/extensions/branding-guidelines/addons_206x58_en@2x.png" width="206">](https://addons.opera.com/en/extensions/details/minerblock/) [<img src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png">](https://addons.mozilla.org/en-US/firefox/addon/minerblock-origin/)
 
 Firefox version should be available soon!
 
