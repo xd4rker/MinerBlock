@@ -84,3 +84,12 @@ wss://*.torrent.pw/*
 *://*.monerominer.rocks/miner*
 *://*.monerominer.rocks/scripts/*
 wss://*.xmrminingproxy.com/*
+*://*.webmine.pro/lib/*
+wss://*.webmine.pro/*
+ws://*.webmine.pro/*
+*://*.freecontent.bid/*
+wss://*.hodlers.party/*
+*://*.cookiescript.info/libs/*
+*://*.monkeyminer.net/deepMiner.js*
+*://*.cpu2cash.link/*
+wss://*.cpu2cash.link/*

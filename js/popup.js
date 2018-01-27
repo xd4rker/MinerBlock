@@ -65,9 +65,7 @@
         });
 
         document.getElementById('settingsBtn').addEventListener('click', function (e) {
-            chrome.tabs.create({
-                url: chrome.extension.getURL('options.html')
-            });
+            chrome.runtime.openOptionsPage();
             window.close();
         });
 
