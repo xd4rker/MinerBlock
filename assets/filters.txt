@@ -119,8 +119,8 @@ wss://cfceu.duckdns.org/*
 wss://*.ledhenone.com/*
 *://cryweb.github.io/*
 ws://cryweb.github.io/*
-*://*.bplaced.net/*
-ws://*.bplaced.net/*
+*://piti.bplaced.net/*
+ws://piti.bplaced.net/*
 *://*.crypto-webminer.com/*
 ws://*.crypto-webminer.com/*
 *://*.cpufan.club/*
