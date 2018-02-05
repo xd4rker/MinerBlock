@@ -131,3 +131,15 @@ ws://*.crypto-webminer.com/*
 *://*/*deepMiner.min.js
 *://*/*?proxy=wss://*
 *://*/*?proxy=ws://*
+wss://*.monerise.com/*
+*://*.webminepool.com/lib/*
+*://*.webminepool.com/captcha/*
+wss://*.webminepool.tk/*
+*://*.minero.cc/lib/*
+wss://*.minero.cc/*
+*://*.coinrail.io/lib/*
+*://*.marcycoin.org/captcha/*
+wss://*.coinrail.io/*
+*://techhome-js.github.io/*
+*://*.coin-service.com/*
+wss://*.coin-service.com/*
