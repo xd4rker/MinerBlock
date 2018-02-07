@@ -72,6 +72,10 @@ input[type=text] {
     vertical-align: top;
 }
 
+.btn:hover {
+    background-color: #efefef;
+}
+
 select {
     width: 50%;
     display: inline-block;
@@ -96,4 +100,8 @@ code {
 
 li {
     margin-top: 5px;
+}
+
+*:focus {
+    outline: none;
 }

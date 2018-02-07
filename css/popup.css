@@ -39,7 +39,6 @@ h2 {
 .w-btn {
     display: block;
     width: 100%;
-    /*border: 1px solid #c3c3c3; */
     margin: 8px 0;
     font-size: 13px;
     font-weight: normal;
@@ -51,6 +50,10 @@ h2 {
     cursor: pointer;
     border: 0;
     border: 1px solid #dedede;
+}
+
+.w-btn:hover {
+    background-color: #fcfcfc;
 }
 
 #blockedNum {
@@ -89,13 +92,20 @@ textarea {
 
 }
 
-
 #startButton {
 	background-color: #4CAF50;
 }
 
+#startButton:hover {
+    background-color: #55c25a;
+}
+
 #pauseButton {
 	background-color: #e23838;
+}
+
+#pauseButton:hover {
+    background-color: #e93939;
 }
 
 label {
@@ -106,4 +116,8 @@ table td {
     border-left: 10px solid #c0c0c0;
     padding: 5px;
     background-color: #eee;
+}
+
+*:focus {
+    outline: none;
 }
