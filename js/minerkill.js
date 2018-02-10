@@ -16,18 +16,19 @@ setTimeout(function() {
 			continue;
 		}
 
-		// Check Coinhive like miners
-
-		if(	this[name]
-			&& typeof this[name] !== 'undefined'
-			&& typeof this[name].isRunning === 'function'
-			&& typeof this[name].stop === 'function'
-			&& typeof this[name]._siteKey === 'string'
-			) {
-			console.log('[+] Coinhive miner found, stopping...');
-			this[name].stop();
-			this[name] = null;
-			triggerMblockEvent('coinhive.com (inline)');
-		}
+		// Check CoinHive like miners
+		try {
+			if(	this[name]
+				&& typeof this[name] !== 'undefined'
+				&& typeof this[name].isRunning === 'function'
+				&& typeof this[name].stop === 'function'
+				&& typeof this[name]._siteKey === 'string'
+				) {
+				console.log('[+] Coinhive miner found, stopping...');
+				this[name].stop();
+				this[name] = null;
+				triggerMblockEvent('CoinHive (inline)');
+			}
+		} catch(mberr) {}
 	}
 }, 2000);

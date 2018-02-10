@@ -140,6 +140,17 @@ wss://*.coin-service.com/*
 *://*.mutuza.win/*
 *://*.vzhjnorkudcxbiy.com/*
 *://*.hashing.win/*
+*://*.cfcnet.gdn/*
+ws://*.cfcnet.gdn/*
+wss://*.cfcnet.gdn/*
+*://cfcs1.duckdns.org/*
+ws://cfcs1.duckdns.org/*
+wss://cfcs1.duckdns.org/*
+*://greenindex.dynamic-dns.net/*
+wss://greenindex.dynamic-dns.net/*
+wss://*.sighash.info/*
+wss://*.coiner.site/*
+*://*.freecontent.stream/*
 *://*/*cryptonight.wasm
 *://*/*deepMiner.js
 *://*/*deepMiner.min.js
@@ -147,3 +158,5 @@ wss://*.coin-service.com/*
 *://*/*?proxy=ws://*
 *://*/*coinhive.min.js
 *://*/*monero-miner.js*
+*://*/*wasmminer.wasm*
+*://*/*wasmminer.js*
