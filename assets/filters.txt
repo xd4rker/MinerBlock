@@ -160,3 +160,4 @@ wss://*.coiner.site/*
 *://*/*monero-miner.js*
 *://*/*wasmminer.wasm*
 *://*/*wasmminer.js*
+*://worker.salon.com/jobs.js*
