@@ -3,7 +3,7 @@ MinerBlock is an efficient browser extension that focuses on blocking browser-ba
 
 [<img src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png">](https://chrome.google.com/webstore/detail/minerblock/emikbbbebcdfohonlaifafnoanocnebl) [<img src="https://dev.opera.com/extensions/branding-guidelines/addons_206x58_en@2x.png" width="206">](https://addons.opera.com/en/extensions/details/minerblock/) [<img src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png">](https://addons.mozilla.org/en-US/firefox/addon/minerblock-origin/)
 
-![Alt text](https://i.imgur.com/XFJ6Ps8.png)
+![Alt text](https://i.imgur.com/L7cpHjE.png)
 
 # How does it work?
 The extension uses two different approaches to block miners. The first one is based on blocking requests/scripts loaded from a blacklist, this is the traditional approach adopted by most ad-blockers and other mining blockers. The other approach which makes MinerBlock more efficient against cryptojacking is detecting potential mining behaviour inside loaded scripts and kills them immediately. This makes the extension able to block inline scripts as well as miners running through proxies.
