@@ -156,11 +156,7 @@ function handleOnRemovedListener(tabId) {
 
 function handleOnBeforeRequest(details) {
 
-	if(details.tabId === -1) {
-		return {cancel: false};
-	}
-
-	if(mbwTabs.indexOf(details.tabId) > -1) {
+	if(details.tabId === -1 || mbwTabs.indexOf(details.tabId) > -1) {
 		return {cancel: false};
 	}
 

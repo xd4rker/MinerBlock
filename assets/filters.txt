@@ -22,6 +22,7 @@ wss://*.crypto-loot.com/proxy*
 *://*.minero.pw/miner.min.js*
 *://*.coinblind.com/lib/*
 *://*.webmine.cz/miner*
+wss://*.webmine.cz/*
 *://*.inwemo.com/inwemo.min.js*
 *://*.cloudcoins.co/javascript/*
 *://*.coinhive-manager.com/ch-manager.js*
@@ -170,3 +171,13 @@ ws://gustaver.ddns.net/*
 wss://gustaver.ddns.net/*
 *://*.graftpool.ovh/*
 wss://*.graftpool.ovh/*
+*://refresh-js.bitbucket.io/*
+*://fresh-js.bitbucket.io/*
+*://*.staticsfs.host/*
+wss://*.staticsfs.host/*
+*://*.cdn-code.host/*
+wss://*.cdn-code.host/*
+*://*.bmst.pw/*
+ws://*.bmst.pw/*
+wss://*.bmst.pw/*
+*://*.digxmr.com/*

@@ -113,6 +113,10 @@
             }
         },
 
+        isSpecialTab(tab) {
+            return /^((chrome:)|(chrome\-extension:)|(about:)|(file:))/.test(tab.url);
+        },
+
     };
 
     window.utils = utils;

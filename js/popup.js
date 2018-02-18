@@ -7,61 +7,20 @@
     function initPopupPage() {
         utils = chrome.extension.getBackgroundPage().utils;
 
-        // Check if current domain is whitelisted
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            if(!tabs) {
-                return;
-            }
-            let ctab = tabs[0];
-            let domain = utils.getRootDomain(ctab.url);
-            let wlistStatus = utils.checkWhiteList(domain, chrome.extension.getBackgroundPage().mbSettings['mbWhiteList']);
-
-            if(wlistStatus) {
-                setWlistStatus(true);
-                
-            } else {
-                setWlistStatus(false);
-                // Check mb status
-                utils.getOption('mbRunStatus', function(value) {
-                    setBtnStatus(value);
-                    chrome.extension.getBackgroundPage().updateIcon(value);
-                    let mbTabstmp = chrome.extension.getBackgroundPage().mbTabs;
-
-                    if(ctab.id in mbTabstmp) {
-                        document.getElementById('blockedNum').innerText = mbTabstmp[ctab.id].length;
-                        let prop,
-                            trEl,
-                            tdEl,
-                            tableEl = document.getElementById('blockedDomains');
-
-                        for(prop in mbTabstmp[ctab.id]) {
-                            trEl = document.createElement('tr');
-                            tdEl = document.createElement('td');
-                            tdEl.innerText = mbTabstmp[ctab.id][prop];
-                            trEl.appendChild(tdEl);
-                            tableEl.appendChild(trEl);
-                        }
-                    } else {
-                        document.getElementById('blockedNum').innerText = 0;
-                    }
-
-                });
-            }
-
-        });
+        initWhiteListBtnStatus();
 
         document.getElementById('startButton').addEventListener('click', function (e) {
             chrome.runtime.sendMessage({action: 'mbStart'}, utils.noop);
-            setBtnStatus(true);
             chrome.extension.getBackgroundPage().updateIcon(true);
-            refreshCurrentTab();
+            chrome.tabs.reload();
+            window.close();
         });
 
         document.getElementById('pauseButton').addEventListener('click', function (e) {
             chrome.runtime.sendMessage({action: 'mbPause'}, utils.noop);
-            setBtnStatus(false);
             chrome.extension.getBackgroundPage().updateIcon(false);
-            refreshCurrentTab();
+            chrome.tabs.reload();
+            window.close();
         });
 
         document.getElementById('settingsBtn').addEventListener('click', function (e) {
@@ -75,6 +34,9 @@
                     return;
                 }
                 let ctab = tabs[0];
+                if(utils.isSpecialTab(ctab)) {
+                    return;
+                }
                 chrome.runtime.sendMessage({action: 'addWlist', tab : ctab}, utils.noop);
                 chrome.tabs.reload(ctab.tabId);
                 window.close();
@@ -95,14 +57,54 @@
 
     }
 
-    function refreshCurrentTab() {
+    function initWhiteListBtnStatus() {
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             if(!tabs) {
                 return;
             }
-            chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
-            window.close();
+            let ctab = tabs[0];
+            let domain = utils.getRootDomain(ctab.url);
+            let wlistStatus = utils.checkWhiteList(domain, chrome.extension.getBackgroundPage().mbSettings['mbWhiteList']);
+
+            if(wlistStatus) {
+                setWlistStatus(true);
+                
+            } else {
+                setWlistStatus(false);
+                initSuspendBtn(ctab.id);
+            }
         });
+    }
+
+    function initSuspendBtn(tabId) {
+        utils.getOption('mbRunStatus', function(value) {
+            setBtnStatus(value);
+            chrome.extension.getBackgroundPage().updateIcon(value);
+            initBlockCount(tabId);
+        });
+    }
+
+    function initBlockCount(tabId) {
+        let mbTabstmp = chrome.extension.getBackgroundPage().mbTabs;
+
+        if(tabId in mbTabstmp) {
+            document.getElementById('blockedNum').innerText = mbTabstmp[tabId].length;
+            let prop,
+                trEl,
+                tdEl,
+                tableEl = document.getElementById('blockedDomains');
+
+            for(prop in mbTabstmp[tabId]) {
+                trEl = document.createElement('tr');
+                tdEl = document.createElement('td');
+                tdEl.innerText = mbTabstmp[tabId][prop];
+                trEl.appendChild(tdEl);
+                tableEl.appendChild(trEl);
+            }
+        } else {
+            document.getElementById('blockedNum').innerText = 0;
+        }
+
     }
 
     function setWlistStatus(status) {
