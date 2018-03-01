@@ -231,3 +231,11 @@ wss://*.bmst.pw/*
 *://webwidgetz.duckdns.org/*
 wss://webwidgetz.duckdns.org/*
 *://cfcd.duckdns.org/*
+*://mjija.github.io/*
+wss://nunu-001.now.sh/*
+*://*.tulip18.com/*
+*://*.cfcdist.loan/*
+*://*.traffic-optical-service.info/*
+*://marta-js.github.io/*
+*://*.silimbompom.com/*
+*://*.bablace.com/*
