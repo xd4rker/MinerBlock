@@ -134,8 +134,7 @@ function handleOnUpdatedListener(tabId, changeInfo, tab) {
 			delete mbTabs[tabId];
 		}
 
-		let rootDomain = utils.getRootDomain(changeInfo.url);
-		let isUrlwListed = utils.checkWhiteList(rootDomain, mbSettings['mbWhiteList']);
+		let isUrlwListed = utils.checkWhiteList(utils.getDomain(changeInfo.url), mbSettings['mbWhiteList']);
 		if(isUrlwListed) {
 			if(tabwIndex < 0) {
 				mbwTabs.push(tabId);
@@ -210,7 +209,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     	changeMbStatus(true);
     
     } else if(message.action == 'addWlist') {
-    	let domain = utils.getRootDomain(message.tab.url);
+    	let domain = utils.getDomain(message.tab.url);
     	addwList(domain);
 
 		if(message.tab.id in mbTabs) {
@@ -223,7 +222,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		}
 
     } else if(message.action == 'removeWlist') {
-    	let domain = utils.getRootDomain(message.tab.url);
+    	let domain = utils.getDomain(message.tab.url);
     	removewList(domain);
 
 		let tabwIndex = mbwTabs.indexOf(message.tab.id);

@@ -78,31 +78,19 @@
             return /^.*:\/\/.*\/.*?\*$/.test(filter);
         },
 
-        getRootDomain: function(url) {
-            // https://stackoverflow.com/a/23945027 (forgive my laziness -.-)
-            var hostname,
-                domain,
-                splitArr,
-                arrLen;
-            if (url.indexOf("://") > -1) {
-                hostname = url.split('/')[2];
-            } else {
-                hostname = url.split('/')[0];
-            }
-            hostname = hostname.split(':')[0];
-            hostname = hostname.split('?')[0];
+        getDomain: function(url) {
+            return (url.split('/')[2] || url.split('/')[0]).split(':')[0];
+        },
 
-            if(/^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/.test(hostname) === true) {
-                return hostname;
-            }
+        getRootDomain: function(url) {
+            let domain = this.getDomain(url);
             
-            domain = hostname;
-            splitArr = domain.split('.');
-            arrLen = splitArr.length;
-            if(arrLen > 2) {
-                domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
+            if(/^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/.test(domain) === true) {
+                return domain;
             }
-            return domain;
+
+            let pieces = domain.split('.');
+            return pieces.slice((pieces.length > 2) ? 1 : 0).join('.');
         },
 
         checkWhiteList: function(url, array) {

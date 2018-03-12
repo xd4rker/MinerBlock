@@ -66,7 +66,7 @@
                     value = [];
                 }
 
-                wdomainText = utils.getRootDomain(wdomainText);
+                wdomainText = utils.getDomain(wdomainText);
 
                 let isUrlwListed = utils.checkWhiteList(wdomainText, value);
                 if(isUrlwListed) {

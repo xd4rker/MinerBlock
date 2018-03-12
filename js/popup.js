@@ -63,7 +63,7 @@
                 return;
             }
             let ctab = tabs[0];
-            let domain = utils.getRootDomain(ctab.url);
+            let domain = utils.getDomain(ctab.url);
             let wlistStatus = utils.checkWhiteList(domain, chrome.extension.getBackgroundPage().mbSettings['mbWhiteList']);
 
             if(wlistStatus) {
