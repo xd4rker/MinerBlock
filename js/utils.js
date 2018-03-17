@@ -102,7 +102,7 @@
         },
 
         isSpecialTab(tab) {
-            return /^((chrome:)|(chrome\-extension:)|(about:)|(file:))/.test(tab.url);
+            return /^((chrome:)|(chrome\-extension:)|(moz\-extension:)|(about:)|(file:)|(blob:)|(data:))/.test(tab.url);
         },
 
     };
