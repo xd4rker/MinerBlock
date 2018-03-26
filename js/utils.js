@@ -70,7 +70,7 @@
             return arr.map(function(e){
                 return e.trim();
             }).filter(function(str) { 
-                return /\S/.test(str);
+                return /^[^#]\S/.test(str);
             });
         },
 
