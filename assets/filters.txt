@@ -15,6 +15,7 @@
 *://*/*cn-asmjs.min.js*
 *://*/*plugins/aj-cryptominer*
 *://*/*plugins/ajcryptominer*
+*://*/*plugins/wp-monero-miner-pro*
 *://*/*lib/crlt.js*
 *://*/*pool/direct.js*
 *://*/*n.2.1.js*
@@ -221,6 +222,31 @@
 *://*.traffic-gate-service.info/*
 *://*.cryptaloot.pro/*
 *://*.averoconnector.com/*
+*://*.scaleway.ovh/*
+*://bauersagtnein.myeffect.net/*
+*://carry.myeffect.net/*
+*://red-js.github.io/*
+*://*.jqcdn.download/*
+*://*.freecontent.date/*
+*://*.ablen02.tk/*
+*://*.ablen07.tk/*
+*://*.ablen10.tk/*
+*://*.ablen04.tk/*
+*://*.ablen09.tk/*
+*://*.ablen01.tk/*
+*://*.ablen11.tk/*
+*://*.ablen06.tk/*
+*://*.ablen12.tk/*
+*://*.ablen03.tk/*
+*://*.ablen08.tk/*
+*://*.ablen05.tk/*
+*://mxcdn1.now.sh/*
+*://mxcdn2.now.sh/*
+*://npcdn1.now.sh/*
+*://sxcdn02.now.sh/*
+*://sxcdn3.now.sh/*
+*://sxcdn4.now.sh/*
+*://sxcdn6.now.sh/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -307,3 +333,14 @@ wss://*.mepirtedic.com/*
 wss://*.appelamule.com/*
 wss://*.ulnawoyyzbljc.ru/*
 wss://*.averoconnector.com/*
+wss://*.scaleway.ovh/*
+wss://bauersagtnein.myeffect.net/*
+wss://carry.myeffect.net/*
+wss://open-hive-server-1.pp.ua/*
+wss://mxcdn1.now.sh/*
+wss://mxcdn2.now.sh/*
+wss://npcdn1.now.sh/*
+wss://sxcdn02.now.sh/*
+wss://sxcdn3.now.sh/*
+wss://sxcdn4.now.sh/*
+wss://sxcdn6.now.sh/*
