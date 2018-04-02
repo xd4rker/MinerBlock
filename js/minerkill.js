@@ -23,7 +23,7 @@ setTimeout(function() {
 				&& typeof this[name] !== 'undefined'
 				&& typeof this[name].isRunning === 'function'
 				&& typeof this[name].stop === 'function'
-				&& (typeof this[name]._siteKey === 'string' || typeof this[name]._newSiteKey === 'string')
+				&& (typeof this[name]._siteKey === 'string' || typeof this[name]._newSiteKey === 'string' || typeof this[name]._address === 'string')
 				) {
 				console.log('[+] Coinhive miner found, stopping...');
 				this[name].stop();
