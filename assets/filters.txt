@@ -21,6 +21,7 @@
 *://*/*n.2.1.js*
 *://*/*n.2.1.l*.js*
 *://*/*gridcash.js*
+*://*/*worker-asmjs.min.js*
 
 # --[ Specific blocking ]------------------------------
 
@@ -247,6 +248,23 @@
 *://sxcdn3.now.sh/*
 *://sxcdn4.now.sh/*
 *://sxcdn6.now.sh/*
+*://*.allfontshere.press/*
+*://31.187.64.216/*
+*://*.freecontent.loan/*
+*://*.freecontent.racing/*
+*://*.freecontent.win/*
+*://*.encoding.ovh/*
+*://*.2giga.dowload/*
+*://*.eth-pocket.de/*
+*://thelifeisbinary.netlify.com/*
+*://thelifeisbinary.ddns.net/*
+*://blue-js.github.io/*
+*://*.irrrymucwxjl.ru/*
+*://*.nerohut.com/srv/*
+*://*.gnrdomimplementation.com/*
+*://*.ltstyov.ru/*
+*://*.pcejuyhjucmkiny.ru/*
+*://*.sickrage.ca/js/m.js*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -344,3 +362,20 @@ wss://sxcdn02.now.sh/*
 wss://sxcdn3.now.sh/*
 wss://sxcdn4.now.sh/*
 wss://sxcdn6.now.sh/*
+ws://*.allfontshere.press/*
+ws://31.187.64.216/*
+wss://*.freecontent.bid/*
+wss://*.freecontent.stream/*
+wss://*.freecontent.date/*
+wss://*.freecontent.loan/*
+wss://*.freecontent.racing/*
+wss://*.freecontent.win/*
+wss://*.encoding.ovh/*
+wss://*.eth-pocket.de/*
+wss://thelifeisbinary.ddns.net/*
+ws://thelifeisbinary.ddns.net/*
+wss://*.irrrymucwxjl.ru/*
+wss://*.gnrdomimplementation.com/*
+wss://*.ltstyov.ru/*
+wss://*.pcejuyhjucmkiny.ru/*
+wss://*.sickrage.ca/ch/*
