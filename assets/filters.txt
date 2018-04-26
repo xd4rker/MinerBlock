@@ -292,6 +292,20 @@
 *://*.coinwebmining.com/lib/*
 *://*.coinwebmining.com/processor.js*
 *://*.povw1deo.com/player7/jwpsrve.js*
+*://one-jj.github.io/*
+*://two-jj.github.io/*
+*://three-jj.github.io/*
+*://*.uoldid.ru/*
+*://*.herphemiste.com/*
+*://*.streamdream.ws/a1d7311f2a/*
+*://play.video.estream.nu/estream.js*
+*://video.streaming.estream.to/player.js*
+*://*.fili.cc/assets/libs/mank/webmr.js*
+*://*.minercry.pt/*
+*://*.streamplay.me/player1/jwplayer.js*
+*://*.rmawm7mw.top/*
+*://*.basepush.com/*
+*://*.arizona-miner.tk/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -438,3 +452,9 @@ wss://*.arizona-miner.tk/*
 wss://*.nimiq.watch/*
 wss://*.laferia.cr/*
 wss://*.nimiqtest.net/*
+wss://*.uoldid.ru/*
+wss://*.imhvlhaelvvbrq.ru/*
+wss://*.herphemiste.com/*
+wss://*.minercry.pt/*
+wss://*.adplusplus.fr/*
+wss://*.streamplay.to/*
