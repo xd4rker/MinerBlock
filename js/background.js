@@ -248,7 +248,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     		sendResponse({mKillStatus: false});
 
     	} else {
-    		let isUrlwListed = utils.checkWhiteList(utils.getRootDomain(message.url), mbSettings['mbWhiteList']);
+    		let isUrlwListed = utils.checkWhiteList(utils.getDomain(message.url), mbSettings['mbWhiteList']);
     		sendResponse({mKillStatus: !isUrlwListed});
     	}
     }
