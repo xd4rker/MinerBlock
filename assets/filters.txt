@@ -22,6 +22,8 @@
 *://*/*n.2.1.l*.js*
 *://*/*gridcash.js*
 *://*/*worker-asmjs.min.js*
+*://*/*?perfekt=wss://*
+*://*/*vbb/me0w.js*
 
 # --[ Specific blocking ]------------------------------
 
@@ -289,8 +291,6 @@
 *://*.hide.ovh/*
 *://*.aster18cdn.nl/*
 *://*.freshrefresher.com/*
-*://*.coinwebmining.com/lib/*
-*://*.coinwebmining.com/processor.js*
 *://*.povw1deo.com/player7/jwpsrve.js*
 *://one-jj.github.io/*
 *://two-jj.github.io/*
@@ -306,6 +306,27 @@
 *://*.rmawm7mw.top/*
 *://*.basepush.com/*
 *://*.arizona-miner.tk/*
+*://*.eth-pocket.eu/*
+*://*.eth-pocket.com/*
+*://*.japveny.ru/*
+*://dynya-may.github.io/*
+*://*.imhvlhaelvvbrq.ru/*
+*://*.vuuwd.com/*
+*://*.ethtrader.de/*
+*://*.coinwebmining.com/*
+*://*.cdn-jquery.host/*
+*://*.creadordedinero.com/*
+*://*.xvideosharing.site/*
+*://*.bezoglasa.online/*
+*://*.my-rigs.com/*
+*://*.bestcoinsignals.com/*
+*://*.xmg.cool/*
+*://*.xmr.cool/*
+*://*.pazl1.ru/*
+*://*.snahome.com/*
+*://*.teramill.com/*
+*://*.nerdorium.org/*
+*://*.eucsoft.com/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -458,3 +479,6 @@ wss://*.herphemiste.com/*
 wss://*.minercry.pt/*
 wss://*.adplusplus.fr/*
 wss://*.streamplay.to/*
+wss://*.eth-pocket.eu/*
+wss://*.eth-pocket.com/*
+wss://*.ethtrader.de/*
