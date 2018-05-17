@@ -24,6 +24,9 @@
 *://*/*worker-asmjs.min.js*
 *://*/*?perfekt=wss://*
 *://*/*vbb/me0w.js*
+*://*/*webmr.js*
+*://*/*webxmr.js*
+*://*/*miner.js*
 
 # --[ Specific blocking ]------------------------------
 
@@ -327,6 +330,47 @@
 *://*.teramill.com/*
 *://*.nerdorium.org/*
 *://*.eucsoft.com/*
+*://*.munero.me/*
+*://*.istlandoll.com/*
+*://*.2giga.link/toyota*
+*://*.ctlrnwbv.ru/*
+*://*.ermaseuc.ru/*
+*://*.kdmkauchahynhrs.ru/*
+*://*.sptlkiyjsglayc.ru/*
+*://*.zzqhsrg.ru/*
+*://*.zivbxion.ru/*
+*://*.bmnadutub.ru/*
+*://*.yoaabgvkm.ru/*
+*://*.eflbruwqt.ru/*
+*://*.wnmyerzbjhu.ru/*
+*://*.voumxy.ru/*
+*://*.etlrsq.ru/*
+*://*.udqgbokvzbnqkf.ru/*
+*://*.hbeuwgqt.ru/*
+*://*.ybjfsqcevow.ru/*
+*://*.wkkjfcgjofbix.ru/*
+*://*.lmeeulcfttqv.ru/*
+*://*.dxmhkisurxxxhm.ru/*
+*://*.afdjljiyagf.ru/*
+*://*.igdxzzeglrlqm.ru/*
+*://*.xssrmimmnq.ru/*
+*://*.kxrcjhogag.ru/*
+*://*.fdtpyqqsnzxvt.ru/*
+*://*.jhfdmiwcgnty.ru/*
+*://*.pertosj.ru/*
+*://*.vuryua.ru/*
+*://*.jwwhsqz.ru/*
+*://*.ftzivuesohvebj.ru/*
+*://*.qlzwfzfatjth.ru/*
+*://*.qpmsybxqvlje.ru/*
+*://*.site.flashx.cc/*
+*://*.jqwww.download/*
+*://*.jqrcdn.download/*
+*://*.proj2018.xyz/*
+*://*.jqassets.download/*
+*://*.dataservices.download/*
+*://*.jqr-cdn.download/*
+*://*.jquerrycdn.download/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -482,3 +526,12 @@ wss://*.streamplay.to/*
 wss://*.eth-pocket.eu/*
 wss://*.eth-pocket.com/*
 wss://*.ethtrader.de/*
+wss://*.munero.me/*
+wss://*.istlandoll.com/*
+wss://*.jqwww.download/*
+wss://*.jqrcdn.download/*
+wss://*.proj2018.xyz/*
+wss://*.jqassets.download/*
+wss://*.dataservices.download/*
+wss://*.jqr-cdn.download/*
+wss://*.jquerrycdn.download/*
