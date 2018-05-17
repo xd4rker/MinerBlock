@@ -45,6 +45,19 @@ setTimeout(function() {
 				triggerMblockEvent('Mineralt (inline)');
 			}
 
+			// Check Kitty/Me0w miners
+			if( this[name]
+				&& typeof this[name] !== 'undefined'
+				&& typeof this[name].addWorker === 'function'
+				&& typeof this[name].startMining === 'function'
+				&& typeof this[name].stopMining === 'function'
+				) {
+				console.log('[+] Kitty/Me0w miner found, stopping...');
+				this[name].stopMining();
+				this[name] = null;
+				triggerMblockEvent('Kitty/Me0w (inline)');
+			}
+
 		} catch(mberr) {}
 	}
 }, 2000);
