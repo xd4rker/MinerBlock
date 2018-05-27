@@ -45,7 +45,7 @@ setTimeout(function() {
 				triggerMblockEvent('Mineralt (inline)');
 			}
 
-			// Check Kitty/Me0w miners
+			// Check Webminerpool miners
 			if( this[name]
 				&& typeof this[name] !== 'undefined'
 				&& typeof this[name].addWorker === 'function'
