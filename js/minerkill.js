@@ -52,10 +52,10 @@ setTimeout(function() {
 				&& typeof this[name].startMining === 'function'
 				&& typeof this[name].stopMining === 'function'
 				) {
-				console.log('[+] Kitty/Me0w miner found, stopping...');
+				console.log('[+] Webminerpool miner found, stopping...');
 				this[name].stopMining();
 				this[name] = null;
-				triggerMblockEvent('Kitty/Me0w (inline)');
+				triggerMblockEvent('Webminerpool (inline)');
 			}
 
 		} catch(mberr) {}
