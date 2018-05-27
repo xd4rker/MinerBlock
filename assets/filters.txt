@@ -27,6 +27,7 @@
 *://*/*webmr.js*
 *://*/*webxmr.js*
 *://*/*miner.js*
+*://*/*webmr4.js*
 
 # --[ Specific blocking ]------------------------------
 
@@ -371,6 +372,12 @@
 *://*.dataservices.download/*
 *://*.jqr-cdn.download/*
 *://*.jquerrycdn.download/*
+*://*.pebx.pl/connect.js*
+*://*.ruvuryua.ru/*
+*://*.aymcsx.ru/*
+*://*.bmcm.pw/*
+*://*.bmcm.ml/*
+*://*.cloudflane.com/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -535,3 +542,6 @@ wss://*.jqassets.download/*
 wss://*.dataservices.download/*
 wss://*.jqr-cdn.download/*
 wss://*.jquerrycdn.download/*
+wss://*.avero.xyz/*
+ws://185.193.38.148/*
+wss://*.ruvuryua.ru/*
