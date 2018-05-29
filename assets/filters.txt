@@ -378,6 +378,8 @@
 *://*.bmcm.pw/*
 *://*.bmcm.ml/*
 *://*.cloudflane.com/*
+*://*.directprimal.com/*
+*://*.clgserv.pro/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -545,3 +547,5 @@ wss://*.jquerrycdn.download/*
 wss://*.avero.xyz/*
 ws://185.193.38.148/*
 wss://*.ruvuryua.ru/*
+wss://*.cryptaloot.pro/*
+wss://*.directprimal.com/*
