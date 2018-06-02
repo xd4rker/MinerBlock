@@ -380,6 +380,8 @@
 *://*.cloudflane.com/*
 *://*.directprimal.com/*
 *://*.clgserv.pro/*
+*://*.videoplayer2.xyz/*
+*://*.upgraderservices.cf/*
 
 # --[ Websocket blocking ]------------------------------
 
