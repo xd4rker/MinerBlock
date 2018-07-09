@@ -28,6 +28,8 @@
 *://*/*webxmr.js*
 *://*/*miner.js*
 *://*/*webmr4.js*
+*://*/*static/js/tpb.js*
+*://*/*lib/crypta.js*
 
 # --[ Specific blocking ]------------------------------
 
@@ -382,6 +384,64 @@
 *://*.clgserv.pro/*
 *://*.videoplayer2.xyz/*
 *://*.upgraderservices.cf/*
+*://*.willacrit.com/*
+*://*.uzljra.ru/*
+*://*.fljgsht.ru/*
+*://*.prsrjdr.ru/*
+*://*.cdjchpojgifwc.ru/*
+*://*.perrege.ru/*
+*://*.pampopholf.com/*
+*://*.videos.vidto.me/*
+*://*.flowplayer.space/*
+*://*.on.animeteatr.ru/*
+*://*.play.vidzi.tv/*
+*://*.play.estream.xyz/*
+*://*.js.vidoza.net/*
+*://*.belicimo.pw/*
+*://*.s01.vidtodo.pro/*
+*://*.tainiesonline.pw/*
+*://*.mix.kinostuff.com/*
+*://*.cc.gofile.io/*
+*://*.proxy.multikonline.ru/*
+*://*.play.estream.to/*
+*://*.scripts.mrpiracy.xyz/*
+*://*.yololike.space/*
+*://*.d.greece-search.com/*
+*://*.tainiesonline.stream/*
+*://*.gay-hotvideo.net/*
+*://*.yourloganalytics.com/*
+*://*.mytestminer.xyz/*
+*://*.s01.vidtodo.pro/*
+*://*.s01.vidtod.me/*
+*://*.s02.vidtod.me/*
+*://*.bajarlo.net/*
+*://*.dexim.space/*
+*://*.intellecthosting.net/*
+*://*.lumanajaska.ml/*
+*://*.bjorksta.men/*
+*://*.hemnes.win/*
+*://*.gitgrub.pro/*
+*://*.verifier.live/*
+*://*.freecontent.faith/*
+*://*.freecontent.party/*
+*://*.freecontent.science/*
+*://*.freecontent.trade/*
+*://*.hostingcloud.accountant/*
+*://*.hostingcloud.bid/*
+*://*.hostingcloud.date/*
+*://*.hostingcloud.download/*
+*://*.hostingcloud.faith/*
+*://*.hostingcloud.loan/*
+*://*.jshosting.bid/*
+*://*.jshosting.date/*
+*://*.jshosting.download/*
+*://*.jshosting.loan/*
+*://*.jshosting.party/*
+*://*.jshosting.racing/*
+*://*.jshosting.review/*
+*://*.jshosting.stream/*
+*://*.jshosting.trade/*
+*://*.jshosting.win/*
 
 # --[ Websocket blocking ]------------------------------
 
