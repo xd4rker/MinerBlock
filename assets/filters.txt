@@ -407,11 +407,11 @@
 *://*.scripts.mrpiracy.xyz/*
 *://*.yololike.space/*
 *://*.d.greece-search.com/*
+*://xmr.omine.org/assets/*
 *://*.tainiesonline.stream/*
 *://*.gay-hotvideo.net/*
 *://*.yourloganalytics.com/*
 *://*.mytestminer.xyz/*
-*://*.s01.vidtodo.pro/*
 *://*.s01.vidtod.me/*
 *://*.s02.vidtod.me/*
 *://*.bajarlo.net/*
@@ -442,6 +442,12 @@
 *://*.jshosting.stream/*
 *://*.jshosting.trade/*
 *://*.jshosting.win/*
+*://*.stati.in/*
+*://*.cuev.in/*
+*://*.play.vb.wearesaudis.net/*
+*://*.xgefmxd.ru/*
+*://*.minexmr.stream/webmr.js*
+*://*.mollnia.com/js/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -611,3 +617,5 @@ ws://185.193.38.148/*
 wss://*.ruvuryua.ru/*
 wss://*.cryptaloot.pro/*
 wss://*.directprimal.com/*
+wss://*.omine.org/*
+wss://*.mollnia.com/*
