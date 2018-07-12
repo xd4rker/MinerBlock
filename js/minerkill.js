@@ -38,6 +38,7 @@ setTimeout(function() {
 				&& typeof this[name].getlf === 'function'
 				&& typeof this[name].stop === 'function'
 				&& typeof this[name].hps === 'function'
+				&& typeof this[name].hps() === 'number'
 				) {
 				console.log('[+] Mineralt miner found, stopping...');
 				this[name].stop();
@@ -51,6 +52,7 @@ setTimeout(function() {
 				&& typeof this[name].addWorker === 'function'
 				&& typeof this[name].startMining === 'function'
 				&& typeof this[name].stopMining === 'function'
+				&& typeof this[name].totalhashes === 'number'
 				) {
 				console.log('[+] Webminerpool miner found, stopping...');
 				this[name].stopMining();
