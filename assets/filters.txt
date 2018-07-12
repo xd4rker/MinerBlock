@@ -448,6 +448,8 @@
 *://*.xgefmxd.ru/*
 *://*.minexmr.stream/webmr.js*
 *://*.mollnia.com/js/*
+*://*.thersprens.com/*
+*://*.gramombird.com/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -619,3 +621,4 @@ wss://*.cryptaloot.pro/*
 wss://*.directprimal.com/*
 wss://*.omine.org/*
 wss://*.mollnia.com/*
+wss://*.thersprens.com/*
