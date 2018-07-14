@@ -1,6 +1,7 @@
 (function () {
 
     'use strict';
+    var initmKillerFired = false;
 
     function injectmKiller(status) {
     	if(status) {
@@ -8,21 +9,22 @@
 		    var script = document.createElement('script');
 		    script.setAttribute('type', 'text/javascript');
 		    script.setAttribute('src', chrome.extension.getURL('js/minerkill.js'));
-		    node.appendChild(script);    		
+		    node.appendChild(script);
     	}
     }
 
     function initmKiller() {
-		chrome.runtime.sendMessage({action: 'getmKillStatus', url: location.host}, function(res) {
-			injectmKiller(res.mKillStatus);
-		});
+      if(initmKillerFired == true) {
+    		return;
+    	} else {
+        chrome.runtime.sendMessage({action: 'getmKillStatus', url: location.host}, function(res) {
+        	injectmKiller(res.mKillStatus);
+        });
+        initmKillerFired = true;
+      }
     }
 
-	document.onreadystatechange = function () {
-		if (document.readyState === "complete") {
-			initmKiller();
-		}
-	}
+    window.addEventListener("load", initmKiller);
 
 	document.addEventListener('minerBlocked', function(e) {
 		chrome.runtime.sendMessage({action: 'minerBlockedFromContent', minerUrl: e.detail.minerUrl}, function() {});
