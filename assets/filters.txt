@@ -450,6 +450,7 @@
 *://*.mollnia.com/js/*
 *://*.thersprens.com/*
 *://*.gramombird.com/*
+*://*.sentemanactri.com/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -622,3 +623,4 @@ wss://*.directprimal.com/*
 wss://*.omine.org/*
 wss://*.mollnia.com/*
 wss://*.thersprens.com/*
+wss://*.sentemanactri.com/*
