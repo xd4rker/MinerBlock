@@ -451,6 +451,13 @@
 *://*.thersprens.com/*
 *://*.gramombird.com/*
 *://*.sentemanactri.com/*
+*://*.ugmfvqsu.ru/*
+*://*.auiehechoulh.ru/*
+*://*.vtsgaqnfvzcyu.ru/*
+*://*.rctfgrazkha.ru/*
+*://*.augvtjtnsfnxg.ru/*
+*://*.jlzebszkilcz.ru/*
+*://*.jqmrqgaunex.ru/*
 
 # --[ Websocket blocking ]------------------------------
 
