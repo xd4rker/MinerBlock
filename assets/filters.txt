@@ -468,6 +468,7 @@
 *://*.str1kee.com/*
 *://*.hostingcloud.science/*
 *://*.reauthenticator.com/*
+*://jssdk.beetv.net/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -641,3 +642,4 @@ wss://*.omine.org/*
 wss://*.mollnia.com/*
 wss://*.thersprens.com/*
 wss://*.sentemanactri.com/*
+wss://wbmwss.beetv.net/*
