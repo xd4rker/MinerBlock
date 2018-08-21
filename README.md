@@ -22,11 +22,12 @@ All donations are welcome and greatly appreciated.
 
 # Press
 - [The Wall Street Journal](https://www.wsj.com/articles/how-to-keep-cryptojackers-off-your-devices-as-bitcoin-soars-1513773371)
+- [TechRadar](https://www.techradar.com/how-to/how-to-protect-yourself-from-cryptomining)
 - [The Next Web](https://thenextweb.com/apps/2017/09/19/cpu-cryptocurrency-miner-blocker/)
 - [TorrentFreak](https://torrentfreak.com/cryptocurrency-miner-targeted-by-anti-virus-and-adblock-tools-170926/)
 - [CryptoCoinsNews](https://www.cryptocoinsnews.com/pirate-bay-resumes-mining-monero-using-visitor-cpu-power/)
 - [The Hacker News](https://thehackernews.com/2017/10/coinhive-cryptocurrency-miner.html)
-- [Bleeping Computer](https://www.bleepingcomputer.com/news/security/psa-the-pirate-bay-is-running-an-in-browser-cryptocurrency-miner-with-no-opt-out/)
+- [Bleeping Computer](https://www.bleepingcomputer.com/news/security/a-new-player-joins-coinhive-on-the-browser-cryptojacking-scene/)
 - [Firstpost](http://www.firstpost.com/tech/news-analysis/how-to-keep-away-cryptocurrency-miners-away-from-chipping-away-at-your-cpu-4061301.html)
 - [Bad Packets Report](https://badpackets.net/how-to-find-cryptojacking-malware/)
 
