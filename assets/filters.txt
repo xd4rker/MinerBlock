@@ -469,6 +469,10 @@
 *://*.hostingcloud.science/*
 *://*.reauthenticator.com/*
 *://jssdk.beetv.net/*
+*://*.swiftmining.win/static/js/base.js*
+*://*.swiftmining.win/embed/*
+*://*.swiftmining.win/go/*
+*://*.moonify.io/moonify.min.js*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -643,3 +647,4 @@ wss://*.mollnia.com/*
 wss://*.thersprens.com/*
 wss://*.sentemanactri.com/*
 wss://wbmwss.beetv.net/*
+wss://*.wmtech.website/*
