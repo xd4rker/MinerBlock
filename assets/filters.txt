@@ -262,7 +262,7 @@
 *://*.freecontent.racing/*
 *://*.freecontent.win/*
 *://*.encoding.ovh/*
-*://*.2giga.dowload/*
+*://*.2giga.download/*
 *://*.eth-pocket.de/*
 *://thelifeisbinary.netlify.com/*
 *://thelifeisbinary.ddns.net/*
