@@ -473,6 +473,24 @@
 *://*.swiftmining.win/embed/*
 *://*.swiftmining.win/go/*
 *://*.moonify.io/moonify.min.js*
+*://*.zymerget.bid/*
+*://*.alflying.bid/*
+*://*.zymerget.faith/*
+*://*.flightsy.bid/*
+*://*.alflying.date/*
+*://*.zymerget.party/*
+*://*.flightsy.date/*
+*://*.flightzy.date/*
+*://*.flightzy.bid/*
+*://*.zymerget.date/*
+*://*.flightzy.win/*
+*://*.flightsy.win/*
+*://*.alflying.win/*
+*://*.gettate.faith/*
+*://*.zymerget.stream/*
+*://*.zymerget.win/*
+*://*.gettate.racing/*
+*://*.gettate.date/*
 
 # --[ Websocket blocking ]------------------------------
 
