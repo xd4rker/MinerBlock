@@ -491,6 +491,7 @@
 *://*.zymerget.win/*
 *://*.gettate.racing/*
 *://*.gettate.date/*
+*://play.vidoza.net/app.js*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -666,3 +667,4 @@ wss://*.thersprens.com/*
 wss://*.sentemanactri.com/*
 wss://wbmwss.beetv.net/*
 wss://*.wmtech.website/*
+wss://*.vidoza.net/*
