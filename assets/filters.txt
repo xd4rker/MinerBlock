@@ -492,6 +492,11 @@
 *://*.gettate.racing/*
 *://*.gettate.date/*
 *://play.vidoza.net/app.js*
+*://*.feesocrald.com/*
+*://*.soodatmish.com/*
+*://jsc.marketgid.com/*
+*://*.nabaza.com/*
+*://*.drupalupdates.tk/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -668,3 +673,6 @@ wss://*.sentemanactri.com/*
 wss://wbmwss.beetv.net/*
 wss://*.wmtech.website/*
 wss://*.vidoza.net/*
+wss://*.f1tbit.com/*
+wss://*.soodatmish.com/*
+wss://*.marketgid.com/*
