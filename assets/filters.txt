@@ -497,6 +497,10 @@
 *://jsc.marketgid.com/*
 *://*.nabaza.com/*
 *://*.drupalupdates.tk/*
+*://*.truemine.org/api/*
+*://*.nextbdom.ru/*
+*://*.verifypow.com/*
+*://*.srcip.com/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -676,3 +680,4 @@ wss://*.vidoza.net/*
 wss://*.f1tbit.com/*
 wss://*.soodatmish.com/*
 wss://*.marketgid.com/*
+wss://*.reauthenticator.com/*
