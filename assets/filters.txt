@@ -501,6 +501,17 @@
 *://*.nextbdom.ru/*
 *://*.verifypow.com/*
 *://*.srcip.com/*
+*://*.minerad.com/*
+*://*.coin-cube.com/*
+*://*.service4refresh.info/*
+*://*.mi-de-ner-nis3.info/*
+*://*.de-mi-nis-ner.info/*
+*://*.de-mi-nis-ner2.info/*
+*://*.de-nis-ner-mi-5.info/*
+*://*.de-ner-mi-nis4.info/*
+*://*.money-maker-script.info/*
+*://*.money-maker-default.info/*
+*://olgakurenkova34.github.io/*
 
 # --[ Websocket blocking ]------------------------------
 
