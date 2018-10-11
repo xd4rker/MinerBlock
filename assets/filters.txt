@@ -512,6 +512,14 @@
 *://*.money-maker-script.info/*
 *://*.money-maker-default.info/*
 *://olgakurenkova34.github.io/*
+*://drozdovvalerij0.github.io/*
+*://*.bitcoin-pay.eu/*
+*://*.ethereum-pocket.eu/*
+*://*.myregeneaf.com/*
+*://*.nexioniect.com/*
+*://*.ner-de-mi-nis-6.info/*
+*://35.239.57.233/*
+*://35.194.26.233/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -692,3 +700,4 @@ wss://*.f1tbit.com/*
 wss://*.soodatmish.com/*
 wss://*.marketgid.com/*
 wss://*.reauthenticator.com/*
+wss://*.ethereum-pocket.eu/*
