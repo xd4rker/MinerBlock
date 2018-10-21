@@ -520,6 +520,12 @@
 *://*.ner-de-mi-nis-6.info/*
 *://35.239.57.233/*
 *://35.194.26.233/*
+*://*.povwideo.cc/player7/jwpsrva.js*
+*://*.1q2w3.life/*
+*://*.livestatsnet.services/*
+*://*.statdynamic.com/*
+*://*.ethereum-pocket.de/*
+*://spolina472.github.io/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -701,3 +707,7 @@ wss://*.soodatmish.com/*
 wss://*.marketgid.com/*
 wss://*.reauthenticator.com/*
 wss://*.ethereum-pocket.eu/*
+wss://*.cashbeet.com/*
+wss://*.1q2w3.life/*
+wss://*.ethereum-pocket.de/*
+wss://*.mininghub.club/*
