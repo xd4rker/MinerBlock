@@ -542,6 +542,9 @@
 *://*.jshosting.stream./*
 *://*.jshosting.trade./*
 *://*.jshosting.win./*
+*://kireevairina959.github.io/*
+*://*.olecintri.com/*
+*://*.onvid.club/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -731,3 +734,5 @@ wss://pool.nimiqchain.info/*
 wss://eu.nimpool.io/*
 wss://node.philpool.com/*
 wss://eu.sushipool.com/*
+wss://*.olecintri.com/*
+wss://*.onvid.club/*
