@@ -458,7 +458,6 @@
 *://*.augvtjtnsfnxg.ru/*
 *://*.jlzebszkilcz.ru/*
 *://*.jqmrqgaunex.ru/*
-*://*.jlzebszkilcz.ru/*
 *://static.207.35.76.144.clients.your-server.de/*
 *://*.lambdafoobar.de/*
 *://*.cashbeet.com/*
