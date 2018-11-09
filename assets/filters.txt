@@ -490,7 +490,7 @@
 *://*.zymerget.win/*
 *://*.gettate.racing/*
 *://*.gettate.date/*
-*://play.vidoza.net/app.js*
+*://*.vidoza.net/app.js*
 *://*.feesocrald.com/*
 *://*.soodatmish.com/*
 *://jsc.marketgid.com/*
