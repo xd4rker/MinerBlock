@@ -669,9 +669,7 @@ wss://*.s7ven.com/*
 wss://*.mmc.center/*
 wss://*.flnqmin.org/*
 wss://*.arizona-miner.tk/*
-wss://*.nimiq.watch/*
 wss://*.laferia.cr/*
-wss://*.nimiqtest.net/*
 wss://*.uoldid.ru/*
 wss://*.imhvlhaelvvbrq.ru/*
 wss://*.herphemiste.com/*
@@ -711,3 +709,9 @@ wss://*.cashbeet.com/*
 wss://*.1q2w3.life/*
 wss://*.ethereum-pocket.de/*
 wss://*.mininghub.club/*
+wss://pool.nimiq.watch/*
+wss://pool.porkypool.com/*
+wss://pool.nimiqchain.info/*
+wss://eu.nimpool.io/*
+wss://node.philpool.com/*
+wss://eu.sushipool.com/*
