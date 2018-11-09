@@ -526,6 +526,23 @@
 *://*.statdynamic.com/*
 *://*.ethereum-pocket.de/*
 *://spolina472.github.io/*
+*://*.hostingcloud.science./*
+*://*.hostingcloud.accountant./*
+*://*.hostingcloud.bid./*
+*://*.hostingcloud.date./*
+*://*.hostingcloud.download./*
+*://*.hostingcloud.faith./*
+*://*.hostingcloud.loan./*
+*://*.jshosting.bid./*
+*://*.jshosting.date./*
+*://*.jshosting.download./*
+*://*.jshosting.loan./*
+*://*.jshosting.party./*
+*://*.jshosting.racing./*
+*://*.jshosting.review./*
+*://*.jshosting.stream./*
+*://*.jshosting.trade./*
+*://*.jshosting.win./*
 
 # --[ Websocket blocking ]------------------------------
 
