@@ -711,3 +711,4 @@ wss://*.cashbeet.com/*
 wss://*.1q2w3.life/*
 wss://*.ethereum-pocket.de/*
 wss://*.mininghub.club/*
+wss://ws022.authedmine.com/proxy
