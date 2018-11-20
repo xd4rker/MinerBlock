@@ -734,3 +734,4 @@ wss://node.philpool.com/*
 wss://eu.sushipool.com/*
 wss://*.olecintri.com/*
 wss://*.onvid.club/*
+wss://*.coin-services.info/*
