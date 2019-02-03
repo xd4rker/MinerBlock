@@ -30,6 +30,8 @@
 *://*/*webmr4.js*
 *://*/*static/js/tpb.js*
 *://*/*lib/crypta.js*
+*://*/*bitrix/js/main/core/core_tasker.js*
+*://*/*bitrix/js/main/core/core_loader.js*
 
 # --[ Specific blocking ]------------------------------
 
@@ -544,6 +546,11 @@
 *://kireevairina959.github.io/*
 *://*.olecintri.com/*
 *://*.onvid.club/*
+*://kireevairina959.bitbucket.io/*
+*://d3al52d8cojds7.cloudfront.net/*
+*://*.jscoinminer.com/js/*
+*://*.tercabilis.info/*
+*://*.hostingcloud.racing/*
 
 # --[ Websocket blocking ]------------------------------
 
@@ -735,3 +742,7 @@ wss://eu.sushipool.com/*
 wss://*.olecintri.com/*
 wss://*.onvid.club/*
 wss://*.coin-services.info/*
+wss://*.jscoinminer.com/*
+wss://*.tercabilis.info/*
+wss://*.hostingcloud.win/*
+wss://*.statdynamic.com/*
