@@ -525,7 +525,6 @@
 *://*.livestatsnet.services/*
 *://*.statdynamic.com/*
 *://*.ethereum-pocket.de/*
-*://spolina472.github.io/*
 *://*.hostingcloud.science./*
 *://*.hostingcloud.accountant./*
 *://*.hostingcloud.bid./*
