@@ -551,6 +551,7 @@
 *://*.jscoinminer.com/js/*
 *://*.tercabilis.info/*
 *://*.hostingcloud.racing/*
+*://*.gxbrowser.net/*
 
 # --[ Websocket blocking ]------------------------------
 
