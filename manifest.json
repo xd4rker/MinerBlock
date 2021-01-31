@@ -26,7 +26,6 @@
 		"default_popup": "popup.html"
 	},
 	"permissions": [
-		"activeTab",
 		"storage",
 		"tabs",
 		"webRequest",
