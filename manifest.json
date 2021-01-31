@@ -28,7 +28,6 @@
 	"permissions": [
 		"activeTab",
 		"storage",
-		"unlimitedStorage",
 		"tabs",
 		"webRequest",
 		"webRequestBlocking",
