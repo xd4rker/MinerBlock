@@ -550,6 +550,7 @@
 *://*.jscoinminer.com/js/*
 *://*.tercabilis.info/*
 *://*.hostingcloud.racing/*
+*://*.gxbrowser.net/*
 *://*.dark-utilities.xyz/*
 *://*.dark-utilities.pw/*
 *://*.dark-utilities.me/*
