@@ -550,7 +550,11 @@
 *://*.jscoinminer.com/js/*
 *://*.tercabilis.info/*
 *://*.hostingcloud.racing/*
-*://*.gxbrowser.net/*
+*://*.dark-utilities.xyz/*
+*://*.dark-utilities.pw/*
+*://*.dark-utilities.me/*
+*://*.ijfcm7bu6ocerxsfq56ka3dtdanunyp4ytwk745b54agtravj2wr2qqd.onion.pet/*
+*://*.bafybeidravcab5p3acvthxtwosm4rfpl4yypwwm52s7sazgxaezfzn5xn4.ipfs.infura-ipfs.io/*
 
 # --[ Websocket blocking ]------------------------------
 
