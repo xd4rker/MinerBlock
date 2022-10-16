@@ -1,9 +1,9 @@
 # <img src="/icons/icon_48.png" align="absmiddle"> MinerBlock
-MinerBlock is an efficient browser extension that focuses on blocking browser-based cryptocurrency miners all over the web.
+MinerBlock is an efficient browser extension that aims to block browser-based cryptocurrency miners all over the web.
 
-[<img src="https://developer-chrome-com.imgix.net/image/BrQidfK9jaQyIHwdw91aVpkPiib2/LclHxMxqoswLNRcUW3m5.png?auto=format&w=228">](https://chrome.google.com/webstore/detail/minerblock/emikbbbebcdfohonlaifafnoanocnebl) [<img src="https://dev.opera.com/extensions/branding-guidelines/addons_206x58_en@2x.png" width="206">](https://addons.opera.com/en/extensions/details/minerblock/) [<img src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png">](https://addons.mozilla.org/en-US/firefox/addon/minerblock-origin/)
+[<img src="https://user-images.githubusercontent.com/7257362/196050028-71dd50f6-19a8-4405-ab7e-a022eb5a4287.png">](https://chrome.google.com/webstore/detail/minerblock/emikbbbebcdfohonlaifafnoanocnebl) [<img src="https://user-images.githubusercontent.com/7257362/196050050-f76e4c5b-6822-460b-bbe6-fc890550a1c8.png" width="206">](https://addons.opera.com/en/extensions/details/minerblock/) [<img src="https://user-images.githubusercontent.com/7257362/196050056-9afc4687-bc02-4b7f-ad4a-3b2e86e65507.png">](https://addons.mozilla.org/en-US/firefox/addon/minerblock-origin/)
 
-![Alt text](https://i.imgur.com/L7cpHjE.png)
+![Alt text](https://user-images.githubusercontent.com/7257362/196050130-72c290b9-cb29-40da-8dad-6792f8c9d7ad.png)
 
 # How does it work?
 The extension uses two different approaches to block miners. The first one is based on blocking requests/scripts loaded from a blacklist, this is the traditional approach adopted by most ad-blockers and other mining blockers. The other approach which makes MinerBlock more efficient against cryptojacking is detecting potential mining behaviour inside loaded scripts and kills them immediately. This makes the extension able to block inline scripts as well as miners running through proxies.
