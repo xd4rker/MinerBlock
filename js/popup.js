@@ -24,8 +24,15 @@
         });
 
         document.getElementById('settingsBtn').addEventListener('click', function (e) {
-            chrome.runtime.openOptionsPage();
-            window.close();
+            var optionsUrl = chrome.extension.getURL('options.html');
+            chrome.tabs.query({url: chrome.extension.getURL('options.html')}, function(tabs) {
+                if (tabs.length) {
+                    chrome.tabs.update(tabs[0].id, {active: true});
+                } else {
+                    chrome.tabs.create({url: optionsUrl});
+                }
+                window.close();
+            });
         });
 
         document.getElementById('addWlist').addEventListener('click', function (e) {
