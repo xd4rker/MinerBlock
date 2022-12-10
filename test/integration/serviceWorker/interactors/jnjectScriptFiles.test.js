@@ -2,7 +2,7 @@ import { strict as assert } from 'assert';
 import {FakeLocalStorage} from "../../../serviceWorker/repositories/adapters/FakeLocalStorage.js";
 import {Logger} from "../../../../src/serviceWorker/adapters/Logger.js";
 import {SettingsRepository} from "../../../../src/serviceWorker/repositories/SettingsRepository.js";
-import {InjectMinerBlocker} from "../../../../src/serviceWorker/interactors/InjectMinerBlocker.js";
+import {InjectScriptFiles} from "../../../../src/serviceWorker/interactors/InjectScriptFiles.js";
 import {GetRunStatus} from "../../../../src/serviceWorker/interactors/GetRunStatus.js";
 import {GetWhitelistStatus} from "../../../../src/serviceWorker/interactors/GetWhitelistStatus.js";
 import {Domain} from "../../../../src/serviceWorker/entities/Domain.js";
@@ -46,7 +46,7 @@ it('Inject script files', async () => {
         logger
     );
 
-    const injectMinerBlocker = new InjectMinerBlocker(
+    const injectMinerBlocker = new InjectScriptFiles(
         browser,
         new GetRunStatus(settingsRepository, logger),
         logger,

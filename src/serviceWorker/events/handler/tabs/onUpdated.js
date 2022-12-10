@@ -1,5 +1,5 @@
 import {GetRunStatus} from "../../../interactors/GetRunStatus.js";
-import {InjectMinerBlocker} from "../../../interactors/InjectMinerBlocker.js";
+import {InjectScriptFiles} from "../../../interactors/InjectScriptFiles.js";
 import {_browser, logger, settingsRepository} from "../../../config.js";
 import {GetWhitelistStatus} from "../../../interactors/GetWhitelistStatus.js";
 import {GetWhitelist} from "../../../interactors/GetWhitelist.js";
@@ -26,7 +26,7 @@ export async function injectMinerBlocker(tabId, changeInfo, tab) {
             '/contentScripts/pageInjection/main.js',
         ];
 
-        const injectMinerBlocker = new InjectMinerBlocker(
+        const injectMinerBlocker = new InjectScriptFiles(
             _browser,
             new GetRunStatus(settingsRepository, logger),
             logger,

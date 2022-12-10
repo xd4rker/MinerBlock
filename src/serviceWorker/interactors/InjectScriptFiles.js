@@ -1,7 +1,7 @@
 /**
  * Inject provided files to page.
  */
-export class InjectMinerBlocker {
+export class InjectScriptFiles {
     /** @type{Browser} */
     #browser;
     /** @type{GetRunStatus} */
