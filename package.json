@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "mocha": "^10.1.0"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "type": "module"
+}

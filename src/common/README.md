@@ -1,0 +1,1 @@
+- Contains shared files used by popUp, options html pages and content scripts.

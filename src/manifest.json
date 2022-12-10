@@ -1,0 +1,49 @@
+{
+	"manifest_version": 3,
+	"name": "minerBlock",
+	"description": "Blocks cryptocurrency miners all over the web.",
+	"version": "1.3.0",
+	"options_page": "/options/main.html",
+	"background": {
+		"service_worker": "/serviceWorker/main.js",
+		"type": "module"
+	},
+	"content_scripts": [
+		{
+		"matches": ["http://*/*", "https://*/*"],
+		"js": [
+			"/common/adapters/Logger.js",
+			"/common/entities/browser/Chrome.js",
+			"/common/entities/browser/Browser.js",
+			"/common/config.js",
+			"/contentScripts/main.js"
+		],
+		"run_at": "document_idle"
+		}
+	],
+	"icons": {
+		"19": "/common/icons/icon.png",
+		"48": "/common/icons/icon_48.png",
+		"128": "/common/icons/icon_128.png"
+	},
+	"action": {
+		"default_icon": "/common/icons/icon.png",
+		"default_popup": "/popUp/main.html"
+	},
+	"permissions": [
+		"storage",
+		"tabs",
+		"declarativeNetRequest",
+		"scripting"
+	],
+	"host_permissions": [
+		"<all_urls>"
+	],
+	"web_accessible_resources": [{
+		"resources": [
+			"/assets/filters.txt"
+		],
+		"matches": [],
+    	"extension_ids": []
+	}]
+}
