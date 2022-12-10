@@ -21,7 +21,10 @@ export class FakeLocalStorage {
         "whiteList": []
     };
 
-    constructor(config = []) {
+    /**
+     * @param {Object} config
+     */
+    constructor(config = {}) {
         this.mbSettings = config['mbSettings'] ?? this.mbSettings;
         this.mbStatistics = config['mbStatistics'] ?? this.mbStatistics;
     }
