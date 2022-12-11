@@ -13,8 +13,8 @@
 		"matches": ["http://*/*", "https://*/*"],
 		"js": [
 			"/common/adapters/Logger.js",
-			"/common/entities/browser/Chrome.js",
-			"/common/entities/browser/Browser.js",
+			"/common/adapters/browser/Chrome.js",
+			"/common/adapters/browser/Browser.js",
 			"/common/config.js",
 			"/contentScripts/main.js"
 		],

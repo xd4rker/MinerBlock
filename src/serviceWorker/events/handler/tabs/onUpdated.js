@@ -15,8 +15,8 @@ export async function injectMinerBlocker(tabId, changeInfo, tab) {
     if (changeInfo.status === 'complete' && !_browser.constructor.isSpecialTab(tab)) {
         const filePaths = [
             '/common/adapters/Logger.js',
-            '/common/entities/browser/Chrome.js',
-            '/common/entities/browser/Browser.js',
+            '/common/adapters/browser/Chrome.js',
+            '/common/adapters/browser/Browser.js',
             '/common/config.js',
             '/contentScripts/pageInjection/entities/killers/Killer.js',
             '/contentScripts/pageInjection/entities/killers/CoinHive.js',
