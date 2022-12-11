@@ -310,7 +310,7 @@ export async function handleAddWhitelistItem(message, sender, sendResponse) {
         const addWhitelistItem = new AddWhitelistItem(settingsRepository, logger);
         await addWhitelistItem.run(message.domain);
 
-        sendResponse('finished');
+        sendResponse(true);
 
         _browser.sendMessage({event: MESSAGE_EVENT_WHITE_LIST_UPDATED})
             .then()
