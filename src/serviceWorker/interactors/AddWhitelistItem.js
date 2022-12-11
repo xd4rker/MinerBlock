@@ -27,6 +27,6 @@ export class AddWhitelistItem {
             return false;
         }
 
-        await this.#settingsRepo.save(settings);
+        return await this.#settingsRepo.save(settings);
     }
 }
