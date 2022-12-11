@@ -7,7 +7,7 @@ import {GetRunStatus} from "../../../../src/serviceWorker/interactors/GetRunStat
 import {GetWhitelistStatus} from "../../../../src/serviceWorker/interactors/GetWhitelistStatus.js";
 import {Domain} from "../../../../src/serviceWorker/entities/Domain.js";
 import {GetWhitelist} from "../../../../src/serviceWorker/interactors/GetWhitelist.js";
-import {Browser} from "../../../serviceWorker/entities/browser/Browser.js";
+import {Browser} from "../../../serviceWorker/adapters/browser/Browser.js";
 import { faker } from '@faker-js/faker';
 
 
