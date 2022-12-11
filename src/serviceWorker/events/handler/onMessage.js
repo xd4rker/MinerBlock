@@ -300,7 +300,7 @@ export async function handleMbStart(message, sender, sendResponse) {
 }
 
 export async function handleAddWhitelistItem(message, sender, sendResponse) {
-    if (message.action === 'addWhitelistItem') {
+    if (message.action === 'addWhitelistItem' && message.domain !== undefined) {
         logger.debug(
             'Received action addWhitelistItem',
             'serviceWorker.handleAddWhitelistItem',
