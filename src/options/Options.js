@@ -134,7 +134,7 @@ class Options {
         let textAreaText = "";
 
         this.#whitelist.forEach((element) => {
-            textAreaText += `${element} ${Options.EOL}`;
+            textAreaText += `${element}${Options.EOL}`;
         });
 
         whitelistElement.value = textAreaText;
@@ -149,7 +149,7 @@ class Options {
         let textAreaText = "";
 
         this.#userFilterList.forEach((element) => {
-            textAreaText += `${element} ${Options.EOL}`;
+            textAreaText += `${element}${Options.EOL}`;
         });
 
         userFilterListElement.value = textAreaText;
