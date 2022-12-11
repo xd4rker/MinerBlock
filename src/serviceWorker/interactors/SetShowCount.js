@@ -6,24 +6,25 @@
 export class SetShowCount {
     /** @type{SettingsRepository} */
     #settingsRepo;
-    /** @type{boolean} */
-    #showCount;
     /** @type{Logger} */
     #logger;
 
-    constructor(settingsRepo, showCount, logger) {
+    constructor(settingsRepo, logger) {
         this.#settingsRepo = settingsRepo;
-        this.#showCount = showCount;
         this.#logger = logger;
     }
 
-    async run() {
+    /**
+     * @param {boolean} showCount
+     * @returns {Promise<boolean>}
+     */
+    async run(showCount) {
         const settings = await this.#settingsRepo.findOrCreate();
 
-        settings.setShowCount(this.#showCount);
+        settings.setShowCount(showCount);
 
-        this.#logger.debug('Set showCount', 'SetShowCount.run', this.#showCount);
+        this.#logger.debug('Set showCount', 'SetShowCount.run', showCount);
 
-        await this.#settingsRepo.save(settings);
+        return await this.#settingsRepo.save(settings);
     }
 }

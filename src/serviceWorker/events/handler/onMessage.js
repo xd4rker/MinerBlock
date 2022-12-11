@@ -442,7 +442,7 @@ export async function handleGetDomainWhitelistStatus(message, sender, sendRespon
 }
 
 export async function handleSetShowCount(message, sender, sendResponse) {
-    if (message.action === 'setShowCount') {
+    if (message.action === 'setShowCount' && message.showCount !== undefined) {
         logger.debug(
             'Got message setShowCount',
             'serviceWorker.handleSetShowCount',
@@ -451,12 +451,11 @@ export async function handleSetShowCount(message, sender, sendResponse) {
 
         const setShowCount = new SetShowCount(
             settingsRepository,
-            message.showCount,
             logger
         );
-        await setShowCount.run();
+        await setShowCount.run(message.showCount);
 
-        sendResponse('finished');
+        sendResponse(true);
 
         return true;
     }
