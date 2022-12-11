@@ -46,6 +46,10 @@ export class Settings {
         return this.#runStatus;
     }
 
+    /**
+     * @param {string} uriPattern
+     * @returns {boolean}
+     */
     addUserFilterElement(uriPattern) {
         return Settings.addItemToArray(this.#userFilters, uriPattern);
     }
@@ -58,10 +62,19 @@ export class Settings {
         Settings.removeItemFromArray(this.#whiteList, domain);
     }
 
+    /**
+     * @param {string} domain
+     * @returns {boolean}
+     */
     addWhiteListElement(domain) {
         return Settings.addItemToArray(this.#whiteList, domain);
     }
 
+    /**
+     * @param {string[]} arr
+     * @param {string} item
+     * @returns {boolean}
+     */
     static addItemToArray(arr, item) {
         if(arr.includes(item)) {
             return false;
