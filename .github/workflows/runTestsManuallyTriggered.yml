@@ -1,7 +1,7 @@
 name: Run tests
 
 on:
-  pull_request:
+  workflow_dispatch:
     branches: [ release_2.0 ]
 jobs:
   build:
