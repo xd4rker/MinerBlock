@@ -1,5 +1,5 @@
-import {Chrome} from "./entities/browser/Chrome.js";
-import {Browser} from "./entities/browser/Browser.js";
+import {Chrome} from "./adapters/browser/Chrome.js";
+import {Browser} from "./adapters/browser/Browser.js";
 import {Logger} from "./adapters/Logger.js";
 import {SettingsRepository} from "./repositories/SettingsRepository.js";
 import {LocalStorage} from "./repositories/adapters/LocalStorage.js";
