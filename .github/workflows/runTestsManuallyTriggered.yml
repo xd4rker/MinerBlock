@@ -2,7 +2,6 @@ name: Run tests, trigger manually
 
 on:
   workflow_dispatch:
-    branches: [ release_2.0 ]
 jobs:
   build:
 
