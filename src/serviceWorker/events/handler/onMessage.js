@@ -419,7 +419,7 @@ export async function handleGetWhitelist(message, sender, sendResponse) {
 }
 
 export async function handleGetDomainWhitelistStatus(message, sender, sendResponse) {
-    if (message.action === 'getDomainWhitelistStatus') {
+    if (message.action === 'getDomainWhitelistStatus' && message.domain !== undefined) {
         logger.debug(
             'Received action mb getWhitelistStatus',
             'serviceWorker.handleGetDomainWhitelistStatus',
