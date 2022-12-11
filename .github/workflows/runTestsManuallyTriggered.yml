@@ -1,4 +1,4 @@
-name: Run tests
+name: Run tests, trigger manually
 
 on:
   workflow_dispatch:
