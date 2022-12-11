@@ -426,10 +426,8 @@ export async function handleGetDomainWhitelistStatus(message, sender, sendRespon
             message
         );
 
-        const domain = message.domain ?? null;
-
         const getDomainWhitelistStatus = new GetWhitelistStatus(
-            domain,
+            message.domain,
             new GetWhitelist(settingsRepository, logger),
             logger
         );
