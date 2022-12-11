@@ -307,8 +307,8 @@ export async function handleAddWhitelistItem(message, sender, sendResponse) {
             message
         );
 
-        const addWhitelistItem = new AddWhitelistItem(settingsRepository, message.domain, logger);
-        await addWhitelistItem.run();
+        const addWhitelistItem = new AddWhitelistItem(settingsRepository, logger);
+        await addWhitelistItem.run(message.domain);
 
         sendResponse('finished');
 

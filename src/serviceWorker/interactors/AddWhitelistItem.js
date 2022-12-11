@@ -4,23 +4,24 @@
 export class AddWhitelistItem {
     /** @type {SettingsRepository} */
     #settingsRepo;
-    /** @type {string} */
-    #domain;
     /** @type{Logger} */
     #logger;
 
-    constructor(settingsRepo, domain, logger) {
+    constructor(settingsRepo, logger) {
         this.#settingsRepo = settingsRepo;
-        this.#domain = domain;
         this.#logger = logger;
     }
 
-    async run() {
+    /**
+     * @param {string} domain
+     * @returns {Promise<boolean>}
+     */
+    async run(domain) {
         const settings = await this.#settingsRepo.findOrCreate();
 
         this.#logger.debug('Got settings', 'AddWhitelistItem.run', settings);
 
-        const addedElement = settings.addWhiteListElement(this.#domain);
+        const addedElement = settings.addWhiteListElement(domain);
 
         if (addedElement === false) {
             return false;
