@@ -127,6 +127,9 @@ export class Settings {
         return Settings.#runStatus;
     }
 
+    /**
+     * @returns {string[]}
+     */
     get whiteList(){
         return this.#whiteList;
     }
