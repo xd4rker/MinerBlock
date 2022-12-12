@@ -326,7 +326,7 @@ export async function handleAddWhitelistItem(message, sender, sendResponse) {
 }
 
 export async function handleRemoveWhitelistItem(message, sender, sendResponse) {
-    if (message.action === 'removeWhitelistItem') {
+    if (message.action === 'removeWhitelistItem' && message.domain !== undefined) {
         logger.debug(
             'Got message removeWhitelistItem',
             'serviceWorker.handleRemoveWhitelistItem',
