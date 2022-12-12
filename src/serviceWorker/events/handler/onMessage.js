@@ -336,7 +336,7 @@ export async function handleRemoveWhitelistItem(message, sender, sendResponse) {
         const removeWhitelistItem = new RemoveWhitelistItem(settingsRepository, logger);
         const removedWhitelistItem = await removeWhitelistItem.run(message.domain);
 
-        sendResponse('finished');
+        sendResponse(removedWhitelistItem);
 
         _browser.sendMessage({event: MESSAGE_EVENT_WHITE_LIST_UPDATED})
             .then()
