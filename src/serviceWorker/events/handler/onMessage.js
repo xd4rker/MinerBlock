@@ -333,8 +333,8 @@ export async function handleRemoveWhitelistItem(message, sender, sendResponse) {
             message
         );
 
-        const removeWhitelistItem = new RemoveWhitelistItem(settingsRepository, message.domain, logger);
-        await removeWhitelistItem.run();
+        const removeWhitelistItem = new RemoveWhitelistItem(settingsRepository, logger);
+        const removedWhitelistItem = await removeWhitelistItem.run(message.domain);
 
         sendResponse('finished');
 
