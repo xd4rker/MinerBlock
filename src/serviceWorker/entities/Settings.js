@@ -87,12 +87,21 @@ export class Settings {
         return oldLength < arr.length;
     }
 
+    /**
+     * @param {Array} arr
+     * @param {string} item
+     * @returns {boolean|null}
+     */
     static removeItemFromArray(arr, item) {
         const index = arr.indexOf(item);
 
-        if (index > -1) {
-            arr.splice(index, 1);
+        if (index <= -1) {
+            return null;
         }
+
+        const deletedItems = arr.splice(index, 1);
+
+        return deletedItems.length > 0;
     }
 
     /**
