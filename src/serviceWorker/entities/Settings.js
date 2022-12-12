@@ -58,8 +58,12 @@ export class Settings {
         return Settings.removeItemFromArray(this.#userFilters, uriPattern);
     }
 
+    /**
+     * @param {string} domain
+     * @returns {boolean|null}
+     */
     deleteWhiteListElement(domain) {
-        Settings.removeItemFromArray(this.#whiteList, domain);
+        return Settings.removeItemFromArray(this.#whiteList, domain);
     }
 
     /**
