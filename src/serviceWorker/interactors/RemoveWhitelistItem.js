@@ -4,28 +4,33 @@
 export class RemoveWhitelistItem {
     /** @type{SettingsRepository} */
     #settingsRepo;
-    /** @type{string} */
-    #domain;
     /** @type{Logger} */
     #logger;
 
-    constructor(settingsRepo, domain, logger) {
+    constructor(settingsRepo, logger) {
         this.#settingsRepo = settingsRepo;
-        this.#domain = domain;
         this.#logger = logger;
     }
 
-    async run() {
+    /**
+     * @param {string} domain
+     * @returns {Promise<boolean|null>}
+     */
+    async run(domain) {
         const settings = await this.#settingsRepo.findOrCreate();
 
         this.#logger.debug('Got settings', 'RemoveWhitelistItem.run', settings);
 
-        if (settings === undefined) {
-            return false;
+        if (settings.whiteList.length === 0) {
+            return null;
         }
 
-        settings.deleteWhiteListElement(this.#domain);
+        const deletedWhiteListElement = settings.deleteWhiteListElement(domain)
 
-        this.#settingsRepo.save(settings).then();
+        if (deletedWhiteListElement === false || deletedWhiteListElement === null) {
+            return deletedWhiteListElement;
+        }
+
+        return await this.#settingsRepo.save(settings);
     }
 }
