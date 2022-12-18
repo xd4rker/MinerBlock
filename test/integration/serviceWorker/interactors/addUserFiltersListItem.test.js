@@ -5,7 +5,7 @@ import {SettingsRepository} from "../../../../src/serviceWorker/repositories/Set
 import { faker } from '@faker-js/faker';
 import {AddUserFiltersListItem} from "../../../../src/serviceWorker/interactors/AddUserFiltersListItem.js";
 import {UserFilters} from "../../../../src/serviceWorker/entities/filters/UserFilters.js";
-import {Browser} from "../../../serviceWorker/adapters/browser/Browser.js";
+import {FakeBrowser} from "../../../serviceWorker/adapters/browser/FakeBrowser.js";
 import {BuiltInFilters} from "../../../../src/serviceWorker/entities/filters/BuiltInFilters.js";
 
 it('adds user filter uri pattern to empty user filter list', async () => {
@@ -17,7 +17,7 @@ it('adds user filter uri pattern to empty user filter list', async () => {
         }
     });
     const settingsRepository = new SettingsRepository(storage, logger);
-    const browser = new Browser();
+    const browser = new FakeBrowser();
 
     const url = faker.internet.url();
 
@@ -35,7 +35,7 @@ it('adds user filter uri pattern to empty user filter list', async () => {
         settingsRepository,
         userFilters,
         logger,
-        new Browser()
+        new FakeBrowser()
     );
 
     const userFiltersListItemAdded = await addUserFiltersListItem.run(url);
@@ -60,7 +60,7 @@ it('adds user filter uri pattern to not empty user filter list', async () => {
         }
     });
     const settingsRepository = new SettingsRepository(storage, logger);
-    const browser = new Browser();
+    const browser = new FakeBrowser();
 
     const url = faker.internet.url();
 
@@ -78,7 +78,7 @@ it('adds user filter uri pattern to not empty user filter list', async () => {
         settingsRepository,
         userFilters,
         logger,
-        new Browser()
+        new FakeBrowser()
     );
 
     const userFiltersListItemAdded = await addUserFiltersListItem.run(url);

@@ -1,6 +1,6 @@
 import {FakeFetchResponse} from "./FakeFetchResponse.js";
 
-export class Browser {
+export class FakeBrowser {
     #data = {
         'executeScript': {
             'return': [{
