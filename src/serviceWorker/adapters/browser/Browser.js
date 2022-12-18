@@ -141,4 +141,12 @@ export class Browser {
     static isSpecialTab(tab) {
         return /^((chrome:)|(chrome-extension:)|(moz-extension:)|(about:)|(file:)|(blob:)|(data:))/.test(tab.url);
     }
+
+    /**
+     * @param {string} path
+     * @returns {Promise<Response>}
+     */
+    async fetch(path) {
+        return await fetch(path);
+    }
 }
