@@ -4,8 +4,6 @@
 export class AddUserFiltersListItem {
     /** @type {SettingsRepository} */
     #settingsRepo;
-    /** @type{string} */
-    #uriPattern;
     /** @type{UserFilters} */
     #userFilter;
     /** @type{Logger} */
@@ -13,21 +11,24 @@ export class AddUserFiltersListItem {
     /** @type{Browser} */
     #browser;
 
-    constructor(settingsRepo, uriPattern, userFilter, logger, browser) {
+    constructor(settingsRepo, userFilter, logger, browser) {
         this.#settingsRepo = settingsRepo;
-        this.#uriPattern = uriPattern;
         this.#userFilter = userFilter;
         this.#logger = logger;
         this.#browser = browser;
     }
 
-    async run() {
+    /**
+     * @param {string} uriPattern
+     * @returns {Promise<void|boolean>}
+     */
+    async run(uriPattern) {
         const settings = await this.#settingsRepo.findOrCreate();
 
         await this.#userFilter.set(settings.userFilters);
         const ruleIdsToBeRemoved = await this.#userFilter.getRuleIds();
 
-        const addedElement = settings.addUserFilterElement(this.#uriPattern);
+        const addedElement = settings.addUserFilterElement(uriPattern);
 
         this.#settingsRepo.save(settings).then();
 
