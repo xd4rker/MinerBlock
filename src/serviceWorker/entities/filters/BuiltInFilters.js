@@ -29,7 +29,7 @@ export class BuiltInFilters extends Filters {
     }
 
     async getFiltersFromFile() {
-        const response = await fetch(this.#browser.getURL(BuiltInFilters.FILTERS_PATH));
+        const response = await this.#browser.fetch(this.#browser.getURL(BuiltInFilters.FILTERS_PATH));
 
         if (response === undefined) {
             return null;
