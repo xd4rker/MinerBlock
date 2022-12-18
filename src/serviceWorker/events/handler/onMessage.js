@@ -114,7 +114,7 @@ export async function handleRemoveUserFilterListItem(message, sender, sendRespon
 }
 
 export async function handleAddUserFilterListItem(message, sender, sendResponse) {
-    if (message.action === 'addUserFilterListItem') {
+    if (message.action === 'addUserFilterListItem' && message.uriPattern !== undefined) {
         logger.debug(
             'Got message addUserFilterListItem',
             'serviceWorker.handleAddUserFilterListItem',
@@ -123,12 +123,11 @@ export async function handleAddUserFilterListItem(message, sender, sendResponse)
 
         const addUserFiltersListItem = new AddUserFiltersListItem(
             settingsRepository,
-            message.uriPattern,
             new UserFilters(undefined, logger, new BuiltInFilters(undefined, logger, _browser)),
             logger,
             _browser
         );
-        await addUserFiltersListItem.run();
+        await addUserFiltersListItem.run(message.uriPattern);
 
         sendResponse(true);
 

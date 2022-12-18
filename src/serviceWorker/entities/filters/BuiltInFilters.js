@@ -9,6 +9,14 @@ export class BuiltInFilters extends Filters {
     constructor(args = undefined, logger, browser) {
         super(args, logger);
         this.#browser = browser;
+
+        if (args !== undefined) {
+            this.setAttributes(args);
+        }
+    }
+
+    setAttributes(args) {
+        BuiltInFilters.FILTERS_PATH = args['filtersPath'] !== undefined ? args['filtersPath'] : BuiltInFilters.FILTERS_PATH;
     }
 
     async set() {
@@ -28,7 +36,7 @@ export class BuiltInFilters extends Filters {
     }
 
     async getFiltersFromFile() {
-        const response = await fetch(this.#browser.getURL(BuiltInFilters.FILTERS_PATH));
+        const response = await this.#browser.fetch(this.#browser.getURL(BuiltInFilters.FILTERS_PATH));
 
         if (response === undefined) {
             return null;
