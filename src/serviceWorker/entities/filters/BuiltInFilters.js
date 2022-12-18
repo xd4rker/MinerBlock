@@ -9,7 +9,14 @@ export class BuiltInFilters extends Filters {
     constructor(args = undefined, logger, browser) {
         super(args, logger);
         this.#browser = browser;
-        BuiltInFilters.FILTERS_PATH = args['filtersPath'] ? args['filtersPath'] : BuiltInFilters.FILTERS_PATH;
+
+        if (args !== undefined) {
+            this.setAttributes(args);
+        }
+    }
+
+    setAttributes(args) {
+        BuiltInFilters.FILTERS_PATH = args['filtersPath'] !== undefined ? args['filtersPath'] : BuiltInFilters.FILTERS_PATH;
     }
 
     async set() {
