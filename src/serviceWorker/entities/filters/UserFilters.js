@@ -15,9 +15,14 @@ export class UserFilters extends Filters {
     }
 
     /**
-     * Get rules from filters.
+     * Get rules defined by the user, respectively filters, using offset for built-int rules.
      *
-     * @returns {Promise<*[]>}
+     * These rules are browser specific configurations that in this case are configured to block traffic.
+     *
+     * When defining rules we partition into built in and user specific ones. The first rules block contains the built-in
+     * rules (thats why offset used) the second the user specific rules.
+     *
+     * @returns {Promise<Object[]>}
      */
     async getRules() {
         const offset = await this.#builtInFilters.getCount();
