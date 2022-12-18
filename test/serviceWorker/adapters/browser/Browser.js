@@ -1,3 +1,5 @@
+import {FakeFetchResponse} from "./FakeFetchResponse.js";
+
 export class Browser {
     #data = {
         'executeScript': {
@@ -6,11 +8,12 @@ export class Browser {
                 'frameId': 0,
                 'result': null
             }]
-        }
+        },
+        'fetch': '*://*/*cryptonight.wasm\n*://*/*deepMiner.js\n*://load.jsecoin.com/*\n*://*.coin-hive.com/lib*\n'
     };
 
-    constructor(data) {
-        this.#data = data;
+    constructor(data = null) {
+        this.#data = data ?? this.#data;
     }
 
     /**
@@ -21,5 +24,30 @@ export class Browser {
      */
     async executeScript(tabId, files, world) {
         return this.#data['executeScript']['return'];
+    }
+
+    /**
+     * @param {number[]} ruleIdsToBeRemoved
+     * @param {Rule[]} rulesToBeAdded
+     * @returns {Promise<void>}
+     */
+    async removeAndAddDynamicRule(ruleIdsToBeRemoved, rulesToBeAdded) {
+
+    }
+
+    /**
+     * @param {string} path
+     * @returns {string}
+     */
+    getURL(path) {
+        return path
+    }
+
+    /**
+     * @param {string} path
+     * @returns {Promise<FakeFetchResponse>}
+     */
+    async fetch(path) {
+        return new FakeFetchResponse(this.#data.fetch);
     }
 }
