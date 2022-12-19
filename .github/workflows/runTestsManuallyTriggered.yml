@@ -1,7 +1,6 @@
 name: Run tests, trigger manually
 
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 jobs:
   build:
 
