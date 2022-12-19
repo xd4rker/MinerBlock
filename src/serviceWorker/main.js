@@ -3,7 +3,6 @@
 import {
 	handleAddUserFilterListItem, handleAddWhitelistItem, handleGetDomainWhitelistStatus,
 	handleGetMinerBlockCount,
-	handleGetRunStatus,
 	handleGetShowCount,
 	handleGetUseBuiltInFiltersStatus,
 	handleGetUserFilterList, handleGetUseUserFiltersStatus, handleGetWhitelist,
@@ -17,9 +16,11 @@ import {injectMinerBlocker} from "./events/handler/tabs/onUpdated.js";
 import {InitSettings} from "./interactors/init/InitSettings.js";
 import {InitBrowser} from "./interactors/init/InitBrowser.js";
 import {SetIcon} from "./interactors/SetIcon.js";
-import {_browser, settingsRepository} from "./config.js";
+import {_browser, settingsRepository, logger} from "./config.js";
 import {Visuals} from "./entities/Visuals.js";
 import {RemoveFiltersInBrowser} from "./interactors/RemoveFiltersInBrowser.js";
+import {GetRunStatus as HandleGetRunStatus} from "./events/onMessage/GetRunStatus.js";
+import {GetRunStatus} from "./interactors/GetRunStatus.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -30,7 +31,13 @@ const initBrowser = new InitBrowser(new SetIcon(
 
 _browser.onInstalledAddListener(() => setup(initSettings, initBrowser)).then();
 
-_browser.onMessageAddListener(handleGetRunStatus).then();
+const getRunStatus = new HandleGetRunStatus(
+	new GetRunStatus(settingsRepository, logger),
+	logger
+);
+
+_browser.onMessageAddListener(getRunStatus.handle.bind(getRunStatus)).then();
+
 _browser.onMessageAddListener(handleGetMinerBlockCount).then();
 _browser.onMessageAddListener(handleGetUserFilterList).then();
 _browser.onMessageAddListener(handleAddUserFilterListItem).then();

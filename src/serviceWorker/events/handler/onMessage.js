@@ -2,7 +2,6 @@ import {AddReportBlock} from "../../interactors/AddReportBlock.js";
 import {AddUserFiltersListItem} from "../../interactors/AddUserFiltersListItem.js";
 import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {BuiltInFilters} from "../../entities/filters/BuiltInFilters.js";
-import {GetRunStatus} from "../../interactors/GetRunStatus.js";
 import {GetShowCount} from "../../interactors/GetShowCount.js";
 import {GetUseBuiltInFiltersStatus} from "../../interactors/GetUseBuiltInFiltersStatus.js";
 import {GetUseUserFilterStatus} from "../../interactors/GetUseUserFilterStatus.js";
@@ -28,28 +27,10 @@ import {RemoveWhitelistItem} from "../../interactors/RemoveWhitelistItem.js";
 import {SaveUserFilterList} from "../../interactors/SaveUserFilterList.js";
 
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
-const MESSAGE_EVENT_GET_RUN_STATUS = 'getRunStatus';
 const MESSAGE_EVENT_GET_MINER_BLOCK_COUNT = 'getMinerBlockCount';
 const MESSAGE_EVENT_GET_USER_FILTER_LIST = 'getUserFilterList';
 
 const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
-
-export async function handleGetRunStatus(message, sender, sendResponse) {
-    if (message.action === MESSAGE_EVENT_GET_RUN_STATUS) {
-        logger.debug(
-            'Got message getRunStatus',
-            'serviceWorker.handleGetRunStatus',
-            message
-        );
-
-        const getRunStatus = new GetRunStatus(settingsRepository, logger);
-        const status = await getRunStatus.run();
-
-        sendResponse(status);
-
-        return true;
-    }
-}
 
 export async function handleGetMinerBlockCount(message, sender, sendResponse) {
     if (message.action === MESSAGE_EVENT_GET_MINER_BLOCK_COUNT) {
