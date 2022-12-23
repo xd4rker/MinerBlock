@@ -1,12 +1,12 @@
 import { strict as assert } from 'assert';
-import {FakeLocalStorage} from "../../../repositories/adapters/FakeLocalStorage.js";
-import {SettingsRepository} from "../../../../../src/serviceWorker/repositories/SettingsRepository.js";
-import {Logger} from "../../../../../src/serviceWorker/adapters/Logger.js";
+import {FakeLocalStorage} from "../../../../../serviceWorker/repositories/adapters/FakeLocalStorage.js";
+import {SettingsRepository} from "../../../../../../src/serviceWorker/repositories/SettingsRepository.js";
+import {Logger} from "../../../../../../src/serviceWorker/adapters/Logger.js";
 import {
     HandleGetUserFilterList
-} from "../../../../../src/serviceWorker/events/handler/onMessage/HandleGetUserFilterList.js";
+} from "../../../../../../src/serviceWorker/events/handler/onMessage/HandleGetUserFilterList.js";
 import {faker} from "@faker-js/faker";
-import {GetUserFilterList} from "../../../../../src/serviceWorker/interactors/GetUserFilterList.js";
+import {GetUserFilterList} from "../../../../../../src/serviceWorker/interactors/GetUserFilterList.js";
 
 describe('serviceWorker.events.handler.onMessage.handleGetUserFilterList', () => {
     it('get user filter list', async () => {

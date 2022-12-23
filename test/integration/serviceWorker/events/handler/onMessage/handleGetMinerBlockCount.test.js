@@ -1,10 +1,10 @@
 import { strict as assert } from 'assert';
-import {FakeLocalStorage} from "../../../repositories/adapters/FakeLocalStorage.js";
-import {Logger} from "../../../../../src/serviceWorker/adapters/Logger.js";
+import {FakeLocalStorage} from "../../../../../serviceWorker/repositories/adapters/FakeLocalStorage.js";
+import {Logger} from "../../../../../../src/serviceWorker/adapters/Logger.js";
 import {
     HandleGetMinerBlockCount
-} from "../../../../../src/serviceWorker/events/handler/onMessage/HandleGetMinerBlockCount.js";
-import {StatisticsRepository} from "../../../../../src/serviceWorker/repositories/StatisticsRepository.js";
+} from "../../../../../../src/serviceWorker/events/handler/onMessage/HandleGetMinerBlockCount.js";
+import {StatisticsRepository} from "../../../../../../src/serviceWorker/repositories/StatisticsRepository.js";
 
 describe('serviceWorker.events.handler.onMessage.handleGetMinerBlockCount', () => {
     it('get miner block count', async () => {
