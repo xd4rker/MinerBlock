@@ -2,7 +2,7 @@ import { strict as assert } from 'assert';
 import {FakeLocalStorage} from "../../../repositories/adapters/FakeLocalStorage.js";
 import {SettingsRepository} from "../../../../../src/serviceWorker/repositories/SettingsRepository.js";
 import {GetRunStatus} from "../../../../../src/serviceWorker/interactors/GetRunStatus.js";
-import {GetRunStatus as HandleGetRunStatus} from "../../../../../src/serviceWorker/events/onMessage/GetRunStatus.js";
+import {GetRunStatus as HandleGetRunStatus} from "../../../../../src/serviceWorker/events/handler/onMessage/HandleGetRunStatus.js";
 import {Logger} from "../../../../../src/serviceWorker/adapters/Logger.js";
 
 describe('serviceWorker.events.handler.onMessage.getRunStatus', () => {

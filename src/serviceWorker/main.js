@@ -19,7 +19,7 @@ import {SetIcon} from "./interactors/SetIcon.js";
 import {_browser, settingsRepository, logger} from "./config.js";
 import {Visuals} from "./entities/Visuals.js";
 import {RemoveFiltersInBrowser} from "./interactors/RemoveFiltersInBrowser.js";
-import {GetRunStatus as HandleGetRunStatus} from "./events/onMessage/GetRunStatus.js";
+import {HandleGetRunStatus} from "./events/handler/onMessage/HandleGetRunStatus.js";
 import {GetRunStatus} from "./interactors/GetRunStatus.js";
 
 const initSettings = new InitSettings(settingsRepository);
@@ -31,12 +31,12 @@ const initBrowser = new InitBrowser(new SetIcon(
 
 _browser.onInstalledAddListener(() => setup(initSettings, initBrowser)).then();
 
-const getRunStatus = new HandleGetRunStatus(
+const handleGetRunStatus = new HandleGetRunStatus(
 	new GetRunStatus(settingsRepository, logger),
 	logger
 );
 
-_browser.onMessageAddListener(getRunStatus.handle.bind(getRunStatus)).then();
+_browser.onMessageAddListener(handleGetRunStatus.run.bind(handleGetRunStatus)).then();
 
 _browser.onMessageAddListener(handleGetMinerBlockCount).then();
 _browser.onMessageAddListener(handleGetUserFilterList).then();

@@ -1,4 +1,4 @@
-export class GetRunStatus {
+export class HandleGetRunStatus {
     static EVENT_NAME = 'getRunStatus';
 
     /** @var {import("./../../interactors/GetRunStatus.").GetRunStatus} */
@@ -11,8 +11,8 @@ export class GetRunStatus {
         this.#logger = logger;
     }
 
-    async handle(message, sender, sendResponse) {
-        if (message.action === GetRunStatus.EVENT_NAME) {
+    async run(message, sender, sendResponse) {
+        if (message.action === HandleGetRunStatus.EVENT_NAME) {
             this.#logger.debug(
                 'Got message getRunStatus',
                 'serviceWorker.handleGetRunStatus',
