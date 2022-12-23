@@ -1,8 +1,8 @@
 export class HandleGetMinerBlockCount {
     static EVENT_NAME = 'getMinerBlockCount';
-    /** @var {Logger} */
+    /** @type {Logger} */
     #logger;
-    /** @var {StatisticsRepository} */
+    /** @type {StatisticsRepository} */
     #statisticsRepository;
 
     constructor(statisticsRepository, logger) {

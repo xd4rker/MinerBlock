@@ -1,9 +1,9 @@
 export class HandleGetRunStatus {
     static EVENT_NAME = 'getRunStatus';
 
-    /** @var {import("./../../interactors/GetRunStatus.").GetRunStatus} */
+    /** @type {import("./../../interactors/GetRunStatus").GetRunStatus} */
     #getRunStatus;
-    /** @var {Logger} */
+    /** @type {Logger} */
     #logger;
 
     constructor(getRunStatus, logger) {
