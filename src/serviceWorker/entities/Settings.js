@@ -1,4 +1,5 @@
 export class Settings {
+    /** @type {boolean} */
     #showCount = false;
     #showAlert = false;
     #runStatus = false;
