@@ -1,5 +1,4 @@
 import {AddReportBlock} from "../../interactors/AddReportBlock.js";
-import {AddUserFiltersListItem} from "../../interactors/AddUserFiltersListItem.js";
 import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {BuiltInFilters} from "../../entities/filters/BuiltInFilters.js";
 import {GetShowCount} from "../../interactors/GetShowCount.js";
@@ -13,7 +12,6 @@ import {InitSettings} from "../../interactors/init/InitSettings.js";
 import {MbPause} from "../../interactors/MbPause.js";
 import {MbStart} from "../../interactors/MbStart.js";
 import {RemoveFiltersInBrowser} from "../../interactors/RemoveFiltersInBrowser.js";
-import {RemoveUserFiltersListItem} from "../../interactors/RemoveUserFiltersListItem.js";
 import {SaveWhitelist} from "../../interactors/SaveWhitelist.js";
 import {SetIcon} from "../../interactors/SetIcon.js";
 import {SetShowCount} from "../../interactors/SetShowCount.js";
@@ -28,50 +26,6 @@ import {SaveUserFilterList} from "../../interactors/SaveUserFilterList.js";
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
 const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
 
-export async function handleRemoveUserFilterListItem(message, sender, sendResponse) {
-    if (message.action === 'removeUserFilterListItem') {
-        logger.debug(
-            'Got message removeUserFilterListItem',
-            'serviceWorker.handleRemoveUserFilterListItem',
-            message
-        );
-
-        const removeUserFiltersListItem = new RemoveUserFiltersListItem(
-            settingsRepository,
-            message.uriPattern,
-            logger,
-            _browser,
-            new UserFilters(undefined, logger, new BuiltInFilters(undefined, logger, _browser)),
-        );
-        await removeUserFiltersListItem.run();
-
-        sendResponse(true);
-
-        return true;
-    }
-}
-
-export async function handleAddUserFilterListItem(message, sender, sendResponse) {
-    if (message.action === 'addUserFilterListItem' && message.uriPattern !== undefined) {
-        logger.debug(
-            'Got message addUserFilterListItem',
-            'serviceWorker.handleAddUserFilterListItem',
-            message
-        );
-
-        const addUserFiltersListItem = new AddUserFiltersListItem(
-            settingsRepository,
-            new UserFilters(undefined, logger, new BuiltInFilters(undefined, logger, _browser)),
-            logger,
-            _browser
-        );
-        await addUserFiltersListItem.run(message.uriPattern);
-
-        sendResponse(true);
-
-        return true;
-    }
-}
 
 export async function handleGetShowCount(message, sender, sendResponse) {
     if (message.action === 'getShowCount') {

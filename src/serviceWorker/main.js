@@ -1,12 +1,12 @@
 'use strict';
 
 import {
-	handleAddUserFilterListItem, handleAddWhitelistItem, handleGetDomainWhitelistStatus,
+	handleAddWhitelistItem, handleGetDomainWhitelistStatus,
 	handleGetShowCount,
 	handleGetUseBuiltInFiltersStatus,
 	handleGetUseUserFiltersStatus, handleGetWhitelist,
 	handleMbPause, handleMbStart,
-	handleRemoveUserFilterListItem, handleRemoveWhitelistItem, handleReportBlock,
+	handleRemoveWhitelistItem, handleReportBlock,
 	handleResetSettings, handleSetShowCount,
 	handleToggleBuiltInFilters, handleToggleUserFilters, handleSaveWhitelist, handleSaveUserFilterList
 } from "./events/handler/onMessage.js";
@@ -57,9 +57,6 @@ const handleGetUserFilterList = new HandleGetUserFilterList(
 
 _browser.onMessageAddListener(handleGetUserFilterList.run.bind(handleGetUserFilterList)).then();
 
-
-_browser.onMessageAddListener(handleAddUserFilterListItem).then();
-_browser.onMessageAddListener(handleRemoveUserFilterListItem).then();
 _browser.onMessageAddListener(handleGetShowCount).then();
 _browser.onMessageAddListener(handleToggleBuiltInFilters).then();
 _browser.onMessageAddListener(handleGetUseBuiltInFiltersStatus).then();
