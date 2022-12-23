@@ -27,32 +27,9 @@ import {RemoveWhitelistItem} from "../../interactors/RemoveWhitelistItem.js";
 import {SaveUserFilterList} from "../../interactors/SaveUserFilterList.js";
 
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
-const MESSAGE_EVENT_GET_MINER_BLOCK_COUNT = 'getMinerBlockCount';
 const MESSAGE_EVENT_GET_USER_FILTER_LIST = 'getUserFilterList';
-
 const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
 
-export async function handleGetMinerBlockCount(message, sender, sendResponse) {
-    if (message.action === MESSAGE_EVENT_GET_MINER_BLOCK_COUNT) {
-        logger.debug(
-            'Got message getMinerBlockCount',
-            'serviceWorker.handleGetMinerBlockCount',
-            message
-        );
-
-        const count = await statisticsRepository.getMinerBlockCount();
-
-        logger.debug(
-            'Returning count',
-            'serviceWorker.handleGetMinerBlockCount',
-            count
-        );
-
-        sendResponse(count);
-
-        return true;
-    }
-}
 
 export async function handleGetUserFilterList(message, sender, sendResponse) {
     if (message.action === MESSAGE_EVENT_GET_USER_FILTER_LIST) {

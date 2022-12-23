@@ -2,10 +2,10 @@ import { strict as assert } from 'assert';
 import {FakeLocalStorage} from "../../../repositories/adapters/FakeLocalStorage.js";
 import {SettingsRepository} from "../../../../../src/serviceWorker/repositories/SettingsRepository.js";
 import {GetRunStatus} from "../../../../../src/serviceWorker/interactors/GetRunStatus.js";
-import {GetRunStatus as HandleGetRunStatus} from "../../../../../src/serviceWorker/events/handler/onMessage/HandleGetRunStatus.js";
+import {HandleGetRunStatus} from "../../../../../src/serviceWorker/events/handler/onMessage/HandleGetRunStatus.js";
 import {Logger} from "../../../../../src/serviceWorker/adapters/Logger.js";
 
-describe('serviceWorker.events.handler.onMessage.getRunStatus', () => {
+describe('serviceWorker.events.handler.onMessage.handleGetRunStatus', () => {
     it('get run status', async () => {
         const runStatus = Math.random() < 0.5;
 
@@ -17,14 +17,14 @@ describe('serviceWorker.events.handler.onMessage.getRunStatus', () => {
         });
         const settingsRepository = new SettingsRepository(storage, logger);
 
-        const getRunStatus = new HandleGetRunStatus(
+        const handleGetRunStatus = new HandleGetRunStatus(
             new GetRunStatus(settingsRepository, logger),
             logger
         );
 
         let receivedResponse = null;
 
-        const handledGetRunStatus = await getRunStatus.handle(
+        const handledGetRunStatus = await handleGetRunStatus.run(
             {action: HandleGetRunStatus.EVENT_NAME},
             'theSender',
             (response) => {
