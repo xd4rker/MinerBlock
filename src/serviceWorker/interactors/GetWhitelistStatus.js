@@ -16,6 +16,8 @@ export class GetWhitelistStatus {
     }
 
     async run() {
+        //TODO: ignore internal pages
+
         const whitelist = await this.#getWhitelist.run();
 
         if (whitelist.includes(this.#domain)) {
