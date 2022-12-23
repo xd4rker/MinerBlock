@@ -4,7 +4,7 @@ import {
 	handleAddUserFilterListItem, handleAddWhitelistItem, handleGetDomainWhitelistStatus,
 	handleGetShowCount,
 	handleGetUseBuiltInFiltersStatus,
-	handleGetUserFilterList, handleGetUseUserFiltersStatus, handleGetWhitelist,
+	handleGetUseUserFiltersStatus, handleGetWhitelist,
 	handleMbPause, handleMbStart,
 	handleRemoveUserFilterListItem, handleRemoveWhitelistItem, handleReportBlock,
 	handleResetSettings, handleSetShowCount,
@@ -21,6 +21,8 @@ import {RemoveFiltersInBrowser} from "./interactors/RemoveFiltersInBrowser.js";
 import {HandleGetRunStatus} from "./events/handler/onMessage/HandleGetRunStatus.js";
 import {GetRunStatus} from "./interactors/GetRunStatus.js";
 import {HandleGetMinerBlockCount} from "./events/handler/onMessage/HandleGetMinerBlockCount.js";
+import {HandleGetUserFilterList} from "./events/handler/onMessage/HandleGetUserFilterList.js";
+import {GetUserFilterList} from "./interactors/GetUserFilterList.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -31,12 +33,14 @@ const initBrowser = new InitBrowser(new SetIcon(
 
 _browser.onInstalledAddListener(() => setup(initSettings, initBrowser)).then();
 
+
 const handleGetRunStatus = new HandleGetRunStatus(
 	new GetRunStatus(settingsRepository, logger),
 	logger
 );
 
 _browser.onMessageAddListener(handleGetRunStatus.run.bind(handleGetRunStatus)).then();
+
 
 const handleGetMinerBlockCount = new HandleGetMinerBlockCount(
 	statisticsRepository,
@@ -45,7 +49,15 @@ const handleGetMinerBlockCount = new HandleGetMinerBlockCount(
 
 _browser.onMessageAddListener(handleGetMinerBlockCount.run.bind(handleGetMinerBlockCount)).then();
 
-_browser.onMessageAddListener(handleGetUserFilterList).then();
+
+const handleGetUserFilterList = new HandleGetUserFilterList(
+	new GetUserFilterList(settingsRepository, logger),
+	logger
+);
+
+_browser.onMessageAddListener(handleGetUserFilterList.run.bind(handleGetUserFilterList)).then();
+
+
 _browser.onMessageAddListener(handleAddUserFilterListItem).then();
 _browser.onMessageAddListener(handleRemoveUserFilterListItem).then();
 _browser.onMessageAddListener(handleGetShowCount).then();
