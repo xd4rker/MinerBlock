@@ -4,8 +4,6 @@
 export class RemoveUserFiltersListItem {
     /** @type{SettingsRepository} */
     #settingsRepo;
-    /** @type{string} */
-    #uriPattern;
     /** @type{Logger} */
     #logger;
     /** @type{Browser} */
@@ -13,21 +11,20 @@ export class RemoveUserFiltersListItem {
     /** @type{UserFilters} */
     #userFilter;
 
-    constructor(settingsRepo, uriPattern, logger, browser, userFilter) {
+    constructor(settingsRepo, logger, browser, userFilter) {
         this.#settingsRepo = settingsRepo;
-        this.#uriPattern = uriPattern;
         this.#logger = logger;
         this.#browser = browser;
         this.#userFilter = userFilter;
     }
 
-    async run() {
+    async run(uriPattern) {
         const settings = await this.#settingsRepo.findOrCreate();
 
         await this.#userFilter.set(settings.userFilters);
         const ruleIdsToBeRemoved = await this.#userFilter.getRuleIds();
 
-        settings.removeUserFilterElement(this.#uriPattern);
+        settings.removeUserFilterElement(uriPattern);
 
         this.#settingsRepo.save(settings).then();
 
