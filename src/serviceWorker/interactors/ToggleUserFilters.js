@@ -4,8 +4,6 @@
 export class ToggleUserFilters {
     /** @type{SettingsRepository} */
     #settingsRepository;
-    /** @type{boolean} */
-    #toggle;
     /** @type{Browser} */
     #browser;
     /** @type{Logger} */
@@ -13,15 +11,18 @@ export class ToggleUserFilters {
     /** @type{UserFilters} */
     #userFilters;
 
-    constructor(settingsRepository, toggle, browser, logger, userFilters) {
+    constructor(settingsRepository, browser, logger, userFilters) {
         this.#settingsRepository = settingsRepository;
-        this.#toggle = toggle;
         this.#browser = browser;
         this.#logger = logger;
         this.#userFilters = userFilters;
     }
 
-    async run() {
+    /**
+     * @param {boolean} toggle
+     * @returns {Promise<void>}
+     */
+    async run(toggle) {
         const settings = await this.#settingsRepository.findOrCreate();
 
         this.#logger.debug(
@@ -35,7 +36,7 @@ export class ToggleUserFilters {
         this.#logger.debug(
             'Have toggle',
             `${this.constructor.name}.run`,
-            this.#toggle
+            toggle
         );
 
         this.#logger.debug(
@@ -44,14 +45,17 @@ export class ToggleUserFilters {
             this.#userFilters.filters
         );
 
-        settings.setUseUserFilters(this.#toggle);
+        settings.setUseUserFilters(toggle);
 
-        //TODO: make fail safe
-        this.#settingsRepository.save(settings).then();
+        const savedSettings = await this.#settingsRepository.save(settings);
+
+        if (savedSettings === false) {
+            return;
+        }
 
         const ruleIdsToBeRemoved = await this.#userFilters.getRuleIds();
 
-        if (this.#toggle === true && this.#userFilters.filters.length > 0) {
+        if (toggle === true && this.#userFilters.filters.length > 0) {
             const rulesToBeAdded = await this.#userFilters.getRules();
 
             this.#logger.debug(
@@ -69,7 +73,7 @@ export class ToggleUserFilters {
             return this.#browser.removeAndAddDynamicRule(ruleIdsToBeRemoved, rulesToBeAdded);
         }
 
-        if (this.#toggle === false && this.#userFilters.filters.length > 0) {
+        if (toggle === false && this.#userFilters.filters.length > 0) {
             this.#logger.debug(
                 'I remove dynamic rules',
                 `${this.constructor.name}.run`,
