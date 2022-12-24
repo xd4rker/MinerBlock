@@ -1,7 +1,6 @@
 import {AddReportBlock} from "../../interactors/AddReportBlock.js";
 import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {BuiltInFilters} from "../../entities/filters/BuiltInFilters.js";
-import {GetUseBuiltInFiltersStatus} from "../../interactors/GetUseBuiltInFiltersStatus.js";
 import {GetUseUserFilterStatus} from "../../interactors/GetUseUserFilterStatus.js";
 import {GetWhitelistStatus} from "../../interactors/GetWhitelistStatus.js";
 import {GetWhitelist} from "../../interactors/GetWhitelist.js";
@@ -22,23 +21,6 @@ import {SaveUserFilterList} from "../../interactors/SaveUserFilterList.js";
 
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
 const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
-
-export async function handleGetUseBuiltInFiltersStatus(message, sender, sendResponse) {
-    if (message.action === 'getUseBuiltInFiltersStatus') {
-        logger.debug(
-            'Got message getUseBuiltInFiltersStatus',
-            'serviceWorker.handleGetUseBuiltInFiltersStatus',
-            message
-        );
-
-        const getShowGetUseBuiltInFiltersStatus = new GetUseBuiltInFiltersStatus(settingsRepository, logger);
-        const useBuiltInFiltersStatus = await getShowGetUseBuiltInFiltersStatus.run();
-
-        sendResponse(useBuiltInFiltersStatus);
-
-        return true;
-    }
-}
 
 export async function handleGetUseUserFiltersStatus(message, sender, sendResponse) {
     if (message.action === 'getUseUserFiltersStatus') {
