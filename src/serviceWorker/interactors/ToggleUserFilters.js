@@ -45,10 +45,13 @@ export class ToggleUserFilters {
             this.#userFilters.filters
         );
 
-        settings.setUseUserFilters(this.#toggle);
+        settings.setUseUserFilters(toggle);
 
-        //TODO: make fail safe
-        this.#settingsRepository.save(settings).then();
+        const savedSettings = await this.#settingsRepository.save(settings);
+
+        if (savedSettings === false) {
+            return;
+        }
 
         const ruleIdsToBeRemoved = await this.#userFilters.getRuleIds();
 
