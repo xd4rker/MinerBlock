@@ -1,7 +1,6 @@
 import {AddReportBlock} from "../../interactors/AddReportBlock.js";
 import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {BuiltInFilters} from "../../entities/filters/BuiltInFilters.js";
-import {GetShowCount} from "../../interactors/GetShowCount.js";
 import {GetUseBuiltInFiltersStatus} from "../../interactors/GetUseBuiltInFiltersStatus.js";
 import {GetUseUserFilterStatus} from "../../interactors/GetUseUserFilterStatus.js";
 import {GetWhitelistStatus} from "../../interactors/GetWhitelistStatus.js";
@@ -26,23 +25,6 @@ import {SaveUserFilterList} from "../../interactors/SaveUserFilterList.js";
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
 const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
 
-
-export async function handleGetShowCount(message, sender, sendResponse) {
-    if (message.action === 'getShowCount') {
-        logger.debug(
-            'Got message getShowCount',
-            'serviceWorker.handleGetShowCount',
-            message
-        );
-
-        const getShowCount = new GetShowCount(settingsRepository, logger);
-        const showCount = await getShowCount.run();
-
-        sendResponse(showCount);
-
-        return true;
-    }
-}
 
 export async function handleToggleBuiltInFilters(message, sender, sendResponse) {
     if (message.action === 'toggleBuiltInFilters') {

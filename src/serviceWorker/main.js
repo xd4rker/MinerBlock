@@ -2,7 +2,6 @@
 
 import {
 	handleAddWhitelistItem, handleGetDomainWhitelistStatus,
-	handleGetShowCount,
 	handleGetUseBuiltInFiltersStatus,
 	handleGetUseUserFiltersStatus, handleGetWhitelist,
 	handleMbPause, handleMbStart,
@@ -23,6 +22,8 @@ import {GetRunStatus} from "./interactors/GetRunStatus.js";
 import {HandleGetMinerBlockCount} from "./events/handler/onMessage/HandleGetMinerBlockCount.js";
 import {HandleGetUserFilterList} from "./events/handler/onMessage/HandleGetUserFilterList.js";
 import {GetUserFilterList} from "./interactors/GetUserFilterList.js";
+import {HandleGetShowCount} from "./events/handler/onMessage/HandleGetShowCount.js";
+import {GetShowCount} from "./interactors/GetShowCount.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -57,7 +58,15 @@ const handleGetUserFilterList = new HandleGetUserFilterList(
 
 _browser.onMessageAddListener(handleGetUserFilterList.run.bind(handleGetUserFilterList)).then();
 
-_browser.onMessageAddListener(handleGetShowCount).then();
+
+const handleGetShowCount = new HandleGetShowCount(
+	new GetShowCount(settingsRepository, logger),
+	logger
+);
+
+_browser.onMessageAddListener(handleGetShowCount.run.bind(handleGetShowCount)).then();
+
+
 _browser.onMessageAddListener(handleToggleBuiltInFilters).then();
 _browser.onMessageAddListener(handleGetUseBuiltInFiltersStatus).then();
 _browser.onMessageAddListener(handleResetSettings).then();
