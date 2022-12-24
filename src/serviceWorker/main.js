@@ -7,7 +7,7 @@ import {
 	handleMbPause, handleMbStart,
 	handleRemoveWhitelistItem, handleReportBlock,
 	handleResetSettings, handleSetShowCount,
-	handleToggleBuiltInFilters, handleToggleUserFilters, handleSaveWhitelist, handleSaveUserFilterList
+	handleToggleUserFilters, handleSaveWhitelist, handleSaveUserFilterList
 } from "./events/handler/onMessage.js";
 import {setup} from "./events/handler/onInstalled.js";
 import {injectMinerBlocker} from "./events/handler/tabs/onUpdated.js";
@@ -24,6 +24,9 @@ import {HandleGetUserFilterList} from "./events/handler/onMessage/HandleGetUserF
 import {GetUserFilterList} from "./interactors/GetUserFilterList.js";
 import {HandleGetShowCount} from "./events/handler/onMessage/HandleGetShowCount.js";
 import {GetShowCount} from "./interactors/GetShowCount.js";
+import {ToggleBuiltInFilters} from "./interactors/ToggleBuiltInFilters.js";
+import {BuiltInFilters} from "./entities/filters/BuiltInFilters.js";
+import {HandleToggleBuiltInFilters} from "./events/handler/onMessage/HandleToggleBuiltInFilters.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -67,7 +70,19 @@ const handleGetShowCount = new HandleGetShowCount(
 _browser.onMessageAddListener(handleGetShowCount.run.bind(handleGetShowCount)).then();
 
 
-_browser.onMessageAddListener(handleToggleBuiltInFilters).then();
+const handleToggleBuiltInFilters = new HandleToggleBuiltInFilters(
+	new ToggleBuiltInFilters(
+		settingsRepository,
+		_browser,
+		logger,
+		new BuiltInFilters(undefined, logger, _browser)
+	),
+	logger
+);
+
+_browser.onMessageAddListener(handleToggleBuiltInFilters.run.bind(handleToggleBuiltInFilters)).then();
+
+
 _browser.onMessageAddListener(handleGetUseBuiltInFiltersStatus).then();
 _browser.onMessageAddListener(handleResetSettings).then();
 _browser.onMessageAddListener(handleMbPause).then();
