@@ -4,8 +4,6 @@
 export class ToggleUserFilters {
     /** @type{SettingsRepository} */
     #settingsRepository;
-    /** @type{boolean} */
-    #toggle;
     /** @type{Browser} */
     #browser;
     /** @type{Logger} */
@@ -13,15 +11,18 @@ export class ToggleUserFilters {
     /** @type{UserFilters} */
     #userFilters;
 
-    constructor(settingsRepository, toggle, browser, logger, userFilters) {
+    constructor(settingsRepository, browser, logger, userFilters) {
         this.#settingsRepository = settingsRepository;
-        this.#toggle = toggle;
         this.#browser = browser;
         this.#logger = logger;
         this.#userFilters = userFilters;
     }
 
-    async run() {
+    /**
+     * @param {boolean} toggle
+     * @returns {Promise<void>}
+     */
+    async run(toggle) {
         const settings = await this.#settingsRepository.findOrCreate();
 
         this.#logger.debug(
