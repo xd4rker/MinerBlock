@@ -41,6 +41,8 @@ const initBrowser = new InitBrowser(new SetIcon(
 _browser.onInstalledAddListener(() => setup(initSettings, initBrowser)).then();
 
 
+// onMessage #1
+
 const handleGetRunStatus = new HandleGetRunStatus(
 	new GetRunStatus(settingsRepository, logger),
 	logger
@@ -48,6 +50,8 @@ const handleGetRunStatus = new HandleGetRunStatus(
 
 _browser.onMessageAddListener(handleGetRunStatus.run.bind(handleGetRunStatus)).then();
 
+
+// onMessage #2
 
 const handleGetMinerBlockCount = new HandleGetMinerBlockCount(
 	statisticsRepository,
@@ -57,6 +61,8 @@ const handleGetMinerBlockCount = new HandleGetMinerBlockCount(
 _browser.onMessageAddListener(handleGetMinerBlockCount.run.bind(handleGetMinerBlockCount)).then();
 
 
+// onMessage #3
+
 const handleGetUserFilterList = new HandleGetUserFilterList(
 	new GetUserFilterList(settingsRepository, logger),
 	logger
@@ -65,6 +71,8 @@ const handleGetUserFilterList = new HandleGetUserFilterList(
 _browser.onMessageAddListener(handleGetUserFilterList.run.bind(handleGetUserFilterList)).then();
 
 
+// onMessage #4
+
 const handleGetShowCount = new HandleGetShowCount(
 	new GetShowCount(settingsRepository, logger),
 	logger
@@ -72,6 +80,8 @@ const handleGetShowCount = new HandleGetShowCount(
 
 _browser.onMessageAddListener(handleGetShowCount.run.bind(handleGetShowCount)).then();
 
+
+// onMessage #5
 
 const handleToggleBuiltInFilters = new HandleToggleBuiltInFilters(
 	new ToggleBuiltInFilters(
