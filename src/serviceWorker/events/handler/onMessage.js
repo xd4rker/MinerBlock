@@ -36,7 +36,6 @@ export async function handleToggleBuiltInFilters(message, sender, sendResponse) 
 
         const activateBuiltInFilters = new ToggleBuiltInFilters(
             settingsRepository,
-            message.use,
             _browser,
             logger,
             new BuiltInFilters(undefined, logger, _browser)
