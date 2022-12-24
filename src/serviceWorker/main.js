@@ -7,7 +7,7 @@ import {
 	handleMbPause, handleMbStart,
 	handleRemoveWhitelistItem, handleReportBlock,
 	handleResetSettings, handleSetShowCount,
-	handleToggleUserFilters, handleSaveWhitelist, handleSaveUserFilterList
+	handleSaveWhitelist, handleSaveUserFilterList
 } from "./events/handler/onMessage.js";
 import {setup} from "./events/handler/onInstalled.js";
 import {injectMinerBlocker} from "./events/handler/tabs/onUpdated.js";
@@ -27,6 +27,9 @@ import {GetShowCount} from "./interactors/GetShowCount.js";
 import {ToggleBuiltInFilters} from "./interactors/ToggleBuiltInFilters.js";
 import {BuiltInFilters} from "./entities/filters/BuiltInFilters.js";
 import {HandleToggleBuiltInFilters} from "./events/handler/onMessage/HandleToggleBuiltInFilters.js";
+import {HandleToggleUserFilters} from "./events/handler/onMessage/HandleToggleUserFilters.js";
+import {ToggleUserFilters} from "./interactors/ToggleUserFilters.js";
+import {UserFilters} from "./entities/filters/UserFilters.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -82,6 +85,20 @@ const handleToggleBuiltInFilters = new HandleToggleBuiltInFilters(
 
 _browser.onMessageAddListener(handleToggleBuiltInFilters.run.bind(handleToggleBuiltInFilters)).then();
 
+// onMessage #6
+
+const handleToggleUserFilters = new HandleToggleUserFilters(
+	new ToggleUserFilters(
+		settingsRepository,
+		_browser,
+		logger,
+		new UserFilters(undefined, logger, new BuiltInFilters(undefined, logger, _browser))
+	),
+	logger
+);
+
+_browser.onMessageAddListener(handleToggleUserFilters.run.bind(handleToggleUserFilters)).then();
+
 
 _browser.onMessageAddListener(handleGetUseBuiltInFiltersStatus).then();
 _browser.onMessageAddListener(handleResetSettings).then();
@@ -93,7 +110,6 @@ _browser.onMessageAddListener(handleRemoveWhitelistItem).then();
 _browser.onMessageAddListener(handleGetWhitelist).then();
 _browser.onMessageAddListener(handleGetDomainWhitelistStatus).then();
 _browser.onMessageAddListener(handleSetShowCount).then();
-_browser.onMessageAddListener(handleToggleUserFilters).then();
 _browser.onMessageAddListener(handleGetUseUserFiltersStatus).then();
 _browser.onMessageAddListener(handleReportBlock).then();
 _browser.onMessageAddListener(handleSaveUserFilterList).then();
