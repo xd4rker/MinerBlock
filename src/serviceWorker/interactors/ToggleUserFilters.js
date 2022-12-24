@@ -36,7 +36,7 @@ export class ToggleUserFilters {
         this.#logger.debug(
             'Have toggle',
             `${this.constructor.name}.run`,
-            this.#toggle
+            toggle
         );
 
         this.#logger.debug(
@@ -52,7 +52,7 @@ export class ToggleUserFilters {
 
         const ruleIdsToBeRemoved = await this.#userFilters.getRuleIds();
 
-        if (this.#toggle === true && this.#userFilters.filters.length > 0) {
+        if (toggle === true && this.#userFilters.filters.length > 0) {
             const rulesToBeAdded = await this.#userFilters.getRules();
 
             this.#logger.debug(
@@ -70,7 +70,7 @@ export class ToggleUserFilters {
             return this.#browser.removeAndAddDynamicRule(ruleIdsToBeRemoved, rulesToBeAdded);
         }
 
-        if (this.#toggle === false && this.#userFilters.filters.length > 0) {
+        if (toggle === false && this.#userFilters.filters.length > 0) {
             this.#logger.debug(
                 'I remove dynamic rules',
                 `${this.constructor.name}.run`,
