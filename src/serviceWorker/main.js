@@ -2,7 +2,6 @@
 
 import {
 	handleAddWhitelistItem, handleGetDomainWhitelistStatus,
-	handleGetUseBuiltInFiltersStatus,
 	handleGetUseUserFiltersStatus, handleGetWhitelist,
 	handleMbPause, handleMbStart,
 	handleRemoveWhitelistItem, handleReportBlock,
@@ -30,6 +29,8 @@ import {HandleToggleBuiltInFilters} from "./events/handler/onMessage/HandleToggl
 import {HandleToggleUserFilters} from "./events/handler/onMessage/HandleToggleUserFilters.js";
 import {ToggleUserFilters} from "./interactors/ToggleUserFilters.js";
 import {UserFilters} from "./entities/filters/UserFilters.js";
+import {HandleGetUseBuiltInFilterStatus} from "./events/handler/onMessage/HandleGetUseBuiltInFilterStatus.js";
+import {GetUseBuiltInFiltersStatus} from "./interactors/GetUseBuiltInFiltersStatus.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -110,7 +111,16 @@ const handleToggleUserFilters = new HandleToggleUserFilters(
 _browser.onMessageAddListener(handleToggleUserFilters.run.bind(handleToggleUserFilters)).then();
 
 
-_browser.onMessageAddListener(handleGetUseBuiltInFiltersStatus).then();
+// onMessage #7
+
+const handleGetUseBuiltInFilterStatus = new HandleGetUseBuiltInFilterStatus(
+	new GetUseBuiltInFiltersStatus(settingsRepository, logger),
+	logger
+);
+
+_browser.onMessageAddListener(handleGetUseBuiltInFilterStatus.run.bind(handleGetUseBuiltInFilterStatus)).then();
+
+
 _browser.onMessageAddListener(handleResetSettings).then();
 _browser.onMessageAddListener(handleMbPause).then();
 _browser.onMessageAddListener(handleMbStart).then();
