@@ -14,7 +14,6 @@ import {RemoveFiltersInBrowser} from "../../interactors/RemoveFiltersInBrowser.j
 import {SaveWhitelist} from "../../interactors/SaveWhitelist.js";
 import {SetIcon} from "../../interactors/SetIcon.js";
 import {SetShowCount} from "../../interactors/SetShowCount.js";
-import {ToggleBuiltInFilters} from "../../interactors/ToggleBuiltInFilters.js";
 import {ToggleUserFilters} from "../../interactors/ToggleUserFilters.js";
 import {UserFilters} from "../../entities/filters/UserFilters.js";
 import {Visuals} from "../../entities/Visuals.js";
@@ -25,28 +24,6 @@ import {SaveUserFilterList} from "../../interactors/SaveUserFilterList.js";
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
 const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
 
-
-export async function handleToggleBuiltInFilters(message, sender, sendResponse) {
-    if (message.action === 'toggleBuiltInFilters' && message.use !== undefined) {
-        logger.debug(
-            'Got message toggleBuiltInFilters',
-            'serviceWorker.handleToggleBuiltInFilters',
-            message
-        );
-
-        const toggleBuiltInFilters = new ToggleBuiltInFilters(
-            settingsRepository,
-            _browser,
-            logger,
-            new BuiltInFilters(undefined, logger, _browser)
-        );
-        const toggledBuiltInFilters = await toggleBuiltInFilters.run(message.use);
-
-        sendResponse(toggledBuiltInFilters);
-
-        return true;
-    }
-}
 
 export async function handleToggleUserFilters(message, sender, sendResponse) {
     if (message.action === 'toggleUserFilters') {
