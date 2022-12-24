@@ -41,7 +41,7 @@ export async function handleToggleBuiltInFilters(message, sender, sendResponse) 
             logger,
             new BuiltInFilters(undefined, logger, _browser)
         );
-        await activateBuiltInFilters.run();
+        await activateBuiltInFilters.run(message.use);
 
         sendResponse(null);
 
