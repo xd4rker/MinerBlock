@@ -27,23 +27,22 @@ const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
 
 
 export async function handleToggleBuiltInFilters(message, sender, sendResponse) {
-    if (message.action === 'toggleBuiltInFilters') {
+    if (message.action === 'toggleBuiltInFilters' && message.use !== undefined) {
         logger.debug(
             'Got message toggleBuiltInFilters',
             'serviceWorker.handleToggleBuiltInFilters',
             message
         );
 
-        const activateBuiltInFilters = new ToggleBuiltInFilters(
+        const toggleBuiltInFilters = new ToggleBuiltInFilters(
             settingsRepository,
-            message.use,
             _browser,
             logger,
             new BuiltInFilters(undefined, logger, _browser)
         );
-        await activateBuiltInFilters.run();
+        const toggledBuiltInFilters = await toggleBuiltInFilters.run(message.use);
 
-        sendResponse(null);
+        sendResponse(toggledBuiltInFilters);
 
         return true;
     }

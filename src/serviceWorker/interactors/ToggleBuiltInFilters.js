@@ -4,8 +4,6 @@
 export class ToggleBuiltInFilters {
     /** @type{SettingsRepository} */
     #settingsRepository;
-    /** @type{boolean} */
-    #toggle;
     /** @type{Browser} */
     #browser;
     /** @type{Logger} */
@@ -13,15 +11,14 @@ export class ToggleBuiltInFilters {
     /** @type{BuiltInFilters} */
     #builtInFilters;
 
-    constructor(settingsRepository, toggle, browser, logger, builtInFilters) {
+    constructor(settingsRepository, browser, logger, builtInFilters) {
         this.#settingsRepository = settingsRepository;
-        this.#toggle = toggle;
         this.#browser = browser;
         this.#logger = logger;
         this.#builtInFilters = builtInFilters;
     }
 
-    async run() {
+    async run(toggle) {
         const settings = await this.#settingsRepository.findOrCreate();
 
         await this.#builtInFilters.set();
@@ -29,7 +26,7 @@ export class ToggleBuiltInFilters {
         this.#logger.debug(
             'Have toggle',
             'ToggleBuiltInFilters.run',
-            this.#toggle
+            toggle
         );
 
         this.#logger.debug(
@@ -38,14 +35,17 @@ export class ToggleBuiltInFilters {
             this.#builtInFilters.filters
         );
 
-        settings.setUseBuiltInFilters(this.#toggle);
+        settings.setUseBuiltInFilters(toggle);
 
-        //TODO: make fail safe
-        this.#settingsRepository.save(settings).then();
+        const settingsSaved = await this.#settingsRepository.save(settings);
+
+        if (settingsSaved === false) {
+            return;
+        }
 
         const ruleIdsToBeRemoved = this.#builtInFilters.getRuleIds();
 
-        if (this.#toggle === true && this.#builtInFilters.filters.length > 0) {
+        if (toggle === true && this.#builtInFilters.filters.length > 0) {
             const rulesToBeAdded = this.#builtInFilters.getRules();
 
             this.#logger.debug(
@@ -63,7 +63,7 @@ export class ToggleBuiltInFilters {
             return this.#browser.removeAndAddDynamicRule(ruleIdsToBeRemoved, rulesToBeAdded);
         }
 
-        if (this.#toggle === false && this.#builtInFilters.filters.length > 0) {
+        if (toggle === false && this.#builtInFilters.filters.length > 0) {
             this.#logger.debug(
                 'I remove dynamic rules',
                 'ToggleBuiltInFilters.run',
