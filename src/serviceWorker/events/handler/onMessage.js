@@ -34,13 +34,13 @@ export async function handleToggleBuiltInFilters(message, sender, sendResponse) 
             message
         );
 
-        const activateBuiltInFilters = new ToggleBuiltInFilters(
+        const toggleBuiltInFilters = new ToggleBuiltInFilters(
             settingsRepository,
             _browser,
             logger,
             new BuiltInFilters(undefined, logger, _browser)
         );
-        await activateBuiltInFilters.run(message.use);
+        const toggledBuiltInFilters = await toggleBuiltInFilters.run(message.use);
 
         sendResponse(null);
 
