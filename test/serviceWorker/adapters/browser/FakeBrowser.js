@@ -36,6 +36,14 @@ export class FakeBrowser {
     }
 
     /**
+     * @param {number[]} ruleIdsToBeRemoved
+     * @returns {Promise<void>}
+     */
+    async removeDynamicRules(ruleIdsToBeRemoved) {
+
+    }
+
+    /**
      * @param {string} path
      * @returns {string}
      */
