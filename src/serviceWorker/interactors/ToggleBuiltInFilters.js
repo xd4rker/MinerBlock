@@ -26,7 +26,7 @@ export class ToggleBuiltInFilters {
         this.#logger.debug(
             'Have toggle',
             'ToggleBuiltInFilters.run',
-            this.#toggle
+            toggle
         );
 
         this.#logger.debug(
