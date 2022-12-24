@@ -37,8 +37,11 @@ export class ToggleBuiltInFilters {
 
         settings.setUseBuiltInFilters(toggle);
 
-        //TODO: make fail safe
-        this.#settingsRepository.save(settings).then();
+        const settingsSaved = await this.#settingsRepository.save(settings);
+
+        if (settingsSaved === false) {
+            return;
+        }
 
         const ruleIdsToBeRemoved = this.#builtInFilters.getRuleIds();
 
