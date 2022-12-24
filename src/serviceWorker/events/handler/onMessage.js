@@ -26,7 +26,7 @@ const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
 
 
 export async function handleToggleUserFilters(message, sender, sendResponse) {
-    if (message.action === 'toggleUserFilters') {
+    if (message.action === 'toggleUserFilters' && message.use !== undefined) {
         logger.debug(
             'Got message toggleUserFilters',
             'serviceWorker.handleToggleUserFilters',
