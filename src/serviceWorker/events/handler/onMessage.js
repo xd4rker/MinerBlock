@@ -42,7 +42,7 @@ export async function handleToggleBuiltInFilters(message, sender, sendResponse) 
         );
         const toggledBuiltInFilters = await toggleBuiltInFilters.run(message.use);
 
-        sendResponse(null);
+        sendResponse(toggledBuiltInFilters);
 
         return true;
     }
