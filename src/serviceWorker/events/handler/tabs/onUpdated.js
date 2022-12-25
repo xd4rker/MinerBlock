@@ -26,15 +26,22 @@ export async function injectMinerBlocker(tabId, changeInfo, tab) {
             '/contentScripts/pageInjection/main.js',
         ];
 
+        const getRunStatus = new GetRunStatus(settingsRepository, logger)
+        const status = await getRunStatus.run();
+
+        const getWhitelistStatus = new GetWhitelistStatus(
+            new GetWhitelist(settingsRepository, logger),
+            logger
+        );
+        const whitelisted = getWhitelistStatus.run(Domain.getDomain(tab.url));
+
+        if (status === false || whitelisted === true) {
+            return;
+        }
+
         const injectMinerBlocker = new InjectScriptFiles(
             _browser,
-            new GetRunStatus(settingsRepository, logger),
             logger,
-            new GetWhitelistStatus(
-                Domain.getDomain(tab.url),
-                new GetWhitelist(settingsRepository, logger),
-                logger
-            )
         );
         injectMinerBlocker.run(
             tabId,
