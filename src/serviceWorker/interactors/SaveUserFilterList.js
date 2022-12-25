@@ -41,7 +41,7 @@ export class SaveUserFilterList {
         }
 
         if (settings.useUserFilters === false) {
-            return false;
+            return;
         }
 
         await this.#userFilter.set(settings.userFilters);
