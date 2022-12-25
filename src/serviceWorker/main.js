@@ -2,7 +2,6 @@
 
 import {
 	handleAddWhitelistItem,
-	handleGetWhitelist,
 	handleMbPause, handleMbStart,
 	handleRemoveWhitelistItem,
 	handleResetSettings,
@@ -41,6 +40,7 @@ import {SetShowCount} from "./interactors/SetShowCount.js";
 import {HandleGetDomainWhitelistStatus} from "./events/handler/onMessage/HandleGetDomainWhitelistStatus.js";
 import {GetWhitelistStatus} from "./interactors/GetWhitelistStatus.js";
 import {GetWhitelist} from "./interactors/GetWhitelist.js";
+import {HandleGetWhitelist} from "./events/handler/onMessage/HandleGetWhitelist.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -187,13 +187,22 @@ const handleGetDomainWhitelistStatus = new HandleGetDomainWhitelistStatus(
 _browser.onMessageAddListener(handleGetDomainWhitelistStatus.run.bind(handleGetDomainWhitelistStatus)).then();
 
 
+// onMessage #12
+
+const handleGetWhitelist = new HandleGetWhitelist(
+	new GetWhitelist(settingsRepository, logger),
+	logger
+);
+
+_browser.onMessageAddListener(handleGetWhitelist.run.bind(handleGetWhitelist)).then();
+
+
 _browser.onMessageAddListener(handleResetSettings).then();
 _browser.onMessageAddListener(handleMbPause).then();
 _browser.onMessageAddListener(handleMbStart).then();
 _browser.onMessageAddListener(handleAddWhitelistItem).then();
 _browser.onMessageAddListener(handleSaveWhitelist).then();
 _browser.onMessageAddListener(handleRemoveWhitelistItem).then();
-_browser.onMessageAddListener(handleGetWhitelist).then();
 
 _browser.onMessageAddListener(handleSaveUserFilterList).then();
 _browser.onMessageAddListener(function () {

@@ -1,6 +1,5 @@
 import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {BuiltInFilters} from "../../entities/filters/BuiltInFilters.js";
-import {GetWhitelist} from "../../interactors/GetWhitelist.js";
 import {InitBrowser} from "../../interactors/init/InitBrowser.js";
 import {InitSettings} from "../../interactors/init/InitSettings.js";
 import {MbPause} from "../../interactors/MbPause.js";
@@ -177,24 +176,6 @@ export async function handleSaveUserFilterList(message, sender, sendResponse) {
         await saveUserFilterList.run();
 
         sendResponse('finished');
-
-        return true;
-    }
-}
-
-export async function handleGetWhitelist(message, sender, sendResponse) {
-    if (message.action === 'getWhitelist') {
-        logger.debug(
-            'Received action getWhitelist',
-            'serviceWorker.handleGetWhitelist',
-            message
-        );
-
-        const getWhitelist = new GetWhitelist(settingsRepository, logger);
-
-        const whitelist = await getWhitelist.run();
-
-        sendResponse(whitelist);
 
         return true;
     }
