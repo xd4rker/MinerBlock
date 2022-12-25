@@ -9,7 +9,6 @@ import {MbStart} from "../../interactors/MbStart.js";
 import {RemoveFiltersInBrowser} from "../../interactors/RemoveFiltersInBrowser.js";
 import {SaveWhitelist} from "../../interactors/SaveWhitelist.js";
 import {SetIcon} from "../../interactors/SetIcon.js";
-import {SetShowCount} from "../../interactors/SetShowCount.js";
 import {UserFilters} from "../../entities/filters/UserFilters.js";
 import {Visuals} from "../../entities/Visuals.js";
 import {_browser, logger, settingsRepository} from "../../config.js";
@@ -218,26 +217,6 @@ export async function handleGetDomainWhitelistStatus(message, sender, sendRespon
 
         const status = await getDomainWhitelistStatus.run();
         sendResponse(status);
-
-        return true;
-    }
-}
-
-export async function handleSetShowCount(message, sender, sendResponse) {
-    if (message.action === 'setShowCount' && message.showCount !== undefined) {
-        logger.debug(
-            'Got message setShowCount',
-            'serviceWorker.handleSetShowCount',
-            message
-        );
-
-        const setShowCount = new SetShowCount(
-            settingsRepository,
-            logger
-        );
-        await setShowCount.run(message.showCount);
-
-        sendResponse(true);
 
         return true;
     }

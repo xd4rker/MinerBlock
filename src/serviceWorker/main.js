@@ -5,7 +5,7 @@ import {
 	handleGetWhitelist,
 	handleMbPause, handleMbStart,
 	handleRemoveWhitelistItem,
-	handleResetSettings, handleSetShowCount,
+	handleResetSettings,
 	handleSaveWhitelist, handleSaveUserFilterList
 } from "./events/handler/onMessage.js";
 import {setup} from "./events/handler/onInstalled.js";
@@ -36,6 +36,8 @@ import {GetUseUserFilterStatus} from "./interactors/GetUseUserFilterStatus.js";
 import {HandleAddReport} from "./events/handler/onMessage/HandleAddReport.js";
 import {AddReportBlock} from "./interactors/AddReportBlock.js";
 import {HighlightBadge} from "./interactors/HighlightBadge.js";
+import {HandleSetShowCount} from "./events/handler/onMessage/HandleSetShowCount.js";
+import {SetShowCount} from "./interactors/SetShowCount.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -156,6 +158,19 @@ const handleAddReport = new HandleAddReport(
 _browser.onMessageAddListener(handleAddReport.run.bind(handleAddReport)).then();
 
 
+// onMessage #10
+
+const handleSetShowCount = new HandleSetShowCount(
+	new SetShowCount(
+		settingsRepository,
+		logger
+	),
+	logger
+);
+
+_browser.onMessageAddListener(handleSetShowCount.run.bind(handleSetShowCount)).then();
+
+
 _browser.onMessageAddListener(handleResetSettings).then();
 _browser.onMessageAddListener(handleMbPause).then();
 _browser.onMessageAddListener(handleMbStart).then();
@@ -164,8 +179,6 @@ _browser.onMessageAddListener(handleSaveWhitelist).then();
 _browser.onMessageAddListener(handleRemoveWhitelistItem).then();
 _browser.onMessageAddListener(handleGetWhitelist).then();
 _browser.onMessageAddListener(handleGetDomainWhitelistStatus).then();
-_browser.onMessageAddListener(handleSetShowCount).then();
-
 
 _browser.onMessageAddListener(handleSaveUserFilterList).then();
 _browser.onMessageAddListener(function () {
