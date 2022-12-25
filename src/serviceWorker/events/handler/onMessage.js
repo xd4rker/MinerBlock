@@ -1,9 +1,7 @@
-import {AddReportBlock} from "../../interactors/AddReportBlock.js";
 import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {BuiltInFilters} from "../../entities/filters/BuiltInFilters.js";
 import {GetWhitelistStatus} from "../../interactors/GetWhitelistStatus.js";
 import {GetWhitelist} from "../../interactors/GetWhitelist.js";
-import {HighlightBadge} from "../../interactors/HighlightBadge.js";
 import {InitBrowser} from "../../interactors/init/InitBrowser.js";
 import {InitSettings} from "../../interactors/init/InitSettings.js";
 import {MbPause} from "../../interactors/MbPause.js";
@@ -14,12 +12,11 @@ import {SetIcon} from "../../interactors/SetIcon.js";
 import {SetShowCount} from "../../interactors/SetShowCount.js";
 import {UserFilters} from "../../entities/filters/UserFilters.js";
 import {Visuals} from "../../entities/Visuals.js";
-import {_browser, logger, settingsRepository, statisticsRepository} from "../../config.js";
+import {_browser, logger, settingsRepository} from "../../config.js";
 import {RemoveWhitelistItem} from "../../interactors/RemoveWhitelistItem.js";
 import {SaveUserFilterList} from "../../interactors/SaveUserFilterList.js";
 
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
-const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
 
 export async function handleResetSettings(message, sender, sendResponse) {
     if (message.action === 'resetSettings') {
@@ -241,35 +238,6 @@ export async function handleSetShowCount(message, sender, sendResponse) {
         await setShowCount.run(message.showCount);
 
         sendResponse(true);
-
-        return true;
-    }
-}
-
-export async function handleReportBlock(message, sender, sendResponse) {
-    if (message.action === MESSAGE_ACTION_BLOCK_REPORT && message.report !== undefined) {
-        logger.debug(
-            'Got message blockReport',
-            'serviceWorker.onMessage.handleReportBlock',
-            message
-        );
-
-        sendResponse('received');
-
-        const addBlockReport = new AddReportBlock(
-            statisticsRepository,
-            logger
-        );
-        await addBlockReport.run(message.report);
-
-        const highlightBadge = new HighlightBadge(
-            _browser,
-            3000,
-            [200, 0, 0, 100],
-            '+1',
-            logger
-        );
-        await highlightBadge.run();
 
         return true;
     }
