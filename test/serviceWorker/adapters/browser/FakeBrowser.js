@@ -58,4 +58,20 @@ export class FakeBrowser {
     async fetch(path) {
         return new FakeFetchResponse(this.#data.fetch);
     }
+
+    /**
+     * @param {string|ColorArray} color
+     * @returns {Promise<void>}
+     */
+    async setBadgeBackgroundColor(color) {
+
+    }
+
+    /**
+     * @param {string} text
+     * @returns {Promise<void>}
+     */
+    async setBadgeText(text) {
+
+    }
 }
