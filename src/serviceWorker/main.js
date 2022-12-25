@@ -2,7 +2,7 @@
 
 import {
 	handleAddWhitelistItem, handleGetDomainWhitelistStatus,
-	handleGetUseUserFiltersStatus, handleGetWhitelist,
+	handleGetWhitelist,
 	handleMbPause, handleMbStart,
 	handleRemoveWhitelistItem, handleReportBlock,
 	handleResetSettings, handleSetShowCount,
@@ -31,6 +31,8 @@ import {ToggleUserFilters} from "./interactors/ToggleUserFilters.js";
 import {UserFilters} from "./entities/filters/UserFilters.js";
 import {HandleGetUseBuiltInFilterStatus} from "./events/handler/onMessage/HandleGetUseBuiltInFilterStatus.js";
 import {GetUseBuiltInFiltersStatus} from "./interactors/GetUseBuiltInFiltersStatus.js";
+import {HandleGetUseUserFilterStatus} from "./events/handler/onMessage/HandleGetUseUserFilterStatus.js";
+import {GetUseUserFilterStatus} from "./interactors/GetUseUserFilterStatus.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -121,6 +123,15 @@ const handleGetUseBuiltInFilterStatus = new HandleGetUseBuiltInFilterStatus(
 _browser.onMessageAddListener(handleGetUseBuiltInFilterStatus.run.bind(handleGetUseBuiltInFilterStatus)).then();
 
 
+// onMessage #8
+
+const handleGetUseUserFilterStatus = new HandleGetUseUserFilterStatus(
+	new GetUseUserFilterStatus(settingsRepository, logger),
+	logger
+);
+
+_browser.onMessageAddListener(handleGetUseUserFilterStatus.run.bind(handleGetUseUserFilterStatus)).then();
+
 _browser.onMessageAddListener(handleResetSettings).then();
 _browser.onMessageAddListener(handleMbPause).then();
 _browser.onMessageAddListener(handleMbStart).then();
@@ -130,7 +141,7 @@ _browser.onMessageAddListener(handleRemoveWhitelistItem).then();
 _browser.onMessageAddListener(handleGetWhitelist).then();
 _browser.onMessageAddListener(handleGetDomainWhitelistStatus).then();
 _browser.onMessageAddListener(handleSetShowCount).then();
-_browser.onMessageAddListener(handleGetUseUserFiltersStatus).then();
+
 _browser.onMessageAddListener(handleReportBlock).then();
 _browser.onMessageAddListener(handleSaveUserFilterList).then();
 _browser.onMessageAddListener(function () {
