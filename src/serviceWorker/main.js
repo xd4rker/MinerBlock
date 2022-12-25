@@ -4,7 +4,7 @@ import {
 	handleAddWhitelistItem, handleGetDomainWhitelistStatus,
 	handleGetWhitelist,
 	handleMbPause, handleMbStart,
-	handleRemoveWhitelistItem, handleReportBlock,
+	handleRemoveWhitelistItem,
 	handleResetSettings, handleSetShowCount,
 	handleSaveWhitelist, handleSaveUserFilterList
 } from "./events/handler/onMessage.js";
@@ -33,6 +33,9 @@ import {HandleGetUseBuiltInFilterStatus} from "./events/handler/onMessage/Handle
 import {GetUseBuiltInFiltersStatus} from "./interactors/GetUseBuiltInFiltersStatus.js";
 import {HandleGetUseUserFilterStatus} from "./events/handler/onMessage/HandleGetUseUserFilterStatus.js";
 import {GetUseUserFilterStatus} from "./interactors/GetUseUserFilterStatus.js";
+import {HandleAddReport} from "./events/handler/onMessage/HandleAddReport.js";
+import {AddReportBlock} from "./interactors/AddReportBlock.js";
+import {HighlightBadge} from "./interactors/HighlightBadge.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -132,6 +135,27 @@ const handleGetUseUserFilterStatus = new HandleGetUseUserFilterStatus(
 
 _browser.onMessageAddListener(handleGetUseUserFilterStatus.run.bind(handleGetUseUserFilterStatus)).then();
 
+
+// onMessage #9
+
+const handleAddReport = new HandleAddReport(
+	new AddReportBlock(
+		statisticsRepository,
+		logger
+	),
+	new HighlightBadge(
+		_browser,
+		3000,
+		[200, 0, 0, 100],
+		'+1',
+		logger
+	),
+	logger
+);
+
+_browser.onMessageAddListener(handleAddReport.run.bind(handleAddReport)).then();
+
+
 _browser.onMessageAddListener(handleResetSettings).then();
 _browser.onMessageAddListener(handleMbPause).then();
 _browser.onMessageAddListener(handleMbStart).then();
@@ -142,7 +166,7 @@ _browser.onMessageAddListener(handleGetWhitelist).then();
 _browser.onMessageAddListener(handleGetDomainWhitelistStatus).then();
 _browser.onMessageAddListener(handleSetShowCount).then();
 
-_browser.onMessageAddListener(handleReportBlock).then();
+
 _browser.onMessageAddListener(handleSaveUserFilterList).then();
 _browser.onMessageAddListener(function () {
 	return true;
