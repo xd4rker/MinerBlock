@@ -32,7 +32,7 @@ export class SaveUserFilterList {
 
         //TODO: calc diff and only reload specific tabs
 
-        settings.userFilters = this.#uriPattern;
+        settings.userFilters = uriPattern;
 
         this.#settingsRepo.save(settings).then();
 
