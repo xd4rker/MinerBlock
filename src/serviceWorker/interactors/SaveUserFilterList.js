@@ -34,7 +34,11 @@ export class SaveUserFilterList {
 
         settings.userFilters = uriPattern;
 
-        this.#settingsRepo.save(settings).then();
+        const settingsSaved = this.#settingsRepo.save(settings).then();
+
+        if (settingsSaved === false) {
+           return false;
+        }
 
         if (settings.useUserFilters === false) {
             return false;
