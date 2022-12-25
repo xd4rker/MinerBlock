@@ -19,12 +19,11 @@ it('checks if domain whitelisted', async () => {
     const settingsRepository = new SettingsRepository(storage, logger);
 
     const getWhitelistStatus = new GetWhitelistStatus(
-        domain,
         new GetWhitelist(settingsRepository, logger),
         logger
     );
 
-    const isWhitelisted = await getWhitelistStatus.run();
+    const isWhitelisted = await getWhitelistStatus.run(domain);
 
     assert.equal(isWhitelisted, true);
 });

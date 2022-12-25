@@ -1,6 +1,5 @@
 import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {BuiltInFilters} from "../../entities/filters/BuiltInFilters.js";
-import {GetWhitelistStatus} from "../../interactors/GetWhitelistStatus.js";
 import {GetWhitelist} from "../../interactors/GetWhitelist.js";
 import {InitBrowser} from "../../interactors/init/InitBrowser.js";
 import {InitSettings} from "../../interactors/init/InitSettings.js";
@@ -196,27 +195,6 @@ export async function handleGetWhitelist(message, sender, sendResponse) {
         const whitelist = await getWhitelist.run();
 
         sendResponse(whitelist);
-
-        return true;
-    }
-}
-
-export async function handleGetDomainWhitelistStatus(message, sender, sendResponse) {
-    if (message.action === 'getDomainWhitelistStatus' && message.domain !== undefined) {
-        logger.debug(
-            'Received action mb getWhitelistStatus',
-            'serviceWorker.handleGetDomainWhitelistStatus',
-            message
-        );
-
-        const getDomainWhitelistStatus = new GetWhitelistStatus(
-            message.domain,
-            new GetWhitelist(settingsRepository, logger),
-            logger
-        );
-
-        const status = await getDomainWhitelistStatus.run();
-        sendResponse(status);
 
         return true;
     }
