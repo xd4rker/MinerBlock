@@ -4,18 +4,12 @@
 export class InjectScriptFiles {
     /** @type{Browser} */
     #browser;
-    /** @type{GetRunStatus} */
-    #getRunStatus;
     /** @type{Logger}  */
     #logger;
-    /** @type{GetWhitelistStatus} */
-    #getWhitelistStatus;
 
-    constructor(browser, getRunStatus, logger, getWhitelistStatus) {
+    constructor(browser, logger) {
         this.#browser = browser;
-        this.#getRunStatus = getRunStatus;
         this.#logger = logger;
-        this.#getWhitelistStatus = getWhitelistStatus;
     }
 
     /**
@@ -25,13 +19,6 @@ export class InjectScriptFiles {
      * @returns {Promise<InjectionResult[]|void>}
      */
     async run(tabId, files, world) {
-        const status = await this.#getRunStatus.run()
-        const whitelisted = await this.#getWhitelistStatus.run();
-
-        if (status === false || whitelisted === true) {
-            return;
-        }
-
         this.#logger.debug('Attempt script execution', 'InjectMinerBlocker.run');
 
         //TODO: inject minerblocker to all frames?
