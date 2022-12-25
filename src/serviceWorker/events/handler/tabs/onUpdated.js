@@ -26,7 +26,7 @@ export async function injectMinerBlocker(tabId, changeInfo, tab) {
             '/contentScripts/pageInjection/main.js',
         ];
 
-        const getRunStatus = new GetRunStatus(settingsRepository, logger)
+        const getRunStatus = new GetRunStatus(settingsRepository, logger);
         const status = await getRunStatus.run();
 
         const getWhitelistStatus = new GetWhitelistStatus(
