@@ -4,8 +4,6 @@
 export class SaveUserFilterList {
     /** @type{SettingsRepository} */
     #settingsRepo;
-    /** @type{string} */
-    #uriPattern;
     /** @type{UserFilters} */
     #userFilter;
     /** @type{Logger} */
@@ -13,15 +11,18 @@ export class SaveUserFilterList {
     /** @type{Browser} */
     #browser;
 
-    constructor(settingsRepo, uriPattern, userFilter, logger, browser) {
+    constructor(settingsRepo, userFilter, logger, browser) {
         this.#settingsRepo = settingsRepo;
-        this.#uriPattern = uriPattern;
         this.#userFilter = userFilter;
         this.#logger = logger;
         this.#browser = browser;
     }
 
-    async run() {
+    /**
+     * @param {string[]} uriPattern
+     * @returns {Promise<void|boolean>}
+     */
+    async run(uriPattern) {
         const settings = await this.#settingsRepo.findOrCreate();
 
         this.#logger.debug('Got settings', 'SaveUserFilterList.run', settings);

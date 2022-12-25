@@ -159,7 +159,7 @@ export async function handleSaveWhitelist(message, sender, sendResponse) {
 }
 
 export async function handleSaveUserFilterList(message, sender, sendResponse) {
-    if (message.action === 'saveUserFilterList') {
+    if (message.action === 'saveUserFilterList' && message.uriPattern !== undefined) {
         logger.debug(
             'Got message saveUserFilterList',
             'serviceWorker.handleSaveUserFilterList',
@@ -168,12 +168,11 @@ export async function handleSaveUserFilterList(message, sender, sendResponse) {
 
         const saveUserFilterList = new SaveUserFilterList(
             settingsRepository,
-            message.uriPattern,
             new UserFilters(undefined, logger, new BuiltInFilters(undefined, logger, _browser)),
             logger,
             _browser
         );
-        await saveUserFilterList.run();
+        await saveUserFilterList.run(message.uriPattern);
 
         sendResponse('finished');
 
