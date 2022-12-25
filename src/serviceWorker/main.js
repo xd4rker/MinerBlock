@@ -179,8 +179,6 @@ _browser.onMessageAddListener(handleSaveWhitelist).then();
 _browser.onMessageAddListener(handleRemoveWhitelistItem).then();
 _browser.onMessageAddListener(handleGetWhitelist).then();
 _browser.onMessageAddListener(handleGetDomainWhitelistStatus).then();
-_browser.onMessageAddListener(handleSetShowCount).then();
-
 
 _browser.onMessageAddListener(handleSaveUserFilterList).then();
 _browser.onMessageAddListener(function () {
