@@ -1,7 +1,6 @@
 import {AddReportBlock} from "../../interactors/AddReportBlock.js";
 import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {BuiltInFilters} from "../../entities/filters/BuiltInFilters.js";
-import {GetUseUserFilterStatus} from "../../interactors/GetUseUserFilterStatus.js";
 import {GetWhitelistStatus} from "../../interactors/GetWhitelistStatus.js";
 import {GetWhitelist} from "../../interactors/GetWhitelist.js";
 import {HighlightBadge} from "../../interactors/HighlightBadge.js";
@@ -21,24 +20,6 @@ import {SaveUserFilterList} from "../../interactors/SaveUserFilterList.js";
 
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
 const MESSAGE_ACTION_BLOCK_REPORT = 'blockReport';
-
-export async function handleGetUseUserFiltersStatus(message, sender, sendResponse) {
-    if (message.action === 'getUseUserFiltersStatus') {
-        logger.debug(
-            'Got message getUseUserFiltersStatus',
-            'serviceWorker.handleGetUseUserFiltersStatus',
-            message
-        );
-
-        const getUseUserFilterStatus = new GetUseUserFilterStatus(settingsRepository, logger);
-        const useUserFilterStatus = await getUseUserFilterStatus.run();
-
-        sendResponse(useUserFilterStatus);
-
-        return true;
-    }
-}
-
 
 export async function handleResetSettings(message, sender, sendResponse) {
     if (message.action === 'resetSettings') {
