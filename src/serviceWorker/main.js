@@ -225,9 +225,9 @@ _browser.onMessageAddListener(handleSaveUserFilterList.run.bind(handleSaveUserFi
 // onMessage #14
 
 const handleSaveWhitelist = new HandleSaveWhitelist(
-	new SaveWhitelist(settingsRepository, logger),
-	_browser,
-	logger
+	new SaveWhitelist(context.settingsRepository, context.logger),
+	context.browser,
+	context.logger
 );
 
 _browser.onMessageAddListener(handleSaveWhitelist.run.bind(handleSaveWhitelist)).then();
