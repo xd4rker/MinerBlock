@@ -7,8 +7,14 @@ import {RemoveFiltersInBrowser} from "../../interactors/RemoveFiltersInBrowser.j
 import {SaveWhitelist} from "../../interactors/SaveWhitelist.js";
 import {SetIcon} from "../../interactors/SetIcon.js";
 import {Visuals} from "../../entities/Visuals.js";
-import {_browser, logger, settingsRepository} from "../../config.js";
 import {RemoveWhitelistItem} from "../../interactors/RemoveWhitelistItem.js";
+import {ContextLoader} from "../../ContextLoader.js";
+
+const context = ContextLoader.getInstance();
+//TODO: remove tmp assignment
+const settingsRepository = context.settingsRepository;
+const logger = context.logger;
+const _browser = context.browser;
 
 const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
 

@@ -12,7 +12,6 @@ import {injectMinerBlocker} from "./events/handler/tabs/onUpdated.js";
 import {InitSettings} from "./interactors/init/InitSettings.js";
 import {InitBrowser} from "./interactors/init/InitBrowser.js";
 import {SetIcon} from "./interactors/SetIcon.js";
-import {_browser, settingsRepository, logger, statisticsRepository} from "./config.js";
 import {Visuals} from "./entities/Visuals.js";
 import {RemoveFiltersInBrowser} from "./interactors/RemoveFiltersInBrowser.js";
 import {HandleGetRunStatus} from "./events/handler/onMessage/HandleGetRunStatus.js";
@@ -43,6 +42,14 @@ import {GetWhitelist} from "./interactors/GetWhitelist.js";
 import {HandleGetWhitelist} from "./events/handler/onMessage/HandleGetWhitelist.js";
 import {HandleSaveUserFilterList} from "./events/handler/onMessage/HandleSaveUserFilterList.js";
 import {SaveUserFilterList} from "./interactors/SaveUserFilterList.js";
+import {ContextLoader} from "./ContextLoader.js";
+
+const context = ContextLoader.getInstance();
+//TODO: remove tmp assignment
+const settingsRepository = context.settingsRepository;
+const statisticsRepository = context.statisticsRepository;
+const logger = context.logger;
+const _browser = context.browser;
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
