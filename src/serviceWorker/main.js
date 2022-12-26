@@ -1,7 +1,6 @@
 'use strict';
 
 import {
-	handleAddWhitelistItem,
 	handleMbPause, handleMbStart,
 	handleResetSettings
 } from "./events/handler/onMessage.js";
@@ -45,6 +44,8 @@ import {HandleSaveWhitelist} from "./events/handler/onMessage/HandleSaveWhitelis
 import {SaveWhitelist} from "./interactors/SaveWhitelist.js";
 import {HandleRemoveWhitelistItem} from "./events/handler/onMessage/HandleRemoveWhitelistItem.js";
 import {RemoveWhitelistItem} from "./interactors/RemoveWhitelistItem.js";
+import {HandleAddWhitelistItem} from "./events/handler/onMessage/HandleAddWhitelistItem.js";
+import {AddWhitelistItem} from "./interactors/AddWhitelistItem.js";
 
 const context = ContextLoader.getInstance();
 //TODO: remove tmp assignment
@@ -244,6 +245,16 @@ const handleRemoveWhitelistItem = new HandleRemoveWhitelistItem(
 
 _browser.onMessageAddListener(handleRemoveWhitelistItem.run.bind(handleRemoveWhitelistItem)).then();
 
+
+// onMessage #16
+
+const handleAddWhitelistItem = new HandleAddWhitelistItem(
+	new AddWhitelistItem(context.settingsRepository, context.logger),
+	context.browser,
+	context.logger
+);
+
+_browser.onMessageAddListener(handleAddWhitelistItem.run.bind(handleAddWhitelistItem)).then();
 
 _browser.onMessageAddListener(handleResetSettings).then();
 _browser.onMessageAddListener(handleMbPause).then();

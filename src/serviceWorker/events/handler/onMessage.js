@@ -1,4 +1,3 @@
-import {AddWhitelistItem} from "../../interactors/AddWhitelistItem.js";
 import {InitBrowser} from "../../interactors/init/InitBrowser.js";
 import {InitSettings} from "../../interactors/init/InitSettings.js";
 import {MbPause} from "../../interactors/MbPause.js";
@@ -14,7 +13,6 @@ const settingsRepository = context.settingsRepository;
 const logger = context.logger;
 const _browser = context.browser;
 
-const MESSAGE_EVENT_WHITE_LIST_UPDATED = 'whiteListUpdated';
 
 export async function handleResetSettings(message, sender, sendResponse) {
     if (message.action === 'resetSettings') {
@@ -76,32 +74,6 @@ export async function handleMbStart(message, sender, sendResponse) {
         await mbStart.run();
 
         sendResponse(true);
-
-        return true;
-    }
-}
-
-export async function handleAddWhitelistItem(message, sender, sendResponse) {
-    if (message.action === 'addWhitelistItem' && message.domain !== undefined) {
-        logger.debug(
-            'Received action addWhitelistItem',
-            'serviceWorker.handleAddWhitelistItem',
-            message
-        );
-
-        const addWhitelistItem = new AddWhitelistItem(settingsRepository, logger);
-        await addWhitelistItem.run(message.domain);
-
-        sendResponse(true);
-
-        _browser.sendMessage({event: MESSAGE_EVENT_WHITE_LIST_UPDATED})
-            .then()
-            .catch((err) => {
-                logger.debug(
-                    err.message,
-                    'serviceWorker.onMessage.handleAddWhitelistItem'
-                );
-            });
 
         return true;
     }
