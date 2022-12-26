@@ -23,12 +23,13 @@ export async function injectMinerBlocker(tabId, changeInfo, tab) {
             '/common/adapters/Logger.js',
             '/common/adapters/browser/Chrome.js',
             '/common/adapters/browser/Browser.js',
-            '/common/config.js',
             '/contentScripts/pageInjection/entities/killers/Killer.js',
             '/contentScripts/pageInjection/entities/killers/CoinHive.js',
             '/contentScripts/pageInjection/entities/killers/Mineralt.js',
             '/contentScripts/pageInjection/entities/killers/Webminerpool.js',
             '/contentScripts/pageInjection/entities/Minerkill.js',
+            '/contentScripts/pageInjection/Context.js',
+            '/contentScripts/pageInjection/ContextLoader.js',
             '/contentScripts/pageInjection/main.js',
         ];
 

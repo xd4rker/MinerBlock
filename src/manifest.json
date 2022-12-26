@@ -15,7 +15,8 @@
 			"/common/adapters/Logger.js",
 			"/common/adapters/browser/Chrome.js",
 			"/common/adapters/browser/Browser.js",
-			"/common/config.js",
+			"/contentScripts/Context.js",
+			"/contentScripts/ContextLoader.js",
 			"/contentScripts/main.js"
 		],
 		"run_at": "document_idle"
