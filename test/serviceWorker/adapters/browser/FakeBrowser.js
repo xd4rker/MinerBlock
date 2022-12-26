@@ -9,7 +9,10 @@ export class FakeBrowser {
                 'result': null
             }]
         },
-        'fetch': '*://*/*cryptonight.wasm\n*://*/*deepMiner.js\n*://load.jsecoin.com/*\n*://*.coin-hive.com/lib*\n'
+        'fetch': '*://*/*cryptonight.wasm\n*://*/*deepMiner.js\n*://load.jsecoin.com/*\n*://*.coin-hive.com/lib*\n',
+        'sendMessage': {
+            'return': true
+        }
     };
 
     constructor(data = null) {
@@ -73,5 +76,13 @@ export class FakeBrowser {
      */
     async setBadgeText(text) {
 
+    }
+
+    /**
+     * @param {any} message
+     * @returns {Promise<any>}
+     */
+    async sendMessage(message) {
+        return this.#data['sendMessage']['return'];
     }
 }

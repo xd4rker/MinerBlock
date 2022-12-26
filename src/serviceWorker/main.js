@@ -4,8 +4,7 @@ import {
 	handleAddWhitelistItem,
 	handleMbPause, handleMbStart,
 	handleRemoveWhitelistItem,
-	handleResetSettings,
-	handleSaveWhitelist
+	handleResetSettings
 } from "./events/handler/onMessage.js";
 import {setup} from "./events/handler/onInstalled.js";
 import {injectMinerBlocker} from "./events/handler/tabs/onUpdated.js";
@@ -43,6 +42,8 @@ import {HandleGetWhitelist} from "./events/handler/onMessage/HandleGetWhitelist.
 import {HandleSaveUserFilterList} from "./events/handler/onMessage/HandleSaveUserFilterList.js";
 import {SaveUserFilterList} from "./interactors/SaveUserFilterList.js";
 import {ContextLoader} from "./ContextLoader.js";
+import {HandleSaveWhitelist} from "./events/handler/onMessage/HandleSaveWhitelist.js";
+import {SaveWhitelist} from "./interactors/SaveWhitelist.js";
 
 const context = ContextLoader.getInstance();
 //TODO: remove tmp assignment
@@ -221,14 +222,23 @@ const handleSaveUserFilterList = new HandleSaveUserFilterList(
 _browser.onMessageAddListener(handleSaveUserFilterList.run.bind(handleSaveUserFilterList)).then();
 
 
+// onMessage #14
+
+const handleSaveWhitelist = new HandleSaveWhitelist(
+	new SaveWhitelist(context.settingsRepository, context.logger),
+	context.browser,
+	context.logger
+);
+
+_browser.onMessageAddListener(handleSaveWhitelist.run.bind(handleSaveWhitelist)).then();
+
+
 _browser.onMessageAddListener(handleResetSettings).then();
 _browser.onMessageAddListener(handleMbPause).then();
 _browser.onMessageAddListener(handleMbStart).then();
 _browser.onMessageAddListener(handleAddWhitelistItem).then();
-_browser.onMessageAddListener(handleSaveWhitelist).then();
 _browser.onMessageAddListener(handleRemoveWhitelistItem).then();
 
-_browser.onMessageAddListener(handleSaveUserFilterList).then();
 _browser.onMessageAddListener(function () {
 	return true;
 }).then();
