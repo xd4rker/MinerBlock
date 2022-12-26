@@ -4,7 +4,6 @@ import {InitSettings} from "../../interactors/init/InitSettings.js";
 import {MbPause} from "../../interactors/MbPause.js";
 import {MbStart} from "../../interactors/MbStart.js";
 import {RemoveFiltersInBrowser} from "../../interactors/RemoveFiltersInBrowser.js";
-import {SaveWhitelist} from "../../interactors/SaveWhitelist.js";
 import {SetIcon} from "../../interactors/SetIcon.js";
 import {Visuals} from "../../entities/Visuals.js";
 import {RemoveWhitelistItem} from "../../interactors/RemoveWhitelistItem.js";
@@ -128,32 +127,6 @@ export async function handleRemoveWhitelistItem(message, sender, sendResponse) {
                 logger.debug(
                     err.message,
                     'serviceWorker.onMessage.handleAddWhitelistItem'
-                );
-            });
-
-        return true;
-    }
-}
-
-export async function handleSaveWhitelist(message, sender, sendResponse) {
-    if (message.action === 'saveWhitelist' && message.domains !== undefined) {
-        logger.debug(
-            'Got message saveWhitelist',
-            'serviceWorker.handleSaveWhitelist',
-            message
-        );
-
-        const saveWhitelist = new SaveWhitelist(settingsRepository, logger);
-        await saveWhitelist.run(message.domains);
-
-        sendResponse('finished');
-
-        _browser.sendMessage({event: MESSAGE_EVENT_WHITE_LIST_UPDATED})
-            .then()
-            .catch((err) => {
-                logger.debug(
-                    err.message,
-                    'serviceWorker.onMessage.handleSaveWhitelist'
                 );
             });
 
