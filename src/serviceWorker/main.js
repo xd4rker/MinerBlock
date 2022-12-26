@@ -5,7 +5,7 @@ import {
 	handleMbPause, handleMbStart,
 	handleRemoveWhitelistItem,
 	handleResetSettings,
-	handleSaveWhitelist, handleSaveUserFilterList
+	handleSaveWhitelist
 } from "./events/handler/onMessage.js";
 import {setup} from "./events/handler/onInstalled.js";
 import {injectMinerBlocker} from "./events/handler/tabs/onUpdated.js";
@@ -41,6 +41,8 @@ import {HandleGetDomainWhitelistStatus} from "./events/handler/onMessage/HandleG
 import {GetWhitelistStatus} from "./interactors/GetWhitelistStatus.js";
 import {GetWhitelist} from "./interactors/GetWhitelist.js";
 import {HandleGetWhitelist} from "./events/handler/onMessage/HandleGetWhitelist.js";
+import {HandleSaveUserFilterList} from "./events/handler/onMessage/HandleSaveUserFilterList.js";
+import {SaveUserFilterList} from "./interactors/SaveUserFilterList.js";
 
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
@@ -195,6 +197,21 @@ const handleGetWhitelist = new HandleGetWhitelist(
 );
 
 _browser.onMessageAddListener(handleGetWhitelist.run.bind(handleGetWhitelist)).then();
+
+
+// onMessage #13
+
+const handleSaveUserFilterList = new HandleSaveUserFilterList(
+	new SaveUserFilterList(
+		settingsRepository,
+		new UserFilters(undefined, logger, new BuiltInFilters(undefined, logger, _browser)),
+		logger,
+		_browser
+	),
+	logger
+);
+
+_browser.onMessageAddListener(handleSaveUserFilterList.run.bind(handleSaveUserFilterList)).then();
 
 
 _browser.onMessageAddListener(handleResetSettings).then();
