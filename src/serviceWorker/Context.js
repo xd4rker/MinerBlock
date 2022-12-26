@@ -25,7 +25,6 @@ export class Context {
         this.#statisticsRepository = new StatisticsRepository(this.#storage, this.#logger);
     }
 
-
     get browser() {
         return this.#browser;
     }
