@@ -22,10 +22,16 @@ export class InjectScriptFiles {
         this.#logger.debug('Attempt script execution', 'InjectMinerBlocker.run');
 
         //TODO: inject minerblocker to all frames?
-        const injectionResult = await this.#browser.executeScript(tabId, files, world);
+        //TODO: how to identify ERR_BLOCKED_BY_CLIENT page and not to try injecting
+        try {
+            const injectionResult = await this.#browser.executeScript(tabId, files, world);
 
-        this.#logger.debug('Attempted script execution', 'InjectMinerBlocker.run', injectionResult);
+            this.#logger.debug('Attempted script execution', 'InjectMinerBlocker.run', injectionResult);
 
-        return injectionResult;
+            return injectionResult;
+        }
+        catch (e) {
+            this.#logger.error('Error occurred while attempting to inject script', 'InjectMinerBlocker.run', e.toString());
+        }
     }
 }
