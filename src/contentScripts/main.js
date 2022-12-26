@@ -3,6 +3,12 @@
 
 const RUN_DELAY_IN_MILLISECONDS = 4000;
 
+const context = ContextLoader.getInstance();
+
+//TODO: remove tmp assignment
+const logger = context.logger;
+const _browser = context.browser;
+
 /**
  * Triggers scan of code injected into page and acts as a relay between service worker and that injected code.
  *
