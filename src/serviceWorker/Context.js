@@ -25,22 +25,37 @@ export class Context {
         this.#statisticsRepository = new StatisticsRepository(this.#storage, this.#logger);
     }
 
+    /**
+     * @returns {Browser}
+     */
     get browser() {
         return this.#browser;
     }
 
+    /**
+     * @returns {LocalStorage}
+     */
     get storage() {
         return this.#storage;
     }
 
+    /**
+     * @returns {Logger}
+     */
     get logger() {
         return this.#logger;
     }
 
+    /**
+     * @returns {SettingsRepository}
+     */
     get settingsRepository() {
         return this.#settingsRepository;
     }
 
+    /**
+     * @returns {StatisticsRepository}
+     */
     get statisticsRepository() {
         return this.#statisticsRepository;
     }
