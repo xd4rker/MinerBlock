@@ -1,9 +1,15 @@
 import {GetRunStatus} from "../../../interactors/GetRunStatus.js";
 import {InjectScriptFiles} from "../../../interactors/InjectScriptFiles.js";
-import {_browser, logger, settingsRepository} from "../../../config.js";
 import {GetWhitelistStatus} from "../../../interactors/GetWhitelistStatus.js";
 import {GetWhitelist} from "../../../interactors/GetWhitelist.js";
 import {Domain} from "../../../entities/Domain.js";
+import {ContextLoader} from "../../../ContextLoader.js";
+
+const context = ContextLoader.getInstance();
+//TODO: remove tmp assignment
+const settingsRepository = context.settingsRepository;
+const logger = context.logger;
+const _browser = context.browser;
 
 /**
  * @param {number} tabId
