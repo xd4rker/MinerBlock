@@ -6,7 +6,6 @@ import {MbStart} from "../../interactors/MbStart.js";
 import {RemoveFiltersInBrowser} from "../../interactors/RemoveFiltersInBrowser.js";
 import {SetIcon} from "../../interactors/SetIcon.js";
 import {Visuals} from "../../entities/Visuals.js";
-import {RemoveWhitelistItem} from "../../interactors/RemoveWhitelistItem.js";
 import {ContextLoader} from "../../ContextLoader.js";
 
 const context = ContextLoader.getInstance();
@@ -94,32 +93,6 @@ export async function handleAddWhitelistItem(message, sender, sendResponse) {
         await addWhitelistItem.run(message.domain);
 
         sendResponse(true);
-
-        _browser.sendMessage({event: MESSAGE_EVENT_WHITE_LIST_UPDATED})
-            .then()
-            .catch((err) => {
-                logger.debug(
-                    err.message,
-                    'serviceWorker.onMessage.handleAddWhitelistItem'
-                );
-            });
-
-        return true;
-    }
-}
-
-export async function handleRemoveWhitelistItem(message, sender, sendResponse) {
-    if (message.action === 'removeWhitelistItem' && message.domain !== undefined) {
-        logger.debug(
-            'Got message removeWhitelistItem',
-            'serviceWorker.handleRemoveWhitelistItem',
-            message
-        );
-
-        const removeWhitelistItem = new RemoveWhitelistItem(settingsRepository, logger);
-        const removedWhitelistItem = await removeWhitelistItem.run(message.domain);
-
-        sendResponse(removedWhitelistItem);
 
         _browser.sendMessage({event: MESSAGE_EVENT_WHITE_LIST_UPDATED})
             .then()
