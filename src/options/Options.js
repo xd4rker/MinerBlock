@@ -127,10 +127,6 @@ class Options {
     initWhitelistElement() {
         const whitelistElement = document.getElementById(Options.ELEMENT_ID_WHITELIST);
 
-        if (this.#whitelist.length === 0) {
-            return;
-        }
-
         let textAreaText = "";
 
         this.#whitelist.forEach((element) => {
