@@ -1,7 +1,6 @@
 'use strict';
 
 import {
-	handleMbPause,
 	handleResetSettings
 } from "./events/handler/onMessage.js";
 import {setup} from "./events/handler/onInstalled.js";
@@ -48,6 +47,8 @@ import {HandleAddWhitelistItem} from "./events/handler/onMessage/HandleAddWhitel
 import {AddWhitelistItem} from "./interactors/AddWhitelistItem.js";
 import {HandleMbStart} from "./events/handler/onMessage/HandleMbStart.js";
 import {MbStart} from "./interactors/MbStart.js";
+import {HandleMbPause} from "./events/handler/onMessage/HandleMbPause.js";
+import {MbPause} from "./interactors/MbPause.js";
 
 const context = ContextLoader.getInstance();
 //TODO: remove tmp assignment
@@ -284,8 +285,23 @@ const handleMbStart = new HandleMbStart(
 _browser.onMessageAddListener(handleMbStart.run.bind(handleMbStart)).then();
 
 
+// onMessage #18
+
+const mbPause = new MbPause(
+	context.settingsRepository,
+	setIcon,
+	context.logger
+);
+
+const handleMbPause = new HandleMbPause(
+	mbPause,
+	context.logger
+);
+
+_browser.onMessageAddListener(handleMbPause.run.bind(handleMbPause)).then();
+
+
 _browser.onMessageAddListener(handleResetSettings).then();
-_browser.onMessageAddListener(handleMbPause).then();
 
 _browser.onMessageAddListener(function () {
 	return true;
