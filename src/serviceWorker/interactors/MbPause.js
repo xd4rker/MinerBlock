@@ -18,15 +18,23 @@ export class MbPause {
     }
 
     /**
-     * @returns {Promise<void>}
+     * @returns {Promise<void|boolean>}
      */
     async run() {
         const settings = await this.#settingsRepo.findOrCreate();
 
         settings.setRunStatus(false);
-        await this.#settingsRepo.save(settings);
+
         this.#logger.debug('Save settings', 'MbPause.run', settings);
 
-        await this.#setIcon.run();
+        const settingsSaved = await this.#settingsRepo.save(settings);
+
+        this.#logger.debug('Saved settings', 'MbPause.run', settingsSaved);
+
+        if (settingsSaved === false) {
+           return false;
+        }
+
+        return await this.#setIcon.run();
     }
 }
