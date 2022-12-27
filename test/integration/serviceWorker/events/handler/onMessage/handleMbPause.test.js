@@ -5,12 +5,11 @@ import {Logger} from "../../../../../../src/serviceWorker/adapters/Logger.js";
 import {SetIcon} from "../../../../../../src/serviceWorker/interactors/SetIcon.js";
 import {Visuals} from "../../../../../../src/serviceWorker/entities/Visuals.js";
 import {FakeBrowser} from "../../../../../serviceWorker/adapters/browser/FakeBrowser.js";
-import {HandleMbStart} from "../../../../../../src/serviceWorker/events/handler/onMessage/HandleMbStart.js";
 import {MbPause} from "../../../../../../src/serviceWorker/interactors/MbPause.js";
 import {HandleMbPause} from "../../../../../../src/serviceWorker/events/handler/onMessage/HandleMbPause.js";
 
-describe('serviceWorker.events.handler.onMessage.HandleMbStart', () => {
-    it('starts miner block', async () => {
+describe('serviceWorker.events.handler.onMessage.HandleMbPause', () => {
+    it('pauses miner block', async () => {
         const logger = new Logger();
         const storage = new FakeLocalStorage();
         const settingsRepository = new SettingsRepository(storage, logger);
@@ -36,7 +35,7 @@ describe('serviceWorker.events.handler.onMessage.HandleMbStart', () => {
         let receivedResponse = null;
 
         const handledMbPause = await handleMbPause.run(
-            {action: HandleMbStart.EVENT_NAME},
+            {action: HandleMbPause.EVENT_NAME},
             'theSender',
             (response) => {
                 receivedResponse = response;
