@@ -21,8 +21,8 @@ export class SetIcon {
     async run() {
         const runStatus = await this.#settingsRepository.getRunStatus();
 
-        const iconPath = runStatus ? this.#visuals.constructor.startIconPath : this.#visuals.constructor.pauseIconPath;
+        const iconPath = runStatus === true ? this.#visuals.constructor.startIconPath : this.#visuals.constructor.pauseIconPath;
 
-        await this.#browser.setIcon(iconPath);
+        return await this.#browser.setIcon(iconPath);
     }
 }

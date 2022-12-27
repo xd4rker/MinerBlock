@@ -1,4 +1,5 @@
 import {FakeFetchResponse} from "./FakeFetchResponse.js";
+import {faker} from "@faker-js/faker";
 
 export class FakeBrowser {
     #data = {
@@ -12,6 +13,17 @@ export class FakeBrowser {
         'fetch': '*://*/*cryptonight.wasm\n*://*/*deepMiner.js\n*://load.jsecoin.com/*\n*://*.coin-hive.com/lib*\n',
         'sendMessage': {
             'return': true
+        },
+        'getDynamicRules': {
+            'return':[{
+                "id": 1,
+                "priority": 1,
+                "action": {"type": "block"},
+                "condition": {
+                    "urlFilter": faker.internet.url(),
+                    "resourceTypes": ["main_frame"]
+                }
+            }]
         }
     };
 
@@ -84,5 +96,20 @@ export class FakeBrowser {
      */
     async sendMessage(message) {
         return this.#data['sendMessage']['return'];
+    }
+
+    /**
+     * @returns {Promise<chrome.declarativeNetRequest.Rule[]>}
+     */
+    async getDynamicRules() {
+        return this.#data['getDynamicRules']['return'];
+    }
+
+    /**
+     * @param {string|object} iconPath
+     * @returns {Promise<void>}
+     */
+    async setIcon(iconPath) {
+
     }
 }
