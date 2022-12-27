@@ -16,9 +16,9 @@ export class InitBrowser {
      * @returns {Promise<void>}
      */
     async run() {
-        const setIcon = this.#setIcon;
-        await setIcon.run();
-
-        await this.#removeFiltersInBrowser.run();
+        await Promise.all([
+            this.#setIcon.run(),
+            this.#removeFiltersInBrowser.run()
+        ]);
     }
 }
