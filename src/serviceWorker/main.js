@@ -57,6 +57,8 @@ const statisticsRepository = context.statisticsRepository;
 const logger = context.logger;
 const _browser = context.browser;
 
+//TODO: move class instantiations to context
+
 const initSettings = new InitSettings(settingsRepository);
 const initBrowser = new InitBrowser(new SetIcon(
 	settingsRepository,
