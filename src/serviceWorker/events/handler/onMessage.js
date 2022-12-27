@@ -1,8 +1,5 @@
-import {InitBrowser} from "../../interactors/init/InitBrowser.js";
 import {InitSettings} from "../../interactors/init/InitSettings.js";
 import {MbPause} from "../../interactors/MbPause.js";
-import {MbStart} from "../../interactors/MbStart.js";
-import {RemoveFiltersInBrowser} from "../../interactors/RemoveFiltersInBrowser.js";
 import {SetIcon} from "../../interactors/SetIcon.js";
 import {Visuals} from "../../entities/Visuals.js";
 import {ContextLoader} from "../../ContextLoader.js";
@@ -52,26 +49,6 @@ export async function handleMbPause(message, sender, sendResponse) {
         );
 
         await mbPause.run();
-
-        sendResponse(true);
-
-        return true;
-    }
-}
-
-export async function handleMbStart(message, sender, sendResponse) {
-    if (message.action === 'mbStart') {
-        const setIcon = new SetIcon(
-            settingsRepository,
-            _browser,
-            new Visuals()
-        );
-
-        const mbStart = new MbStart(
-            settingsRepository,
-            new InitBrowser(setIcon, new RemoveFiltersInBrowser(_browser))
-        );
-        await mbStart.run();
 
         sendResponse(true);
 
