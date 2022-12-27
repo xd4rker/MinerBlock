@@ -23,6 +23,6 @@ export class SetIcon {
 
         const iconPath = runStatus === true ? this.#visuals.constructor.startIconPath : this.#visuals.constructor.pauseIconPath;
 
-        await this.#browser.setIcon(iconPath);
+        return await this.#browser.setIcon(iconPath);
     }
 }
