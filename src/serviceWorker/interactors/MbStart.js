@@ -9,13 +9,20 @@ export class MbStart {
         this.#initBrowser = initBrowser;
     }
 
+    /**
+     * @returns {Promise<void|boolean>}
+     */
     async run() {
         const settings = await this.#settingsRepo.findOrCreate();
 
         settings.setRunStatus(true);
 
-        await this.#settingsRepo.save(settings);
+        const settingsSaved = await this.#settingsRepo.save(settings);
 
-        this.#initBrowser.run().then();
+        if (settingsSaved === false) {
+            return false;
+        }
+
+        return await this.#initBrowser.run();
     }
 }
