@@ -8,15 +8,13 @@ export class InitSettings {
         this.#repository = repository;
     }
 
+    /**
+     * @returns {Promise<void>}
+     */
     async run() {
         await this.#repository.clear();
-
-        const settings = await this.#repository.findOrCreate();
-
-        if (settings !== undefined) {
-            return;
-        }
-
         await this.#repository.save(new Settings());
+
+        //TODO: rename to reset, reset not only settings but everything associated with it, filters, icon, reload settings page if open
     }
 }
