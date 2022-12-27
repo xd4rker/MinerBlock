@@ -12,6 +12,9 @@ export class RemoveFiltersInBrowser {
         this.#browser = browser;
     }
 
+    /**
+     * @returns {Promise<void>}
+     */
     async run() {
         const dynamicRules = await this.#browser.getDynamicRules();
 
@@ -22,6 +25,6 @@ export class RemoveFiltersInBrowser {
             ruleIds.push(dynamicRule.id);
         });
 
-        this.#browser.removeDynamicRules(ruleIds).then();
+        return await this.#browser.removeDynamicRules(ruleIds);
     }
 }
