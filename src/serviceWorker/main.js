@@ -1,8 +1,5 @@
 'use strict';
 
-import {
-	handleResetSettings
-} from "./events/handler/onMessage.js";
 import {setup} from "./events/handler/onInstalled.js";
 import {injectMinerBlocker} from "./events/handler/tabs/onUpdated.js";
 import {InitSettings} from "./interactors/init/InitSettings.js";
@@ -49,6 +46,7 @@ import {HandleMbStart} from "./events/handler/onMessage/HandleMbStart.js";
 import {MbStart} from "./interactors/MbStart.js";
 import {HandleMbPause} from "./events/handler/onMessage/HandleMbPause.js";
 import {MbPause} from "./interactors/MbPause.js";
+import {HandleResetSettings} from "./events/handler/onMessage/HandleResetSettings.js";
 
 const context = ContextLoader.getInstance();
 //TODO: remove tmp assignment
@@ -303,7 +301,14 @@ const handleMbPause = new HandleMbPause(
 _browser.onMessageAddListener(handleMbPause.run.bind(handleMbPause)).then();
 
 
-_browser.onMessageAddListener(handleResetSettings).then();
+// onMessage #19
+
+const handleResetSettings = new HandleResetSettings(
+	new InitSettings(context.settingsRepository),
+	context.logger
+);
+
+_browser.onMessageAddListener(handleResetSettings.run.bind(handleResetSettings)).then();
 
 _browser.onMessageAddListener(function () {
 	return true;

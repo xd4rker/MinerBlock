@@ -40,7 +40,7 @@ export async function injectMinerBlocker(tabId, changeInfo, tab) {
             new GetWhitelist(settingsRepository, logger),
             logger
         );
-        const whitelisted = getWhitelistStatus.run(Domain.getDomain(tab.url));
+        const whitelisted = await getWhitelistStatus.run(Domain.getDomain(tab.url));
 
         if (status === false || whitelisted === true) {
             return;
