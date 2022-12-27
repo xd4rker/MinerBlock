@@ -104,4 +104,12 @@ export class FakeBrowser {
     async getDynamicRules() {
         return this.#data['getDynamicRules']['return'];
     }
+
+    /**
+     * @param {string|object} iconPath
+     * @returns {Promise<void>}
+     */
+    async setIcon(iconPath) {
+
+    }
 }
