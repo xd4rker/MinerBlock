@@ -46,14 +46,50 @@ export async function injectMinerBlocker(tabId, changeInfo, tab) {
             return;
         }
 
+        const frame = await context.browser.getFrame( tabId, 0);
+
+        if (
+            (
+                frame.documentId !== undefined &&
+                frame.documentId !== null
+            ) &&
+            context.documentsWithInjection.isInjectionExisting(frame.documentId))
+        {
+            context.logger.debug(
+                'Already injected into documentId',
+                'injectMinerBlocker',
+                frame.documentId
+            );
+
+            return;
+        }
+
+        context.logger.debug(
+            'Added documentId',
+            'injectMinerBlocker',
+            frame.documentId
+        );
+
         const injectMinerBlocker = new InjectScriptFiles(
             _browser,
             logger,
         );
-        injectMinerBlocker.run(
+
+        const injectionResults = await injectMinerBlocker.run(
             tabId,
             filePaths,
             'MAIN',
-        ).then();
+        );
+
+        injectionResults.forEach((injectionResult) => {
+            /** @var {InjectionResult} injectionResult */
+            context.documentsWithInjection.addDocumentId(injectionResult.documentId)
+        })
+
+        context.logger.debug(
+            'Documents with injection (last id not yet, but in a few)',
+            'injectMinerBlocker',
+            context.documentsWithInjection
+        );
     }
 }
