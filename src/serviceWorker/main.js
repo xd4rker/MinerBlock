@@ -314,3 +314,5 @@ _browser.onMessageAddListener(function () {
 	return true;
 }).then();
 _browser.tabsOnUpdatedAddListener(injectMinerBlocker).then();
+
+//TODO: remove documentIds when tab closed or tab reloaded
