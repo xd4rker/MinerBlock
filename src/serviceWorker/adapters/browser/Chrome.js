@@ -159,4 +159,18 @@ export class Chrome {
 
         return true;
     }
+
+    /**
+     * @param tabId
+     * @param frameId
+     * @returns {Promise<chrome.webNavigation.GetFrameResultDetails>}
+     *
+     * @see https://developer.chrome.com/docs/extensions/reference/webNavigation/#method-getFrame
+     */
+    async getFrame(tabId, frameId) {
+        return await chrome.webNavigation.getFrame({
+            tabId: tabId,
+            frameId: frameId
+        });
+    }
 }

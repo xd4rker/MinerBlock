@@ -149,4 +149,13 @@ export class Browser {
     async fetch(path) {
         return await fetch(path);
     }
+
+    /**
+     * @param tabId
+     * @param frameId
+     * @returns {Promise<GetFrameResultDetails>}
+     */
+    async getFrame(tabId, frameId) {
+        return await this.#browser.getFrame(tabId, frameId);
+    }
 }
