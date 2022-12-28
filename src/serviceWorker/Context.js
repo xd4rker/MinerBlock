@@ -4,6 +4,7 @@ import {SettingsRepository} from "./repositories/SettingsRepository.js";
 import {LocalStorage} from "./repositories/adapters/LocalStorage.js";
 import {StatisticsRepository} from "./repositories/StatisticsRepository.js";
 import {Chrome} from "./adapters/browser/Chrome.js";
+import {DocumentsWithInjection} from "./entities/DocumentsWithInjection.js";
 
 export class Context {
     /** @type {Browser} */
@@ -16,6 +17,8 @@ export class Context {
     #settingsRepository;
     /** @type {StatisticsRepository} */
     #statisticsRepository;
+    /** @type {DocumentsWithInjection} */
+    #documentsWithInjection;
 
     constructor() {
         this.#browser = new Browser(new Chrome());
@@ -23,6 +26,7 @@ export class Context {
         this.#logger = new Logger(Logger.LEVEL_DEBUG);
         this.#settingsRepository = new SettingsRepository(this.#storage, this.#logger);
         this.#statisticsRepository = new StatisticsRepository(this.#storage, this.#logger);
+        this.#documentsWithInjection = new DocumentsWithInjection();
     }
 
     /**
@@ -58,5 +62,12 @@ export class Context {
      */
     get statisticsRepository() {
         return this.#statisticsRepository;
+    }
+
+    /**
+     * @returns {DocumentsWithInjection}
+     */
+    get documentsWithInjection() {
+        return this.#documentsWithInjection;
     }
 }
