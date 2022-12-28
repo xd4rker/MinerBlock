@@ -35,7 +35,8 @@
 		"storage",
 		"tabs",
 		"declarativeNetRequest",
-		"scripting"
+		"scripting",
+		"webNavigation"
 	],
 	"host_permissions": [
 		"<all_urls>"
