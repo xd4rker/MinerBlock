@@ -35,8 +35,6 @@ export class RegisterMinerBlocker {
         const status = await this.#getRunStatus.run();
         const whitelist = await this.#getWhitelist.run();
 
-        console.log('adfasdfaf', status);
-
         if (status === false) {
             return;
         }
