@@ -5,10 +5,13 @@ export class HandleMbPause {
     #mbPause;
     /** @type {Logger} */
     #logger;
+    /** @type {ResetMinerBlockerRegistration} */
+    #resetMinerBlockerRegistration;
 
-    constructor(mbPause, logger) {
+    constructor(mbPause, resetMinerBlockerRegistration, logger) {
         this.#mbPause = mbPause;
         this.#logger = logger;
+        this.#resetMinerBlockerRegistration = resetMinerBlockerRegistration;
     }
 
     async run(message, sender, sendResponse) {
@@ -20,6 +23,12 @@ export class HandleMbPause {
             );
 
             const mbPaused = await this.#mbPause.run();
+
+            if (mbPaused === false) {
+                return false;
+            }
+
+            await this.#resetMinerBlockerRegistration.run();
 
             sendResponse(mbPaused);
 

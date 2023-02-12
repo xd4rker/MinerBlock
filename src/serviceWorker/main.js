@@ -1,7 +1,6 @@
 'use strict';
 
 import {setup} from "./events/handler/onInstalled.js";
-import {injectMinerBlocker} from "./events/handler/tabs/onUpdated.js";
 import {InitSettings} from "./interactors/init/InitSettings.js";
 import {InitBrowser} from "./interactors/init/InitBrowser.js";
 import {SetIcon} from "./interactors/SetIcon.js";
@@ -47,6 +46,9 @@ import {MbStart} from "./interactors/MbStart.js";
 import {HandleMbPause} from "./events/handler/onMessage/HandleMbPause.js";
 import {MbPause} from "./interactors/MbPause.js";
 import {HandleResetSettings} from "./events/handler/onMessage/HandleResetSettings.js";
+import {ResetMinerBlockerRegistration} from "./interactors/ResetMinerBlockerRegistration.js";
+import {RegisterMinerBlocker} from "./interactors/RegisterMinerBlocker.js";
+import {UnregisterMinerBlocker} from "./interactors/UnregisterMinerBlocker.js";
 
 const context = ContextLoader.getInstance();
 //TODO: remove tmp assignment
@@ -54,6 +56,25 @@ const settingsRepository = context.settingsRepository;
 const statisticsRepository = context.statisticsRepository;
 const logger = context.logger;
 const _browser = context.browser;
+const resetMinerBlockerRegistration = new ResetMinerBlockerRegistration(
+	new RegisterMinerBlocker(
+		new GetRunStatus(
+			context.settingsRepository,
+			context.logger
+		),
+		new GetWhitelist(
+			context.settingsRepository,
+			context.logger),
+		context.browser,
+		context.logger
+	),
+	new UnregisterMinerBlocker(
+		context.browser,
+		context.logger
+	),
+	context.browser,
+	context.logger
+);
 
 //TODO: move class instantiations to context
 
@@ -231,6 +252,7 @@ _browser.onMessageAddListener(handleSaveUserFilterList.run.bind(handleSaveUserFi
 
 const handleSaveWhitelist = new HandleSaveWhitelist(
 	new SaveWhitelist(context.settingsRepository, context.logger),
+	resetMinerBlockerRegistration,
 	context.browser,
 	context.logger
 );
@@ -253,6 +275,7 @@ _browser.onMessageAddListener(handleRemoveWhitelistItem.run.bind(handleRemoveWhi
 
 const handleAddWhitelistItem = new HandleAddWhitelistItem(
 	new AddWhitelistItem(context.settingsRepository, context.logger),
+	resetMinerBlockerRegistration,
 	context.browser,
 	context.logger
 );
@@ -279,6 +302,7 @@ const mbStart = new MbStart(
 
 const handleMbStart = new HandleMbStart(
 	mbStart,
+	resetMinerBlockerRegistration,
 	context.logger
 );
 
@@ -295,6 +319,7 @@ const mbPause = new MbPause(
 
 const handleMbPause = new HandleMbPause(
 	mbPause,
+	resetMinerBlockerRegistration,
 	context.logger
 );
 
@@ -313,4 +338,3 @@ _browser.onMessageAddListener(handleResetSettings.run.bind(handleResetSettings))
 _browser.onMessageAddListener(function () {
 	return true;
 }).then();
-_browser.tabsOnUpdatedAddListener(injectMinerBlocker).then();
