@@ -24,7 +24,7 @@ async function triggerStartScan() {
 
 	const status = await _browser.sendMessage({action: 'getRunStatus'});
 
-	logger.debug("Run", 'Minerblock', status);
+	logger.debug("Run", 'Dispatcher', status);
 
 	if (status === false) {
 		return;
@@ -38,7 +38,7 @@ async function triggerStartScan() {
 		return;
 	}
 
-	logger.debug("Request scan", 'Minerblock');
+	logger.debug("Request for scan action to be sent", 'Dispatcher');
 	window.postMessage({type: "CONTENT_SCRIPT", text: "startScan"}, "*");
 }
 
