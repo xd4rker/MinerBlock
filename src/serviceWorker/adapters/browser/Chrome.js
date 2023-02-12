@@ -21,6 +21,39 @@ export class Chrome {
     }
 
     /**
+     * @param {string} id
+     * @param {string[]} files
+     * @param {ExecutionWorld} world
+     * @param {string[]} excludeMatches
+     * @returns {Promise<void>}
+     *
+     * @see https://developer.chrome.com/docs/extensions/reference/scripting/#method-registerContentScripts
+     */
+    async registerContentScripts(id, files, world, excludeMatches)
+    {
+        return chrome.scripting.registerContentScripts([{
+            matches: ['http://*/*'],
+            excludeMatches: excludeMatches,
+            id: id,
+            js: files,
+            world: world,
+        }]);
+    }
+
+    /**
+     * @param {string[]} ids
+     * @returns {Promise<void>}
+     *
+     * @see https://developer.chrome.com/docs/extensions/reference/scripting/#method-unregisterContentScripts
+     */
+    async unregisterContentScripts(ids)
+    {
+        return chrome.scripting.unregisterContentScripts({
+            ids: ids,
+        });
+    }
+
+    /**
      * @param {string|ColorArray} color
      * @returns {Promise<void>}
      *
