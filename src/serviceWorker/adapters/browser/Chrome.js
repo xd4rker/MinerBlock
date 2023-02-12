@@ -32,7 +32,7 @@ export class Chrome {
     async registerContentScripts(id, files, world, excludeMatches)
     {
         return chrome.scripting.registerContentScripts([{
-            matches: ['http://*/*'],
+            matches: ['*://*/*'],
             excludeMatches: excludeMatches,
             id: id,
             js: files,
