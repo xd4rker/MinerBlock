@@ -112,4 +112,25 @@ export class FakeBrowser {
     async setIcon(iconPath) {
 
     }
+
+    /**
+     * @param {string} id
+     * @param {string[]} files
+     * @param {ExecutionWorld} world
+     * @param {string[]} excludeMatches
+     * @returns {Promise<void>}
+     */
+    async registerContentScripts(id, files, world, excludeMatches)
+    {
+
+    }
+
+    /**
+     * @param {string[]} ids
+     * @returns {Promise<void>}
+     */
+    async unregisterContentScripts(ids)
+    {
+
+    }
 }
