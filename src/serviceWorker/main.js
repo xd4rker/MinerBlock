@@ -264,6 +264,7 @@ _browser.onMessageAddListener(handleSaveWhitelist.run.bind(handleSaveWhitelist))
 
 const handleRemoveWhitelistItem = new HandleRemoveWhitelistItem(
 	new RemoveWhitelistItem(context.settingsRepository, context.logger),
+	resetMinerBlockerRegistration,
 	context.browser,
 	context.logger
 );
