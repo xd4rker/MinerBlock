@@ -1,4 +1,3 @@
 - remove inconsistent naming across project
-- interactors: do not use all variables as class attributes
 - adjust folder structure to match clean code architecture
 - set type of miner in statistics data set
