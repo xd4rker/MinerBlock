@@ -6,6 +6,13 @@ import {faker} from "@faker-js/faker";
 import {FakeBrowser} from "../../../../../serviceWorker/adapters/browser/FakeBrowser.js";
 import {HandleSaveWhitelist} from "../../../../../../src/serviceWorker/events/handler/onMessage/HandleSaveWhitelist.js";
 import {SaveWhitelist} from "../../../../../../src/serviceWorker/interactors/SaveWhitelist.js";
+import {
+    ResetMinerBlockerRegistration
+} from "../../../../../../src/serviceWorker/interactors/ResetMinerBlockerRegistration.js";
+import {RegisterMinerBlocker} from "../../../../../../src/serviceWorker/interactors/RegisterMinerBlocker.js";
+import {GetRunStatus} from "../../../../../../src/serviceWorker/interactors/GetRunStatus.js";
+import {GetWhitelist} from "../../../../../../src/serviceWorker/interactors/GetWhitelist.js";
+import {UnregisterMinerBlocker} from "../../../../../../src/serviceWorker/interactors/UnregisterMinerBlocker.js";
 
 describe('serviceWorker.events.handler.onMessage.HandleSaveWhitelist', () => {
     it('saves whitelist', async () => {
@@ -25,8 +32,30 @@ describe('serviceWorker.events.handler.onMessage.HandleSaveWhitelist', () => {
                 'return': undefined
         }});
 
+        const resetMinerBlockerRegistration = new ResetMinerBlockerRegistration(
+            new RegisterMinerBlocker(
+                new GetRunStatus(
+                    settingsRepository,
+                    logger
+                ),
+                new GetWhitelist(
+                    settingsRepository,
+                    logger
+                ),
+                browser,
+                logger
+            ),
+            new UnregisterMinerBlocker(
+                browser,
+                logger
+            ),
+            browser,
+            logger
+        );
+
         const handleSaveWhitelist = new HandleSaveWhitelist(
             new SaveWhitelist(settingsRepository, logger),
+            resetMinerBlockerRegistration,
             browser,
             logger
         );
