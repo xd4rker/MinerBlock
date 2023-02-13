@@ -39,15 +39,33 @@ export class RegisterMinerBlocker {
             return;
         }
 
+        const matchPattern = this.whiteListToMatchPattern(whitelist);
+
         this.#logger.debug('About to register minerBlock', 'RegisterMinerBlocker.run', {
-            'whitelist': whitelist
+            'whitelist': whitelist,
+            'matchPattern': matchPattern
         });
 
         await this.#browser.registerContentScripts(
             RegisterMinerBlocker.id,
             RegisterMinerBlocker.filePaths,
             RegisterMinerBlocker.world,
-            whitelist
+            matchPattern
         );
+    }
+
+    /**
+     * @param {string[]} whitelist
+     * @returns {string[]}
+     */
+    whiteListToMatchPattern(whitelist)
+    {
+        let matchPattern = [];
+
+        whitelist.forEach(function (domain) {
+            matchPattern.push(`*://${domain}/*`);
+        });
+
+        return matchPattern;
     }
 }
