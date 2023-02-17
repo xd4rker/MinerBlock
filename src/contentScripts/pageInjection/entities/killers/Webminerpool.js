@@ -1,4 +1,6 @@
 class WebminerpoolKiller extends Killer {
+    static TYPE = 'webMinerPool';
+
     isMiner(obj) {
         try {
             return obj &&

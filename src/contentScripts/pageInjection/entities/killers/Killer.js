@@ -11,7 +11,8 @@ class Killer {
             text: "blockReport",
             report: {
                 'url': window.location.href,
-                'time': Date.now()
+                'time': Date.now(),
+                'type': this.constructor.TYPE
             }
         }, "*");
     }
