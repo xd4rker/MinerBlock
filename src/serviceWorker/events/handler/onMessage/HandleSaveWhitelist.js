@@ -8,11 +8,14 @@ export class HandleSaveWhitelist {
     #browser;
     /** @type {Logger} */
     #logger;
+    /** @type {ResetMinerBlockerRegistration} */
+    #resetMinerBlockerRegistration;
 
-    constructor(saveWhitelist, browser, logger) {
+    constructor(saveWhitelist, resetMinerBlockerRegistration, browser, logger) {
         this.#saveWhitelist = saveWhitelist;
         this.#browser = browser;
         this.#logger = logger;
+        this.#resetMinerBlockerRegistration = resetMinerBlockerRegistration;
     }
 
     async run(message, sender, sendResponse) {
@@ -24,6 +27,12 @@ export class HandleSaveWhitelist {
             );
 
             const whitelistSaved = await this.#saveWhitelist.run(message.domains);
+
+            if (whitelistSaved === false) {
+                return false;
+            }
+
+            await this.#resetMinerBlockerRegistration.run();
 
             sendResponse(whitelistSaved);
 

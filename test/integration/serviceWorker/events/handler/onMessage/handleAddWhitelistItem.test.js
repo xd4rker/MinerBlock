@@ -8,6 +8,13 @@ import {
     HandleRemoveWhitelistItem
 } from "../../../../../../src/serviceWorker/events/handler/onMessage/HandleRemoveWhitelistItem.js";
 import {AddWhitelistItem} from "../../../../../../src/serviceWorker/interactors/AddWhitelistItem.js";
+import {
+    ResetMinerBlockerRegistration
+} from "../../../../../../src/serviceWorker/interactors/ResetMinerBlockerRegistration.js";
+import {RegisterMinerBlocker} from "../../../../../../src/serviceWorker/interactors/RegisterMinerBlocker.js";
+import {GetRunStatus} from "../../../../../../src/serviceWorker/interactors/GetRunStatus.js";
+import {GetWhitelist} from "../../../../../../src/serviceWorker/interactors/GetWhitelist.js";
+import {UnregisterMinerBlocker} from "../../../../../../src/serviceWorker/interactors/UnregisterMinerBlocker.js";
 
 describe('serviceWorker.events.handler.onMessage.HandleAddWhitelistItem', () => {
     it('adds white list item', async () => {
@@ -25,8 +32,30 @@ describe('serviceWorker.events.handler.onMessage.HandleAddWhitelistItem', () => 
                 'return': undefined
         }});
 
+        const resetMinerBlockerRegistration = new ResetMinerBlockerRegistration(
+            new RegisterMinerBlocker(
+                new GetRunStatus(
+                    settingsRepository,
+                    logger
+                ),
+                new GetWhitelist(
+                    settingsRepository,
+                    logger
+                ),
+                browser,
+                logger
+            ),
+            new UnregisterMinerBlocker(
+                browser,
+                logger
+            ),
+            browser,
+            logger
+        );
+
         const handleRemoveWhitelistItem = new HandleRemoveWhitelistItem(
             new AddWhitelistItem(settingsRepository, logger),
+            resetMinerBlockerRegistration,
             browser,
             logger
         );

@@ -5,15 +5,24 @@ export class HandleMbStart {
     #mbStart;
     /** @type {Logger} */
     #logger;
+    /** @type {ResetMinerBlockerRegistration} */
+    #resetMinerBlockerRegistration;
 
-    constructor(mbStart, logger) {
+    constructor(mbStart, resetMinerBlockerRegistration, logger) {
         this.#mbStart = mbStart;
         this.#logger = logger;
+        this.#resetMinerBlockerRegistration = resetMinerBlockerRegistration;
     }
 
     async run(message, sender, sendResponse) {
         if (message.action === HandleMbStart.EVENT_NAME) {
             const mbStartResult = await this.#mbStart.run();
+
+            if (mbStartResult === false) {
+                return false;
+            }
+
+            await this.#resetMinerBlockerRegistration.run();
 
             sendResponse(mbStartResult);
 

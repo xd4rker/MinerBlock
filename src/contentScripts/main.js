@@ -1,3 +1,14 @@
+/**
+ * Dispatcher
+ *
+ * Triggers scan of code injected into page and acts as a relay between service worker and that injected code.
+ *
+ * 1. Trigger start scan when content script loaded (isolated world)
+ * 		- send postMessage to page (content script in main world), injected code is listening for request and will be start scanning
+ * 2. Forwards block report to service worker
+ * 		- listens to postMessage from page (main world)
+ * 		- sendMessage to service worker
+ */
 
 'use strict';
 
@@ -9,22 +20,13 @@ const context = ContextLoader.getInstance();
 const logger = context.logger;
 const _browser = context.browser;
 
-/**
- * Triggers scan of code injected into page and acts as a relay between service worker and that injected code.
- *
- * 1. Trigger start scan when content script loaded
- * 		- send postMessage to page, injected code is listening for request and will be start scanning
- * 2. Forwards block report to service worker
- * 		- listens to postMessage from page
- * 		- sendMessage to service worker
- */
 
 async function triggerStartScan() {
 	await new Promise(resolve => setTimeout(resolve, RUN_DELAY_IN_MILLISECONDS));
 
 	const status = await _browser.sendMessage({action: 'getRunStatus'});
 
-	logger.debug("Run", 'Minerblock', status);
+	logger.debug("Run", 'Dispatcher', status);
 
 	if (status === false) {
 		return;
@@ -38,7 +40,7 @@ async function triggerStartScan() {
 		return;
 	}
 
-	logger.debug("Request scan", 'Minerblock');
+	logger.debug("Request for scan action to be sent", 'Dispatcher');
 	window.postMessage({type: "CONTENT_SCRIPT", text: "startScan"}, "*");
 }
 
