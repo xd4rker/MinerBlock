@@ -1,10 +1,4 @@
 class Killer {
-    static MINER_TYPES = [
-        'coinHive',
-        'minerAlt',
-        'webMinerPool'
-    ];
-
     reportBlock() {
         window.postMessage({
             type: "BLOCKER",
