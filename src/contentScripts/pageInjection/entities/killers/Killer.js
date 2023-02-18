@@ -1,17 +1,13 @@
 class Killer {
-    static MINER_TYPES = [
-        'coinHive',
-        'minerAlt',
-        'webMinerPool'
-    ];
-
+    static TYPE;
     reportBlock() {
         window.postMessage({
             type: "BLOCKER",
             text: "blockReport",
             report: {
                 'url': window.location.href,
-                'time': Date.now()
+                'time': Date.now(),
+                'type': this.constructor.TYPE
             }
         }, "*");
     }

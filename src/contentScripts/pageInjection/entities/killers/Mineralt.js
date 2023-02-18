@@ -1,4 +1,6 @@
 class MineraltKiller extends Killer {
+    static TYPE = 'minerAlt';
+
     isMiner(obj) {
         try {
             return obj &&

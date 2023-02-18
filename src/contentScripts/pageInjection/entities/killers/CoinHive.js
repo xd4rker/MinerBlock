@@ -1,4 +1,6 @@
 class CoinHiveKiller extends Killer {
+    static TYPE = 'coinHive';
+
     isMiner(obj) {
         try {
             return obj &&
