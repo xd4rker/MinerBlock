@@ -1,4 +1,5 @@
 class Killer {
+    static TYPE;
     reportBlock() {
         window.postMessage({
             type: "BLOCKER",
