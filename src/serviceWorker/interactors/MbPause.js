@@ -4,6 +4,8 @@
 export class MbPause {
     /** @type{SettingsRepository} */
     #settingsRepo;
+    /** @type{UnregisterMinerBlocker} */
+    #unregisterMinerBlocker;
 
     /** @type{SetIcon} */
     #setIcon;
@@ -11,8 +13,9 @@ export class MbPause {
     /** @type{Logger} */
     #logger;
 
-    constructor(settingsRepo, setIcon, logger) {
+    constructor(settingsRepo, unregisterMinerBlocker, setIcon, logger) {
         this.#settingsRepo = settingsRepo;
+        this.#unregisterMinerBlocker = unregisterMinerBlocker;
         this.#setIcon = setIcon;
         this.#logger = logger;
     }
@@ -34,6 +37,8 @@ export class MbPause {
         if (settingsSaved === false) {
            return false;
         }
+
+        await this.#unregisterMinerBlocker.run()
 
         return await this.#setIcon.run();
     }
