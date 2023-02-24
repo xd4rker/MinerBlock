@@ -3,10 +3,13 @@ export class MbStart {
     #settingsRepo;
     /** @type{InitBrowser} */
     #initBrowser;
+    /** @type{RegisterMinerBlocker} */
+    #registerMinerBlocker;
 
-    constructor(settingsRepo, initBrowser) {
+    constructor(settingsRepo, registerMinerBlocker, initBrowser) {
         this.#settingsRepo = settingsRepo;
         this.#initBrowser = initBrowser;
+        this.#registerMinerBlocker = registerMinerBlocker;
     }
 
     /**
@@ -22,6 +25,8 @@ export class MbStart {
         if (settingsSaved === false) {
             return false;
         }
+
+        await this.#registerMinerBlocker.run();
 
         return await this.#initBrowser.run();
     }

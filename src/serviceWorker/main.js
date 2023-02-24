@@ -56,22 +56,28 @@ const settingsRepository = context.settingsRepository;
 const statisticsRepository = context.statisticsRepository;
 const logger = context.logger;
 const _browser = context.browser;
+
+const getRunStatus = new GetRunStatus(
+	context.settingsRepository,
+	context.logger
+);
+
+const registerMinerBlocker = new RegisterMinerBlocker(
+	getRunStatus,
+	new GetWhitelist(
+		context.settingsRepository,
+		context.logger),
+	context.browser,
+	context.logger
+);
+const unregisterMinerBlocker = new UnregisterMinerBlocker(
+	context.browser,
+	context.logger
+)
+
 const resetMinerBlockerRegistration = new ResetMinerBlockerRegistration(
-	new RegisterMinerBlocker(
-		new GetRunStatus(
-			context.settingsRepository,
-			context.logger
-		),
-		new GetWhitelist(
-			context.settingsRepository,
-			context.logger),
-		context.browser,
-		context.logger
-	),
-	new UnregisterMinerBlocker(
-		context.browser,
-		context.logger
-	),
+	registerMinerBlocker,
+	unregisterMinerBlocker,
 	context.browser,
 	context.logger
 );
@@ -85,14 +91,14 @@ const initBrowser = new InitBrowser(new SetIcon(
 	new Visuals()
 ), new RemoveFiltersInBrowser(_browser));
 
-_browser.onInstalledAddListener(() => setup(initSettings, initBrowser)).then();
+_browser.onInstalledAddListener(() => setup(initSettings, initBrowser, registerMinerBlocker)).then();
 
 
 // onMessage #1
 
 const handleGetRunStatus = new HandleGetRunStatus(
-	new GetRunStatus(settingsRepository, logger),
-	logger
+	getRunStatus,
+	context.logger
 );
 
 _browser.onMessageAddListener(handleGetRunStatus.run.bind(handleGetRunStatus)).then();
@@ -294,6 +300,7 @@ const setIcon = new SetIcon(
 
 const mbStart = new MbStart(
 	context.settingsRepository,
+	registerMinerBlocker,
 	new InitBrowser(
 		setIcon,
 		new RemoveFiltersInBrowser(context.browser)
@@ -303,7 +310,6 @@ const mbStart = new MbStart(
 
 const handleMbStart = new HandleMbStart(
 	mbStart,
-	resetMinerBlockerRegistration,
 	context.logger
 );
 
@@ -314,13 +320,13 @@ _browser.onMessageAddListener(handleMbStart.run.bind(handleMbStart)).then();
 
 const mbPause = new MbPause(
 	context.settingsRepository,
+	unregisterMinerBlocker,
 	setIcon,
 	context.logger
 );
 
 const handleMbPause = new HandleMbPause(
 	mbPause,
-	resetMinerBlockerRegistration,
 	context.logger
 );
 

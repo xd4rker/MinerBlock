@@ -2,7 +2,7 @@ export class Settings {
     /** @type {boolean} */
     #showCount = false;
     #showAlert = false;
-    #runStatus = false;
+    #runStatus = true;
     /** @type{string[]} */
     #whiteList = [];
     /** @type{string[]} */
