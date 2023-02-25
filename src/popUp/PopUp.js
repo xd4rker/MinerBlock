@@ -20,6 +20,7 @@ class PopUp {
     static ACTION_GET_MINER_BLOCK_COUNT = 'getMinerBlockCount';
     static ACTION_PAUSE = 'mbPause';
     static ACTION_GET_RECENT_BLOCK_REPORT = 'getRecentBlockReport'
+    static ACTION_GET_MINER_FOUND_REQUEST = 'getMinerFoundRequest';
 
     static MAX_RECENT_BLOCK_REPORTS_SHOWN = 3;
 
@@ -257,5 +258,23 @@ class PopUp {
 
             recentBlockReportsShown += 1;
         }
+    }
+
+    /**
+     * @returns {Promise<boolean>}
+     */
+    async minerFoundInCurrentTab() {
+        const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
+
+        const response = await this.#browser.sendMessageToTabs(
+            tabs[0].id,
+            {action: this.constructor.ACTION_GET_MINER_FOUND_REQUEST}
+        );
+
+        if (response.minerFound === undefined) {
+            return false;
+        }
+
+        return response.minerFound === true;
     }
 }

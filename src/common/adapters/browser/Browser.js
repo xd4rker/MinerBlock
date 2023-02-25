@@ -15,6 +15,15 @@ class Browser {
     }
 
     /**
+     * @param {number} tabId
+     * @param {any} message
+     * @returns {Promise<any>}
+     */
+    async sendMessageToTabs(tabId, message) {
+        return this.#browser.sendMessageToTabs(tabId, message);
+    }
+
+    /**
      * Reload tab by tab id.
      *
      * @param {number} tabId

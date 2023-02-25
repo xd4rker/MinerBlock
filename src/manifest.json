@@ -17,6 +17,7 @@
 			"/common/adapters/browser/Browser.js",
 			"/contentScripts/Context.js",
 			"/contentScripts/ContextLoader.js",
+			"/contentScripts/Dispatcher.js",
 			"/contentScripts/main.js"
 		],
 		"run_at": "document_idle"

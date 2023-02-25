@@ -15,6 +15,17 @@ class Chrome {
     }
 
     /**
+     * @param {number} tabId
+     * @param {any} message
+     * @returns {Promise<any>}
+     *
+     * @see https://developer.chrome.com/docs/extensions/reference/tabs/#method-sendMessage
+     */
+    async sendMessageToTabs(tabId, message) {
+        return chrome.tabs.sendMessage(tabId, message);
+    }
+
+    /**
      * Reload tab.
      *
      * @param {number} tabId
