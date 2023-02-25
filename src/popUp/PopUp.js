@@ -57,6 +57,10 @@ class PopUp {
         this.#runStatus = await this.#browser.sendMessage({action: PopUp.ACTION_GET_RUN_STATUS});
     }
 
+    async setRecentBlockReports() {
+        this.#recentBlockReports = await this.#browser.sendMessage({action: PopUp.ACTION_GET_RECENT_BLOCK_REPORT});
+    }
+
     async setDomain() {
         const tabs = await this.#browser.tabsQuery(this.#queryCurrentTab);
 
@@ -169,9 +173,11 @@ class PopUp {
         await this.setIsDomainWhitelisted();
         await this.setMinerBlockCount();
         await this.setShowBlockCount();
+        await this.setRecentBlockReports();
 
         this.initElements().then();
         this.initEventListeners();
+        this.initBlockReports();
 
         logger.debug('PopUp object initiated.', 'PopUp.init', this);
     }
@@ -224,5 +230,24 @@ class PopUp {
         document.getElementById(PopUp.ELEMENT_ID_MINER_BLOCK_COUNT).innerText = this.#minerBlockCount;
         document.getElementById(PopUp.ELEMENT_ID_MINER_BLOCK_STATISTICS).style.display =
             (this.#showBlockCount === true) ? '' : 'none';
+    }
+
+    initBlockReports() {
+        let table = document.getElementById(PopUp.ELEMENT_ID_BLOCKED_DOMAINS);
+
+        this.#recentBlockReports.forEach(
+            function (blockReport) {
+                if (blockReport.url === undefined) {
+                    return;
+                }
+
+                let newRow = document.createElement('tr');
+                let newCell = document.createElement('td');
+                newCell.innerText = blockReport.url;
+
+                newRow.appendChild(newCell);
+                table.appendChild(newRow);
+            }
+        );
     }
 }
