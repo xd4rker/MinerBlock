@@ -7,6 +7,7 @@ class PopUp {
 
     static ELEMENT_ID_ADD_WHITELIST = 'addWlist';
     static ELEMENT_ID_MINER_BLOCK_COUNT = 'blockedNum';
+    static ELEMENT_ID_BLOCKED_DOMAINS = 'blockedDomains';
     static ELEMENT_ID_MINER_BLOCK_STATISTICS = 'hidePs';
     static ELEMENT_ID_REMOVE_WHITELIST = 'removeWlist';
 
@@ -18,6 +19,7 @@ class PopUp {
     static ACTION_GET_RUN_STATUS = 'getRunStatus';
     static ACTION_GET_MINER_BLOCK_COUNT = 'getMinerBlockCount';
     static ACTION_PAUSE = 'mbPause';
+    static ACTION_GET_RECENT_BLOCK_REPORT = 'getRecentBlockReport'
 
     #runStatus;
     #domain;
@@ -25,6 +27,8 @@ class PopUp {
     #isDomainWhitelisted;
     #minerBlockCount;
     #showBlockCount = false;
+    /** @type{Object[]} */
+    #recentBlockReports;
 
     //TODO: set attribute via serviceWorker
     #reloadAllTabsWhenTogglingStatus = false;
