@@ -21,6 +21,8 @@ class PopUp {
     static ACTION_PAUSE = 'mbPause';
     static ACTION_GET_RECENT_BLOCK_REPORT = 'getRecentBlockReport'
 
+    static MAX_RECENT_BLOCK_REPORTS_SHOWN = 3;
+
     #runStatus;
     #domain;
     #isSpecialTab;
@@ -235,19 +237,25 @@ class PopUp {
     initBlockReports() {
         let table = document.getElementById(PopUp.ELEMENT_ID_BLOCKED_DOMAINS);
 
-        this.#recentBlockReports.forEach(
-            function (blockReport) {
-                if (blockReport.url === undefined) {
-                    return;
-                }
+        let recentBlockReportsShown = 0;
 
-                let newRow = document.createElement('tr');
-                let newCell = document.createElement('td');
-                newCell.innerText = blockReport.url;
-
-                newRow.appendChild(newCell);
-                table.appendChild(newRow);
+        for (let indexBlockReport in this.#recentBlockReports) {
+            if (indexBlockReport >= this.constructor.MAX_RECENT_BLOCK_REPORTS_SHOWN) {
+                return;
             }
-        );
+
+            if (this.#recentBlockReports[indexBlockReport].url === undefined) {
+                return;
+            }
+
+            let newRow = document.createElement('tr');
+            let newCell = document.createElement('td');
+            newCell.innerText = this.#recentBlockReports[indexBlockReport].url;
+
+            newRow.appendChild(newCell);
+            table.appendChild(newRow);
+
+            recentBlockReportsShown += 1;
+        }
     }
 }
