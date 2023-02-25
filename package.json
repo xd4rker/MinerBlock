@@ -1,10 +1,12 @@
 {
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
+    "c8": "^7.13.0",
     "mocha": "^10.1.0"
   },
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "test-with-coverage": "c8 mocha --recursive"
   },
   "type": "module"
 }
