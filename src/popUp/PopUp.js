@@ -18,6 +18,7 @@ class PopUp {
     static ACTION_GET_RUN_STATUS = 'getRunStatus';
     static ACTION_GET_MINER_BLOCK_COUNT = 'getMinerBlockCount';
     static ACTION_PAUSE = 'mbPause';
+    static ACTION_GET_MINER_FOUND_REQUEST = 'getMinerFoundRequest';
 
     #runStatus;
     #domain;
@@ -220,5 +221,23 @@ class PopUp {
         document.getElementById(PopUp.ELEMENT_ID_MINER_BLOCK_COUNT).innerText = this.#minerBlockCount;
         document.getElementById(PopUp.ELEMENT_ID_MINER_BLOCK_STATISTICS).style.display =
             (this.#showBlockCount === true) ? '' : 'none';
+    }
+
+    /**
+     * @returns {Promise<boolean>}
+     */
+    async minerFoundInCurrentTab() {
+        const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
+
+        const response = await this.#browser.sendMessageToTabs(
+            tabs[0].id,
+            {action: this.constructor.ACTION_GET_MINER_FOUND_REQUEST}
+        );
+
+        if (response.minerFound === undefined) {
+            return false;
+        }
+
+        return response.minerFound === true;
     }
 }

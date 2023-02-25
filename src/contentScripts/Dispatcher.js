@@ -19,6 +19,9 @@ class Dispatcher {
 	#window;
 	#navigator;
 
+	static ACTION_GET_MINER_FOUND_REQUEST = 'getMinerFoundRequest';
+	static ACTION_GET_MINER_FOUND_RESPONSE = 'getMinerFoundResponse';
+
 	constructor(logger, browser, window, navigator) {
 		this.#logger = logger;
 		this.#browser = browser;
@@ -86,8 +89,20 @@ class Dispatcher {
 		});
 	}
 
+	async respondToGetMinerFound(message, sender, sendResponse) {
+		if (message.action !== this.constructor.ACTION_GET_MINER_FOUND_REQUEST) {
+			return;
+		}
+
+		await this.#browser.sendMessage({
+			action: this.constructor.ACTION_GET_MINER_FOUND_RESPONSE,
+			minerFound: this.#minerFound
+		});
+	}
+
 	addListener() {
 		this.#window.addEventListener("load", () => this.triggerStartScan());
 		this.#window.addEventListener("message", (event) => this.reactToBlockReport(event), false);
+		this.#browser.onMessageAddListener((message, sender, sendResponse) => this.respondToGetMinerFound(message, sender, sendResponse));
 	}
 }
