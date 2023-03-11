@@ -277,4 +277,30 @@ class PopUp {
 
         return response.minerFound === true;
     }
+
+    /**
+     * @returns {Promise<*|boolean|null>}
+     */
+    async getMinerTypeForCurrentTab() {
+        const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
+
+        if (this.#isSpecialTab === true) {
+            return null;
+        }
+
+        let response;
+
+        try {
+            response = await this.#browser.sendMessageToTabs(
+                tabs[0].id,
+                {action: this.constructor.ACTION_GET_MINER_INFO_REQUEST}
+            );
+        } catch (e) {}
+
+        if (response.minerInfo.type === undefined) {
+            return false;
+        }
+
+        return response.minerInfo.type;
+    }
 }
