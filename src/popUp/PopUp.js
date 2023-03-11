@@ -261,15 +261,23 @@ class PopUp {
     }
 
     /**
-     * @returns {Promise<boolean>}
+     * @returns {Promise<boolean|null>}
      */
     async minerFoundInCurrentTab() {
         const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
 
-        const response = await this.#browser.sendMessageToTabs(
-            tabs[0].id,
-            {action: this.constructor.ACTION_GET_MINER_FOUND_REQUEST}
-        );
+        if (this.#isSpecialTab === true) {
+            return null;
+        }
+
+        let response;
+
+        try {
+            response = await this.#browser.sendMessageToTabs(
+                tabs[0].id,
+                {action: this.constructor.ACTION_GET_MINER_FOUND_REQUEST}
+            );
+        } catch (e) {}
 
         if (response.minerFound === undefined) {
             return false;
