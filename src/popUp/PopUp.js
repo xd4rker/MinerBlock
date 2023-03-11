@@ -271,7 +271,9 @@ class PopUp {
                 tabs[0].id,
                 {action: this.constructor.ACTION_GET_MINER_FOUND_REQUEST}
             );
-        } catch (e) {}
+        } catch (e) {
+            return null;
+        }
 
         if (response.minerFound === undefined) {
             return false;
@@ -297,7 +299,9 @@ class PopUp {
                 tabs[0].id,
                 {action: this.constructor.ACTION_GET_MINER_INFO_REQUEST}
             );
-        } catch (e) {}
+        } catch (e) {
+            return null;
+        }
 
         if (response.minerInfo.type === undefined) {
             return false;
