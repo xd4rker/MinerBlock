@@ -272,10 +272,6 @@ class PopUp {
 
         const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
 
-        if (this.#isSpecialTab === true) {
-            return null;
-        }
-
         let response;
 
         try {
