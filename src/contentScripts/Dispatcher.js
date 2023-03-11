@@ -22,6 +22,9 @@ class Dispatcher {
 
 	static ACTION_GET_MINER_FOUND_REQUEST = 'getMinerFoundRequest';
 	static ACTION_GET_MINER_FOUND_RESPONSE = 'getMinerFoundResponse';
+	static ACTION_GET_MINER_INFO_REQUEST = 'getMinerInfoRequest';
+	static ACTION_GET_MINER_INFO_RESPONSE = 'getMinerInfoResponse';
+
 
 	constructor(logger, browser, window, navigator) {
 		this.#logger = logger;
@@ -101,6 +104,21 @@ class Dispatcher {
 			action: this.constructor.ACTION_GET_MINER_FOUND_RESPONSE,
 			minerFound: this.#minerFound
 		});
+
+		return true;
+	}
+
+	async respondToGetMinerInfo(message, sender, sendResponse) {
+		if (message.action !== this.constructor.ACTION_GET_MINER_INFO_REQUEST) {
+			return;
+		}
+
+		sendResponse({
+			action: this.constructor.ACTION_GET_MINER_INFO_RESPONSE,
+			minerInfo: this.#report
+		});
+
+		return true;
 	}
 
 	addListener() {
