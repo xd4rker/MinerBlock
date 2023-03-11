@@ -140,7 +140,7 @@ class PopUp {
         window.close();
     }
 
-    async triggerRemoveWlist () {
+    async triggerRemoveWlist() {
         await this.#browser.sendMessage({action: PopUp.ACTION_REMOVE_WHITELIST, domain: this.#domain});
 
         if (this.#runStatus === false) {
