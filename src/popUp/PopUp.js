@@ -254,6 +254,10 @@ class PopUp {
      * @returns {Promise<boolean|null>}
      */
     async minerFoundInCurrentTab() {
+        if (this.#isSpecialTab === true) {
+            return null;
+        }
+
         const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
 
         if (this.#isSpecialTab === true) {
@@ -279,12 +283,12 @@ class PopUp {
     /**
      * @returns {Promise<*|boolean|null>}
      */
-    async getMinerTypeForCurrentTab() {
-        const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
-
+    async getMinerTypeOfCurrentTab() {
         if (this.#isSpecialTab === true) {
             return null;
         }
+
+        const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
 
         let response;
 
