@@ -29,6 +29,8 @@ class PopUp {
     #isDomainWhitelisted;
     #minerBlockCount;
     #showBlockCount = false;
+    #minerFoundOnCurrentPage = null;
+    #minerTypeOfCurrentTab = null;
 
     //TODO: set attribute via serviceWorker
     #reloadAllTabsWhenTogglingStatus = false;
@@ -51,6 +53,14 @@ class PopUp {
 
     async setShowBlockCount() {
         this.#showBlockCount = await this.#browser.sendMessage({action: PopUp.ACTION_SHOW_BLOCK_COUNT});
+    }
+
+    async setMinerFoundOnCurrentPage() {
+        this.#minerFoundOnCurrentPage = await this.minerFoundInCurrentTab();
+    }
+
+    async setMinerTypeOfCurrentTab() {
+        this.#minerTypeOfCurrentTab = await this.getMinerTypeOfCurrentTab();
     }
 
     async setRunStatus() {
@@ -169,16 +179,22 @@ class PopUp {
         await this.setIsDomainWhitelisted();
         await this.setMinerBlockCount();
         await this.setShowBlockCount();
+        await this.setMinerFoundOnCurrentPage();
 
-        this.initElements().then();
+        if (this.#minerFoundOnCurrentPage === true) {
+            await this.setMinerTypeOfCurrentTab();
+        }
+
+        this.initElements();
         this.initEventListeners();
 
         logger.debug('PopUp object initiated.', 'PopUp.init', this);
     }
 
-    async initElements() {
+     initElements() {
         this.initMbSetStatusButton();
         this.initBlockCount();
+        this.initCurrentPageState();
 
         if (this.#isSpecialTab === true) {
             return;
@@ -226,25 +242,21 @@ class PopUp {
             (this.#showBlockCount === true) ? '' : 'none';
     }
 
-    async initCurrentPageState() {
-        let table = document.getElementById(PopUp.ELEMENT_ID_CURRENT_PAGE_STATE);
-
-        const minerBlockFound = await this.minerFoundInCurrentTab();
-
-        if (minerBlockFound === false || minerBlockFound === null) {
+    initCurrentPageState() {
+        if (this.#minerFoundOnCurrentPage === false || this.#minerFoundOnCurrentPage === null) {
             return;
         }
+
+        let table = document.getElementById(PopUp.ELEMENT_ID_CURRENT_PAGE_STATE);
 
         let newRow = document.createElement('tr');
         let newCell = document.createElement('td');
 
-        const minerType = await this.getMinerTypeForCurrentTab();
-
-        if (minerType === false || minerType === null) {
+        if (this.#minerTypeOfCurrentTab === false || this.#minerTypeOfCurrentTab === null) {
             return;
         }
 
-        newCell.innerText = `${minerType}, found and blocked.`;
+        newCell.innerText = `${this.#minerTypeOfCurrentTab}, found and blocked.`;
 
         newRow.appendChild(newCell);
         table.appendChild(newRow);
