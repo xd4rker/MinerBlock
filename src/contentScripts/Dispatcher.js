@@ -18,6 +18,7 @@ class Dispatcher {
 	#browser;
 	#window;
 	#navigator;
+	#report;
 
 	static ACTION_GET_MINER_FOUND_REQUEST = 'getMinerFoundRequest';
 	static ACTION_GET_MINER_FOUND_RESPONSE = 'getMinerFoundResponse';
@@ -83,9 +84,11 @@ class Dispatcher {
 
 		event.data.report['agent'] = this.#navigator.userAgent;
 
+		this.#report = event.data.report;
+
 		await this.#browser.sendMessage({
 			'action': 'blockReport',
-			'report': event.data.report
+			'report': this.#report
 		});
 	}
 
