@@ -235,29 +235,28 @@ class PopUp {
             (this.#showBlockCount === true) ? '' : 'none';
     }
 
-    initBlockReports() {
-        let table = document.getElementById(PopUp.ELEMENT_ID_BLOCKED_DOMAINS);
+    async initCurrentPageState() {
+        let table = document.getElementById(PopUp.ELEMENT_ID_CURRENT_PAGE_STATE);
 
-        let recentBlockReportsShown = 0;
+        const minerBlockFound = await this.minerFoundInCurrentTab();
 
-        for (let indexBlockReport in this.#recentBlockReports) {
-            if (indexBlockReport >= this.constructor.MAX_RECENT_BLOCK_REPORTS_SHOWN) {
-                return;
-            }
-
-            if (this.#recentBlockReports[indexBlockReport].url === undefined) {
-                return;
-            }
-
-            let newRow = document.createElement('tr');
-            let newCell = document.createElement('td');
-            newCell.innerText = this.#recentBlockReports[indexBlockReport].url;
-
-            newRow.appendChild(newCell);
-            table.appendChild(newRow);
-
-            recentBlockReportsShown += 1;
+        if (minerBlockFound === false || minerBlockFound === null) {
+            return;
         }
+
+        let newRow = document.createElement('tr');
+        let newCell = document.createElement('td');
+
+        const minerType = await this.getMinerTypeForCurrentTab();
+
+        if (minerType === false || minerType === null) {
+            return;
+        }
+
+        newCell.innerText = `${minerType}, found and blocked.`;
+
+        newRow.appendChild(newCell);
+        table.appendChild(newRow);
     }
 
     /**
