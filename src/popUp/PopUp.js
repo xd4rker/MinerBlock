@@ -169,7 +169,6 @@ class PopUp {
         await this.setIsDomainWhitelisted();
         await this.setMinerBlockCount();
         await this.setShowBlockCount();
-        await this.setRecentBlockReports();
 
         this.initElements().then();
         this.initEventListeners();
