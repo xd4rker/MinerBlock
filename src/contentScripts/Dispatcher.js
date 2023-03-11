@@ -100,7 +100,7 @@ class Dispatcher {
 			return;
 		}
 
-		await this.#browser.sendMessage({
+		sendResponse({
 			action: this.constructor.ACTION_GET_MINER_FOUND_RESPONSE,
 			minerFound: this.#minerFound
 		});
