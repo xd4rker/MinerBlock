@@ -7,7 +7,7 @@ class PopUp {
 
     static ELEMENT_ID_ADD_WHITELIST = 'addWlist';
     static ELEMENT_ID_MINER_BLOCK_COUNT = 'blockedNum';
-    static ELEMENT_ID_BLOCKED_DOMAINS = 'blockedDomains';
+    static ELEMENT_ID_CURRENT_PAGE_STATE = 'blockedDomains';
     static ELEMENT_ID_MINER_BLOCK_STATISTICS = 'hidePs';
     static ELEMENT_ID_REMOVE_WHITELIST = 'removeWlist';
 
@@ -21,8 +21,7 @@ class PopUp {
     static ACTION_PAUSE = 'mbPause';
     static ACTION_GET_RECENT_BLOCK_REPORT = 'getRecentBlockReport'
     static ACTION_GET_MINER_FOUND_REQUEST = 'getMinerFoundRequest';
-
-    static MAX_RECENT_BLOCK_REPORTS_SHOWN = 3;
+    static ACTION_GET_MINER_INFO_REQUEST = 'getMinerInfoRequest';
 
     #runStatus;
     #domain;
