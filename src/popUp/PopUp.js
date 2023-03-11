@@ -29,8 +29,6 @@ class PopUp {
     #isDomainWhitelisted;
     #minerBlockCount;
     #showBlockCount = false;
-    /** @type{Object[]} */
-    #recentBlockReports;
 
     //TODO: set attribute via serviceWorker
     #reloadAllTabsWhenTogglingStatus = false;
@@ -57,10 +55,6 @@ class PopUp {
 
     async setRunStatus() {
         this.#runStatus = await this.#browser.sendMessage({action: PopUp.ACTION_GET_RUN_STATUS});
-    }
-
-    async setRecentBlockReports() {
-        this.#recentBlockReports = await this.#browser.sendMessage({action: PopUp.ACTION_GET_RECENT_BLOCK_REPORT});
     }
 
     async setDomain() {
@@ -179,7 +173,6 @@ class PopUp {
 
         this.initElements().then();
         this.initEventListeners();
-        this.initBlockReports();
 
         logger.debug('PopUp object initiated.', 'PopUp.init', this);
     }
