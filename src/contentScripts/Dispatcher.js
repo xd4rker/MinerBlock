@@ -125,5 +125,6 @@ class Dispatcher {
 		this.#window.addEventListener("load", () => this.triggerStartScan());
 		this.#window.addEventListener("message", (event) => this.reactToBlockReport(event), false);
 		this.#browser.onMessageAddListener((message, sender, sendResponse) => this.respondToGetMinerFound(message, sender, sendResponse));
+		this.#browser.onMessageAddListener((message, sender, sendResponse) => this.respondToGetMinerInfo(message, sender, sendResponse));
 	}
 }
