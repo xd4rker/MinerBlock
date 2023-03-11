@@ -49,6 +49,7 @@ import {HandleResetSettings} from "./events/handler/onMessage/HandleResetSetting
 import {ResetMinerBlockerRegistration} from "./interactors/ResetMinerBlockerRegistration.js";
 import {RegisterMinerBlocker} from "./interactors/RegisterMinerBlocker.js";
 import {UnregisterMinerBlocker} from "./interactors/UnregisterMinerBlocker.js";
+import {GetRecentBlockReport} from "./events/handler/onMessage/GetRecentBlockReport.js";
 
 const context = ContextLoader.getInstance();
 //TODO: remove tmp assignment
@@ -345,3 +346,12 @@ _browser.onMessageAddListener(handleResetSettings.run.bind(handleResetSettings))
 _browser.onMessageAddListener(function () {
 	return true;
 }).then();
+
+// onMessage #20
+
+const handleGetRecentBlockReport = new GetRecentBlockReport(
+	statisticsRepository,
+	logger
+);
+
+_browser.onMessageAddListener(handleGetRecentBlockReport.run.bind(handleGetRecentBlockReport)).then();

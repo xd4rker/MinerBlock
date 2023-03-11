@@ -7,6 +7,7 @@ class PopUp {
 
     static ELEMENT_ID_ADD_WHITELIST = 'addWlist';
     static ELEMENT_ID_MINER_BLOCK_COUNT = 'blockedNum';
+    static ELEMENT_ID_CURRENT_PAGE_STATE = 'blockedDomains';
     static ELEMENT_ID_MINER_BLOCK_STATISTICS = 'hidePs';
     static ELEMENT_ID_REMOVE_WHITELIST = 'removeWlist';
 
@@ -18,7 +19,9 @@ class PopUp {
     static ACTION_GET_RUN_STATUS = 'getRunStatus';
     static ACTION_GET_MINER_BLOCK_COUNT = 'getMinerBlockCount';
     static ACTION_PAUSE = 'mbPause';
+    static ACTION_GET_RECENT_BLOCK_REPORT = 'getRecentBlockReport'
     static ACTION_GET_MINER_FOUND_REQUEST = 'getMinerFoundRequest';
+    static ACTION_GET_MINER_INFO_REQUEST = 'getMinerInfoRequest';
 
     #runStatus;
     #domain;
@@ -26,6 +29,8 @@ class PopUp {
     #isDomainWhitelisted;
     #minerBlockCount;
     #showBlockCount = false;
+    #minerFoundOnCurrentPage = null;
+    #minerTypeOfCurrentTab = null;
 
     //TODO: set attribute via serviceWorker
     #reloadAllTabsWhenTogglingStatus = false;
@@ -48,6 +53,14 @@ class PopUp {
 
     async setShowBlockCount() {
         this.#showBlockCount = await this.#browser.sendMessage({action: PopUp.ACTION_SHOW_BLOCK_COUNT});
+    }
+
+    async setMinerFoundOnCurrentPage() {
+        this.#minerFoundOnCurrentPage = await this.minerFoundInCurrentTab();
+    }
+
+    async setMinerTypeOfCurrentTab() {
+        this.#minerTypeOfCurrentTab = await this.getMinerTypeOfCurrentTab();
     }
 
     async setRunStatus() {
@@ -127,7 +140,7 @@ class PopUp {
         window.close();
     }
 
-    async triggerRemoveWlist () {
+    async triggerRemoveWlist() {
         await this.#browser.sendMessage({action: PopUp.ACTION_REMOVE_WHITELIST, domain: this.#domain});
 
         if (this.#runStatus === false) {
@@ -166,16 +179,22 @@ class PopUp {
         await this.setIsDomainWhitelisted();
         await this.setMinerBlockCount();
         await this.setShowBlockCount();
+        await this.setMinerFoundOnCurrentPage();
 
-        this.initElements().then();
+        if (this.#minerFoundOnCurrentPage === true) {
+            await this.setMinerTypeOfCurrentTab();
+        }
+
+        this.initElements();
         this.initEventListeners();
 
         logger.debug('PopUp object initiated.', 'PopUp.init', this);
     }
 
-    async initElements() {
+     initElements() {
         this.initMbSetStatusButton();
         this.initBlockCount();
+        this.initCurrentPageState();
 
         if (this.#isSpecialTab === true) {
             return;
@@ -223,21 +242,79 @@ class PopUp {
             (this.#showBlockCount === true) ? '' : 'none';
     }
 
+    initCurrentPageState() {
+        if (this.#minerFoundOnCurrentPage === false || this.#minerFoundOnCurrentPage === null) {
+            return;
+        }
+
+        let table = document.getElementById(PopUp.ELEMENT_ID_CURRENT_PAGE_STATE);
+
+        let newRow = document.createElement('tr');
+        let newCell = document.createElement('td');
+
+        if (this.#minerTypeOfCurrentTab === false || this.#minerTypeOfCurrentTab === null) {
+            return;
+        }
+
+        newCell.innerText = `${this.#minerTypeOfCurrentTab}, found and blocked.`;
+
+        newRow.appendChild(newCell);
+        table.appendChild(newRow);
+    }
+
     /**
-     * @returns {Promise<boolean>}
+     * @returns {Promise<boolean|null>}
      */
     async minerFoundInCurrentTab() {
+        if (this.#isSpecialTab === true) {
+            return null;
+        }
+
         const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
 
-        const response = await this.#browser.sendMessageToTabs(
-            tabs[0].id,
-            {action: this.constructor.ACTION_GET_MINER_FOUND_REQUEST}
-        );
+        let response;
+
+        try {
+            response = await this.#browser.sendMessageToTabs(
+                tabs[0].id,
+                {action: this.constructor.ACTION_GET_MINER_FOUND_REQUEST}
+            );
+        } catch (e) {
+            return null;
+        }
 
         if (response.minerFound === undefined) {
             return false;
         }
 
         return response.minerFound === true;
+    }
+
+    /**
+     * @returns {Promise<*|boolean|null>}
+     */
+    async getMinerTypeOfCurrentTab() {
+        if (this.#isSpecialTab === true) {
+            return null;
+        }
+
+        const tabs = await this.#browser.tabsQuery({active: true, currentWindow: true});
+
+        let response;
+
+        try {
+            response = await this.#browser.sendMessageToTabs(
+                tabs[0].id,
+                {action: this.constructor.ACTION_GET_MINER_INFO_REQUEST}
+            );
+        } catch (e) {
+            return null;
+        }
+
+        if (response.minerInfo.type === undefined) {
+            return false;
+        }
+
+        return response.minerInfo.type;
     }
 }

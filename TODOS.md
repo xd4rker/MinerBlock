@@ -1,3 +1,3 @@
 - remove inconsistent naming across project
 - adjust folder structure to match clean code architecture
-- set type of miner in statistics data set
+- do not allow faulty domains to be saved
